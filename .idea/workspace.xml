@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/HomeSite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/HomeSite/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
