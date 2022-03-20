@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="Update views and urls">
-      <change afterPath="$PROJECT_DIR$/Willowsford/Willowsford/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/HomeSite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/HomeSite/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/HomeSite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/HomeSite/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +55,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646519698603</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update views and urls">
+      <created>1647797287963</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1647797287963</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -66,8 +77,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update views and urls" />
     <MESSAGE value="Update models and create scoring app" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update models and create scoring app" />
+    <MESSAGE value="Update views and urls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update views and urls" />
   </component>
 </project>

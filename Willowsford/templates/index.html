@@ -1,0 +1,81 @@
+<!--Add this to the beginning of each file-->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  {% block head %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Affordable and professional web design">
+	  <meta name="keywords" content="web design, affordable web design, professional web design">
+  	<meta name="author" content="Brad Traversy">
+    <title>Acme Web Deisgn | Welcome</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  {% endblock head %}
+  <body>
+    {% block header %}
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Willowsford</span> Archery Club</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'services' %}">Membership</a></li>
+            <li><a href="{% url 'signIn' %}">Sign In</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    {% endblock header %}
+
+    {% block content %}
+    <section id="showcase">
+      <div class="container">
+        <h1></h1>
+        <p></p>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="container">
+        <h1>Join Our Facebook Page</h1>
+        <form action="https://www.facebook.com/groups/willowsfordarcheryclub/">
+          <!-- <input type="email" placeholder="Enter Email..."> -->
+          <button type="submit" class="button_1">Join Now</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="boxes">
+      <div class="container">
+        <h1>Purpose of Willowsford Archery Club</h1>
+        <p>The Willowsford Archery Club (WAC) is a non-profit organization that: </p>
+        <div class="box">
+          <img src="{% static 'acme/img/logo_html.png' %}">
+          <h3>Promotes the sport of archery in Willowsford</h3>
+          <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies</p> -->
+        </div>
+        <div class="box">
+          <img src="{% static 'acme/img/logo_css.png' %}">
+          <h3>Provides a safe place for residents to shoot</h3>
+          <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies</p> -->
+        </div>
+        <div class="box">
+          <img src="{% static 'acme/img/logo_brush.png' %}">
+          <h3>Encourages social interaction and strengthen social relationships among participants.</h3>
+          <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies</p> -->
+        </div>
+      </div>
+    </section>
+    {% endblock content %}
+    {% block footer %}
+    <footer>
+      <p>Willowsford Conservancy, Copyright &copy; 2022</p>
+    </footer>
+    {% endblock footer %}
+  </body>
+</html>

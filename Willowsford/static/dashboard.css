@@ -1,0 +1,8 @@
+.container {
+    padding: 1rem;
+    background-color: blueviolet;
+    border: 2px solid #fff;
+    color: #fff;
+    text-align: center;
+    float: inherit;
+}
