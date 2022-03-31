@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
   <div class="login-wrapper">
-    <form action="registration2.html" class="form">
+    <form action="{% url 'registerptwo' %}" class="form">
       <img src="img/avatar.png" alt="">
       <h2>Login</h2>
       
