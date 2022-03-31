@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="Update views and urls">
+    <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="Added templates and updated them to use django tags">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/signIn.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/img/avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/img/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/registration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/registration2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/signIn.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/signInCSS.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/archery1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/archery2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/archery3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/logo_brush.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/logo_css.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/logo_html.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/showcase.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/services.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/img/avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/img/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/registration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/registration2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/HomeSite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/HomeSite/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/HomeSite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/HomeSite/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/Registration/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Registration/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/Registration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Registration/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/templates/Front-End" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/HomeSite/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/HomeSite/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/HomeSite/services.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +63,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../IT409 - Python Web Development/midterm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dwmdo\OneDrive\Documents\School-DESKTOP-JTQL1BR\IT492_493 - Capstone\WillowsfordProd\Willowsford\templates\HomeSite" />
+      <recent name="C:\Users\dwmdo\OneDrive\Documents\School-DESKTOP-JTQL1BR\IT492_493 - Capstone\WillowsfordProd\Willowsford\templates\MemberManagement" />
+      <recent name="C:\Users\dwmdo\OneDrive\Documents\School-DESKTOP-JTQL1BR\IT492_493 - Capstone\WillowsfordProd\Willowsford\templates\Registration" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -62,7 +102,21 @@
       <option name="project" value="LOCAL" />
       <updated>1647797287963</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update views and urls">
+      <created>1647801438591</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1647801438591</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added templates and updated them to use django tags">
+      <created>1647801690717</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1647801690717</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,6 +133,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update models and create scoring app" />
     <MESSAGE value="Update views and urls" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update views and urls" />
+    <MESSAGE value="Added templates and updated them to use django tags" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added templates and updated them to use django tags" />
   </component>
 </project>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="signInCSS.css">
+  <title>Login Form Demo</title>
+</head>
+<body>
+  <div class="login-wrapper">
+    <form action="registration2.html" class="form">
+      <img src="img/avatar.png" alt="">
+      <h2>Login</h2>
+      
+      <p>Select a membership type</p> </br>
+        <input type="radio" name = memb value="Family"> Family</br></br>
+        <input type="radio" name = "memb" value="Single"> Single</br></br>
+      
+      <div class="input-group">
+        <input type="text" name="loginUser" id="loginUser" required>
+        <label for="loginUser">Create Username</label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="loginPassword" id="loginPassword" required>
+        <label for="loginPassword">Create Password</label>
+      </div>
+      <input type="submit" value="Submit" class="submit-btn">
+
+      <a href="signIn.html" class="forgot-pw">Already have an account</a>
+    </form>
+
+  </div>
+</body>
+</html>

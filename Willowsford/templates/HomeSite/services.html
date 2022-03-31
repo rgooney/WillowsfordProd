@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "HomeSite/index.html" %}
 {% block content %}
 
     <section id="main">
@@ -32,7 +32,7 @@
             <form class="quote">
   						<div>
   							<label>Name</label><br>
-  							<input type="text" placeholder="Name">
+  							<input type="text" placeholder="{{ UserAccount.fname }}">
   						</div>
   						<div>
   							<label>Email</label><br>
