@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+{% block header %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,11 @@
   <link rel="stylesheet" href="{% static 'signInCSS' }">
   <title>Login Form Demo</title>
 </head>
+{% endblock header %}
 <body>
   <div class="login-wrapper">
     <form action="{% url 'registerptwo' }" class="form">
-      <img src="img/avatar.png" alt="">
+      <img src= "{% static 'img/avatar.png' %}" alt=""> 
       <h2>Login</h2>
       <div class="input-group">
         <input type="text" name="firstName" id="firstName" required>
@@ -36,7 +38,7 @@
       
       <input type="submit" value="Next" class="submit-btn">
 
-      <a href="signIn.html" class="forgot-pw">Already have an account</a>
+      <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
     </form>
 
     <div id="forgot-pw">
