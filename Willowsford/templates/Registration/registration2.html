@@ -1,10 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   {% extends "Registration/registration.html" %}
 <body>
   <div class="login-wrapper">
+<<<<<<< HEAD
     <form action="registration2.html" class="form">
       <img src="{% static 'img/avatar.png' %}" alt="">
+=======
+    <form action="{% url 'registerptwo' %}" class="form">
+      <img src="img/avatar.png" alt="">
+>>>>>>> 762a20f5b28e9bf3c63a1ca5f227cbe5a9352ff7
       <h2>Login</h2>
       
       <p>Select a membership type</p> </br>
