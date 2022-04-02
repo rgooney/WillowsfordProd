@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="Updates to links - HTML to Django">
+    <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="Registration added. Needs log in function.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Registration/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Registration/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Registration/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Registration/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Registration/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Registration/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Registration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Registration/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/signIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/signIn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/Registration/img/avatar.png" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/static/img/avatar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/Registration/img/bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/static/img/bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/Registration/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/Registration/registration2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/registration2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648763488553</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Registration added. Needs log in function.">
+      <created>1648925166943</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1648925166943</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,6 +134,7 @@
     <MESSAGE value="Added templates and updated them to use django tags" />
     <MESSAGE value="Reorganized file structure" />
     <MESSAGE value="Updates to links - HTML to Django" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates to links - HTML to Django" />
+    <MESSAGE value="Registration added. Needs log in function." />
+    <option name="LAST_COMMIT_MESSAGE" value="Registration added. Needs log in function." />
   </component>
 </project>
