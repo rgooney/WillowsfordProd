@@ -1,51 +1,45 @@
 {% load static %}
+{% block header %}
 <!DOCTYPE html>
 <html lang="en">
-{% block header %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{% static 'signInCSS' }">
+  <link rel="stylesheet" href="{% static 'signInCSS.css' %}">
   <title>Login Form Demo</title>
 </head>
 {% endblock header %}
+
 <body>
+  {% block registration %}
   <div class="login-wrapper">
-<<<<<<< HEAD
-    <form action="{% url 'registerptwo' }" class="form">
-      <img src="{% static 'img/avatar.png' %}" alt=""> 
-=======
-    <form action="{% url 'registerptwo' %}" class="form">
-      <img src="img/avatar.png" alt="">
->>>>>>> 762a20f5b28e9bf3c63a1ca5f227cbe5a9352ff7
+    <form action="{% url 'registerpone' %}" class="form" method="post">
+      <img src="{% static 'img/avatar.png' %}" alt="">
       <h2>Login</h2>
       <div class="input-group">
-        <input type="text" name="firstName" id="firstName" required>
-        <label for="firstName">First Name</label>
+          {{ form.username }}
+        <label for="{{ form.username.id_for_label }}">Username</label>
       </div>
       <div class="input-group">
-        <input type="text" name="lastName" id="lastName" required>
-        <label for="lastName">Last Name</label>
+          {{ form.email }}
+        <label for="{{ form.email.id_for_label }}">Email</label>
       </div>
       <div class="input-group">
-        <input type="text" name="address" id="address" required>
-        <label for="address">Address</label>
+        {{ form.password1 }}
+        <label for="{{ form.password1.id_for_label }}">Password</label>
       </div>
       <div class="input-group">
-        <input type="text" name="email" id="email" required>
-        <label for="email">Email Address</label>
+        {{ form.password2 }}
+        <label for="{{ form.password2.id_for_label }}">Re-enter password</label>
       </div>
-      <div class="input-group">
-        <input type="text" name="phone" id="phone" required>
-        <label for="phone">Phone Number</label>
-      </div>
-      
+
+      {% csrf_token %}
       <input type="submit" value="Next" class="submit-btn">
 
       <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
     </form>
-
+  {% endblock registration %}
     <div id="forgot-pw">
       <form action="" class="form">
         <a href="#" class="close">&times;</a>

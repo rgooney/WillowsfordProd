@@ -1,35 +1,52 @@
+{% extends "Registration/registration.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  {% extends "Registration/registration.html" %}
-<body>
+
+
+{% block registration %}
   <div class="login-wrapper">
-<<<<<<< HEAD
-    <form action="registration2.html" class="form">
+
+    <form action="{% url 'registerptwo' %}" class="form" method="post">
       <img src="{% static 'img/avatar.png' %}" alt="">
-=======
-    <form action="{% url 'registerptwo' %}" class="form">
-      <img src="img/avatar.png" alt="">
->>>>>>> 762a20f5b28e9bf3c63a1ca5f227cbe5a9352ff7
       <h2>Login</h2>
       
-      <p>Select a membership type</p> </br>
-        <input type="radio" name = memb value="Family"> Family</br></br>
-        <input type="radio" name = "memb" value="Single"> Single</br></br>
-      
       <div class="input-group">
-        <input type="text" name="loginUser" id="loginUser" required>
-        <label for="loginUser">Create Username</label>
+        {{ form.fname }}
+        <label for="{{ form.fname.id_for_label }}">First Name</label>
       </div>
       <div class="input-group">
-        <input type="password" name="loginPassword" id="loginPassword" required>
-        <label for="loginPassword">Create Password</label>
+        {{ form.mid_initial}}
+        <label for="{{ form.mid_initial.id_for_label }}">Middle Initial</label>
       </div>
+      <div class="input-group">
+        {{ form.lname }}
+        <label for="{{ form.lname.id_for_label }}">Last Name</label>
+      </div>
+      <div class="input-group">
+        {{ form.gender }}
+        <label for="{{ form.gender.id_for_label }}">Gender</label>
+      </div>
+      <div class="input-group">
+        {{ form.bday }}
+        <label for="{{ form.bday.id_for_label }}">Birthday</label>
+      </div>
+      <div class="input-group">
+        {{ form.street }}
+        <label for="{{ form.street.id_for_label }}">Street</label>
+      </div>
+      <div class="input-group">
+        {{ form.city }}
+        <label for="{{ form.city.id_for_label }}">City</label>
+      </div>
+      <div class="input-group">
+        {{ form.state }}
+        <label for="{{ form.state.id_for_label }}">State</label>
+      </div>
+
+      {% csrf_token %}
       <input type="submit" value="Submit" class="submit-btn">
 
       <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
     </form>
 
   </div>
-</body>
-</html>
+{% endblock registration %}

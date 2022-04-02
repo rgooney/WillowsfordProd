@@ -11,7 +11,7 @@ class UserAccount(models.Model):
     street = models.CharField(max_length=30)
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
-    admin = models.BooleanField()
-    officer = models.BooleanField()
+    admin = models.BooleanField(default=False)
+    officer = models.BooleanField(default=False)
 
-    # TODO: Add waiver fields, and user/password
+
