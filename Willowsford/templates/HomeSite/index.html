@@ -22,6 +22,7 @@
             <li><a href="{% url 'signIn' %}">Sign In</a></li>
             {% if user.is_authenticated %}
             <li>{{ user.username }}</li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
             {% endif %}
           </ul>
         </nav>

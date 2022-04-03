@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
+
 # Create your views here.
 def signIn(request):
     if request.method == "POST":
@@ -24,3 +25,7 @@ def signIn(request):
         form = AuthenticationForm()
 
     return render(request, 'MemberManagement/signIn.html', {"form": form})
+
+
+def dashboard(request):
+    return render(request, 'MemberManagement/dashboard.html')
