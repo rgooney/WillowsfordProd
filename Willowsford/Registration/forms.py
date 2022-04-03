@@ -3,8 +3,12 @@ from django.core import validators
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+import datetime
 
 from .models import *
+
+currentDateTime = datetime.datetime.now()
+year = currentDateTime.date().strftime("%Y")
 
 class UserAccountForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -17,4 +21,6 @@ class RegistrationForm(forms.ModelForm):
     class Meta:
         model = UserAccount
         fields = ("fname", "mid_initial", "lname", "gender", "bday", "street", "city", "state")
-
+        widgets = {
+            "bday": forms.SelectDateWidget(years=range(1920, int(year)))
+        }
