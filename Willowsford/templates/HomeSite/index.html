@@ -20,6 +20,9 @@
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'services' %}">Membership</a></li>
             <li><a href="{% url 'signIn' %}">Sign In</a></li>
+            {% if user.is_authenticated %}
+            <li>{{ user.username }}</li>
+            {% endif %}
           </ul>
         </nav>
       </div>
