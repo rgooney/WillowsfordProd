@@ -7,8 +7,7 @@ import datetime
 
 from .models import *
 
-currentDateTime = datetime.datetime.now()
-year = currentDateTime.date().strftime("%Y")
+year = datetime.datetime.now().date().strftime("%Y")
 
 class UserAccountForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -22,5 +21,5 @@ class RegistrationForm(forms.ModelForm):
         model = UserAccount
         fields = ("fname", "mid_initial", "lname", "gender", "bday", "street", "city", "state")
         widgets = {
-            "bday": forms.SelectDateWidget(years=range(1920, int(year)))
+            "bday": forms.DateInput(),
         }
