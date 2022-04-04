@@ -49,7 +49,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -63,7 +69,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../IT409 - Python Web Development/midterm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -135,5 +141,15 @@
     <MESSAGE value="Update views and urls" />
     <MESSAGE value="Added templates and updated them to use django tags" />
     <option name="LAST_COMMIT_MESSAGE" value="Added templates and updated them to use django tags" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="427" y="76" key="CommitChangelistDialog2" timestamp="1649111693002">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="427" y="76" key="CommitChangelistDialog2/0.0.1504.963@0.0.1504.963" timestamp="1649111693002" />
+    <state x="562" y="399" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1649111609022">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="562" y="399" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.963@0.0.1504.963" timestamp="1649111609022" />
   </component>
 </project>
