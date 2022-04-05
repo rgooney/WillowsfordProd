@@ -25,7 +25,9 @@ def signIn(request):
         form = AuthenticationForm()
 
     return render(request, 'MemberManagement/signIn.html', {"form": form})
-
-
+  
 def dashboard(request):
     return render(request, 'MemberManagement/dashboard.html')
+
+def adminPanel(request):
+    return render(request, 'MemberManagement/adminPanel.html')
