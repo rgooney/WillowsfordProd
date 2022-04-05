@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 STATES = (("Alabama","Alabama"),("Alaska","Alaska"),("Arizona","Arizona"),("Arkansas","Arkansas"),
           ("California","California"),("Colorado","Colorado"),("Connecticut","Connecticut"),
@@ -29,5 +30,6 @@ class UserAccount(models.Model):
     state = models.CharField(max_length=30, choices=STATES, default="Virginia")
     admin = models.BooleanField(default=False)
     officer = models.BooleanField(default=False)
+    username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 
