@@ -22,17 +22,21 @@
   </div>
 
   <div class="login-wrapper">
-    <form action="" class="form">
-      <img src="img/avatar.png" alt="">
+    <form action="" class="form" method="post">
+      <img src="{% static 'img/avatar.png' %}" alt="">
       <h2>Login</h2>
+      {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
       <div class="input-group">
-        <input type="text" name="loginUser" id="loginUser" required>
-        <label for="loginUser">User Name</label>
+        {{ form.username }}
+        <label for="{{ form.username.id_for_label }}">User Name</label>
       </div>
       <div class="input-group">
-        <input type="password" name="loginPassword" id="loginPassword" required>
-        <label for="loginPassword">Password</label>
+        {{ form.password }}
+        <label for="{{ form.password.id_for_label }}">Password</label>
       </div>
+      {% csrf_token %}
       <input type="submit" value="Login" class="submit-btn">  
       <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a> </br></br>
       <a href="{% url 'registerpone' %}" class="forgot-pw">Sign Up</a>
