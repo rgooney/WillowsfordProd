@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="adding to github">
-      <change afterPath="$PROJECT_DIR$/Willowsford/static/adminPanel.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/adminPanel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648925166943</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="adding to github">
+      <created>1649198617398</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649198617399</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,9 +154,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="adding to github" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="427" y="76" key="CommitChangelistDialog2" timestamp="1649121861839">
+    <state x="427" y="76" key="CommitChangelistDialog2" timestamp="1649198616421">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state x="427" y="76" key="CommitChangelistDialog2/0.0.1504.963@0.0.1504.963" timestamp="1649121861839" />
+    <state x="427" y="76" key="CommitChangelistDialog2/0.0.1504.963@0.0.1504.963" timestamp="1649198616421" />
+    <state x="93" y="93" width="1319" height="777" key="DiffContextDialog" timestamp="1649199063733">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="93" y="93" width="1319" height="777" key="DiffContextDialog/0.0.1504.963@0.0.1504.963" timestamp="1649199063733" />
   </component>
 </project>

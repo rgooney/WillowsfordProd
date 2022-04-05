@@ -30,5 +30,11 @@ def signIn(request):
 def dashboard(request):
     return render(request, 'MemberManagement/dashboard.html')
 
+
+
+
+
+# noinspection PyInterpreter
 def adminPanel(request):
+    # verify that user is an admin
     return render(request, 'MemberManagement/adminPanel.html')
