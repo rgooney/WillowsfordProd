@@ -29,3 +29,6 @@ def signIn(request):
 
 def dashboard(request):
     return render(request, 'MemberManagement/dashboard.html')
+
+def adminPanel(request):
+    return render(request, 'MemberManagement/adminPanel.html')

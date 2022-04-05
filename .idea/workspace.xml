@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="Registration added. Needs log in function.">
+    <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="adding to github">
+      <change afterPath="$PROJECT_DIR$/Willowsford/static/adminPanel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/adminPanel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/signIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/signIn.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,13 +17,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/MemberManagement" />
+        <entry key="$PROJECT_DIR$" value="feature/registration" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,11 +33,15 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="25ZuENVVY02h81ZL9ZLuxWa6Bd0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
@@ -49,7 +55,10 @@
       <recent name="C:\Users\dwmdo\OneDrive\Documents\School-DESKTOP-JTQL1BR\IT492_493 - Capstone\WillowsfordProd\Willowsford\templates\Registration" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="" />
@@ -122,7 +131,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -135,6 +146,13 @@
     <MESSAGE value="Reorganized file structure" />
     <MESSAGE value="Updates to links - HTML to Django" />
     <MESSAGE value="Registration added. Needs log in function." />
-    <option name="LAST_COMMIT_MESSAGE" value="Registration added. Needs log in function." />
+    <MESSAGE value="adding to github" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding to github" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="427" y="76" key="CommitChangelistDialog2" timestamp="1649121861839">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="427" y="76" key="CommitChangelistDialog2/0.0.1504.963@0.0.1504.963" timestamp="1649121861839" />
   </component>
 </project>
