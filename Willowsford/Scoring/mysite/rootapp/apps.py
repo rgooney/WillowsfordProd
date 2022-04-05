@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ScoringConfig(AppConfig):
+class RootappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Scoring'
+    name = 'rootapp'
