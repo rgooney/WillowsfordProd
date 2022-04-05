@@ -3,7 +3,7 @@
 <html>
   {% block head %}
   <head>
-    <title>Acme Web Deisgn | Welcome</title>
+    <title>Willowsford Archery Club</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
   </head>
   {% endblock head %}
@@ -19,10 +19,14 @@
             <li class="current"><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'services' %}">Membership</a></li>
-            <li><a href="{% url 'signIn' %}">Sign In</a></li>
             {% if user.is_authenticated %}
-            <li>{{ user.username }}</li>
-            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+              <li><a href="{% url 'dashboard' %}">{{ user.username }}'s Dashboard</a></li>
+              {% if user.is_staff %}
+                <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
+              {% endif %}
+              <li><a href="{% url 'signout' %}">Signout</a></li>
+            {% else %}
+              <li><a href="{% url 'signIn' %}">Sign In</a></li>
             {% endif %}
           </ul>
         </nav>
