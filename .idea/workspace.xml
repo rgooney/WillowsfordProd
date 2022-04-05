@@ -2,53 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="Added templates and updated them to use django tags">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/signIn.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/img/avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/img/bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/registration.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/registration2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/signIn.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/Sign-In/signInCSS.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/Willowsford_Logo4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/archery1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/archery2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/archery3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/logo_brush.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/logo_css.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/logo_html.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/img/showcase.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/acme/services.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/img/avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/img/bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/registration.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Willowsford/templates/Registration/registration2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/static/adminPanel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Willowsford/templates/MemberManagement/adminPanel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/HomeSite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/HomeSite/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/MemberManagement/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Registration/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Registration/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Registration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Registration/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/Front-End" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/HomeSite/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/HomeSite/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/HomeSite/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/Scoring/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Scoring/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="203a46beb4a957a0b52fe3e090369f62f1f93cb3" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -60,6 +38,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
@@ -72,7 +51,10 @@
       <recent name="C:\Users\dwmdo\OneDrive\Documents\School-DESKTOP-JTQL1BR\IT492_493 - Capstone\WillowsfordProd\Willowsford\templates\Registration" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f26c6703-30b8-438c-9d9f-05e7a8eee854" name="Changes" comment="" />
@@ -124,7 +106,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -135,5 +119,23 @@
     <MESSAGE value="Update views and urls" />
     <MESSAGE value="Added templates and updated them to use django tags" />
     <option name="LAST_COMMIT_MESSAGE" value="Added templates and updated them to use django tags" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="513" y="285" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1649116752314">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="513" y="285" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1504.963@0.0.1504.963" timestamp="1649116752314" />
+    <state x="427" y="76" key="CommitChangelistDialog2" timestamp="1649119969776">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="427" y="76" key="CommitChangelistDialog2/0.0.1504.963@0.0.1504.963" timestamp="1649119969776" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1649114587672">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1504.963@0.0.1504.963" timestamp="1649114587672" />
+    <state x="791" y="211" key="search.everywhere.popup" timestamp="1649114589062">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="791" y="211" key="search.everywhere.popup/0.0.1504.963@0.0.1504.963" timestamp="1649114589062" />
   </component>
 </project>

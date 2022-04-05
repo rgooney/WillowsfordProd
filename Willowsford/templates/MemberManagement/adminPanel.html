@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'adminPanel.css' %}">
+    <title>Admin Panel</title>
+</head>
+<body>
+    {% block header %}
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Willowsford</span> Archery Club</h1>
+                <h2>Admin <span class="highlight">Panel</span></h2>
+            </div>
+
+
+
+        </div>
+    </header>
+    {% endblock header %}
+
+<!--panels-->
+    <div id="row1" class="bigbox">
+        <div class="box" id="panel1">
+            <h2>Potential Members</h2>
+        </div>
+        <div class="box" id="panel2">
+            <h2>Approve Scores, Update PRs</h2>
+
+
+
+        </div>
+    </div>
+    <div id="row2" class="bigbox">
+        <div class="box" id="panel3">
+            <h2>Add Payment</h2>
+        </div>
+        <div class="box" id="panel4">
+            <h2>Add Waivers</h2>
+        </div>
+    </div>
+    <div id="row3" class="bigbox">
+        <div class="box" id="panel5">
+            <h2>Edit Volunteer Hours</h2>
+        </div>
+<!--end panel-->
+</body>
+</html>

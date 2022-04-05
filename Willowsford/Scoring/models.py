@@ -10,5 +10,5 @@ class Scores(models.Model):
     score = models.IntegerField(max_length=20)
     time = models.TimeField(auto_now=True)
     date = models.DateField(auto_now=True)
-    validator_approval = models.CharField(max_length=20)
+    validator_approval = models.Boolean(default=False)
     account_id = models.ForeignKey(UserAccount, blank=True, null=True, on_delete=models.CASCADE)
