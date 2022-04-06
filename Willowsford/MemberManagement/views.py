@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
+from Registration.models import *
 
 # Create your views here.
 def signIn(request):
@@ -31,4 +32,6 @@ def dashboard(request):
     return render(request, 'MemberManagement/dashboard.html')
 
 def adminPanel(request):
-    return render(request, 'MemberManagement/adminPanel.html')
+    users = UserAccount.objects.all()
+
+    return render(request, 'MemberManagement/adminPanel.html',{'users':users})
