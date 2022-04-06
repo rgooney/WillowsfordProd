@@ -34,4 +34,17 @@ def dashboard(request):
 def adminPanel(request):
     users = UserAccount.objects.all()
 
+    if request.method == "POST":
+        form = ApprovalForm(request.POST)
+        if form.is_valid():
+            accountApproval = form.save(commit=False)
+            accountApproval.save()
+            return HttpResponseRedirect(reverse('adminPanel'))
+        else:
+            return render(request, 'MemberManagement/adminPanel.html', {'form': form, 'users': users})
+    else:
+        form = ApprovalForm()
+        return render(request, 'MemberManagement/adminPanel.html', {'form': form, 'users': users})
+
+
     return render(request, 'MemberManagement/adminPanel.html', {'users': users})

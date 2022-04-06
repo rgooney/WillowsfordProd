@@ -29,6 +29,7 @@ class UserAccount(models.Model):
     street = models.CharField(max_length=30)
     city = models.CharField(max_length=30, default="Aldie")
     state = models.CharField(max_length=30, choices=STATES, default="Virginia")
+    approved = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
     officer = models.BooleanField(default=False)
     username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)

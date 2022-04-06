@@ -18,9 +18,6 @@
                 <h2>Admin <span class="highlight">Panel</span></h2>
                 <h3><a href="{% url 'admin:index' %}">Server Backend</a></h3>
             </div>
-
-
-
         </div>
     </header>
     {% endblock header %}
@@ -36,11 +33,13 @@
                     <td>Address</td>
                 </tr>
             {% for i in users %}
+                {{ form.approval }}
                <tr>
                    <td> {{ i.fname }} {{ i.mid_initial }} {{ i.lname }}</td>
                    <td> {{ i.bday }}</td>
                    <td> {{ i.street }}, {{ i.city }} {{ i.state }}</td>
                </tr>
+                <input type="submit" value="Login" class="submit-btn">
             {% endfor %}
             </table>
 
