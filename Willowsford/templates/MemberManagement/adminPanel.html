@@ -29,6 +29,21 @@
     <div id="row1" class="bigbox">
         <div class="box" id="panel1">
             <h2>Potential Members</h2>
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>DOB</td>
+                    <td>Address</td>
+                </tr>
+            {% for i in users %}
+               <tr>
+                   <td> {{ i.fname }} {{ i.mid_initial }} {{ i.lname }}</td>
+                   <td> {{ i.bday }}</td>
+                   <td> {{ i.street }}, {{ i.city }} {{ i.state }}</td>
+               </tr>
+            {% endfor %}
+            </table>
+
         </div>
         <div class="box" id="panel2">
             <h2>Approve Scores, Update PRs</h2>

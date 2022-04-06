@@ -23,3 +23,4 @@ class RegistrationForm(forms.ModelForm):
         widgets = {
             "bday": forms.DateInput(),
         }
+
