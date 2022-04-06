@@ -10,49 +10,45 @@
     <title>Admin Panel</title>
 </head>
 <body>
-{% block header %}
-<header>
-    <div class="container">
-        <div id="branding">
-            <h1><span class="highlight">Willowsford</span> Archery Club</h1>
-            <h2>Admin <span class="highlight">Panel</span></h2>
+    {% block header %}
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Willowsford</span> Archery Club</h1>
+                <h2>Admin <span class="highlight">Panel</span></h2>
+                <h3><a href="{% url 'admin:index' %}">Server Backend</a></h3>
+            </div>
+
+
+
         </div>
-
-
-
-    </div>
-</header>
-{% endblock header %}
+    </header>
+    {% endblock header %}
 
 <!--panels-->
-<div id="row1" class="bigbox">
-    <div class="box" id="panel1">
-        <h2>Potential Members</h2>
-        {% for fname in UserAccount %}
-        <li>{% fname %}</li>
-    </div>
-    <div class="box" id="panel2">
-        <h2>Approve Scores, Update PRs</h2>
+    <div id="row1" class="bigbox">
+        <div class="box" id="panel1">
+            <h2>Potential Members</h2>
+        </div>
+        <div class="box" id="panel2">
+            <h2>Approve Scores, Update PRs</h2>
 
 
 
+        </div>
     </div>
-</div>
-<div id="row2" class="bigbox">
-    <div class="box" id="panel3">
-        <h2>Add Payment</h2>
+    <div id="row2" class="bigbox">
+        <div class="box" id="panel3">
+            <h2>Add Payment</h2>
+        </div>
+        <div class="box" id="panel4">
+            <h2>Add Waivers</h2>
+        </div>
     </div>
-    <div class="box" id="panel4">
-        <h2>Void Payments</h2>
-    </div>
-</div>
-<div id="row3" class="bigbox">
-    <div class="box" id="panel5">
-        <h2>Edit Volunteer Hours</h2>
-    </div>
-    <div class="box" id="panel6">
-        <h2>Add Waivers</h2>
-    </div>
-    <!--end panel-->
+    <div id="row3" class="bigbox">
+        <div class="box" id="panel5">
+            <h2>Edit Volunteer Hours</h2>
+        </div>
+<!--end panel-->
 </body>
 </html>

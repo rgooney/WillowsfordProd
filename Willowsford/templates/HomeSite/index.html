@@ -22,7 +22,7 @@
             {% if user.is_authenticated %}
               <li><a href="{% url 'dashboard' %}">{{ user.username }}'s Dashboard</a></li>
               {% if user.is_staff %}
-                <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
+                <li><a href="{% url 'adminPanel' %}">Admin panel</a></li>
               {% endif %}
               <li><a href="{% url 'signout' %}">Signout</a></li>
             {% else %}
