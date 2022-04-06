@@ -31,4 +31,3 @@ def registerptwo(request, user_fk):
 
     return render(request, 'Registration/registration2.html', {'form': form, 'username': user_fk})
 
-
