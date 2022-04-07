@@ -10,7 +10,17 @@ def manualScoring(request):
     if request.POST:
         form = ManualScoringForm(request.POST)
         if form.is_valid():
-            form.result = int(form['r1n1'].value()) + int(form['r1n2'].value()) + int(form['r1n3'].value())
+            round1 = int(form['r1n1'].value()) + int(form['r1n2'].value()) + int(form['r1n3'].value())
+            round2 = int(form['r2n1'].value()) + int(form['r2n2'].value()) + int(form['r2n3'].value())
+            round3 = int(form['r3n1'].value()) + int(form['r3n2'].value()) + int(form['r3n3'].value())
+            round4 = int(form['r4n1'].value()) + int(form['r4n2'].value()) + int(form['r4n3'].value())
+            round5 = int(form['r5n1'].value()) + int(form['r5n2'].value()) + int(form['r5n3'].value())
+            round6 = int(form['r6n1'].value()) + int(form['r6n2'].value()) + int(form['r6n3'].value())
+            round7 = int(form['r7n1'].value()) + int(form['r7n2'].value()) + int(form['r7n3'].value())
+            round8 = int(form['r8n1'].value()) + int(form['r8n2'].value()) + int(form['r8n3'].value())
+            round9 = int(form['r9n1'].value()) + int(form['r9n2'].value()) + int(form['r9n3'].value())
+            round10 = int(form['r10n1'].value()) + int(form['r10n2'].value()) + int(form['r10n3'].value())
+            form.result = round1 + round2 + round3 + round4 + round5 + round6 + round7 + round8 + round9 + round10
             return render(request, 'Scoring/manualScoring.html', {'form': form})
         else:
             return render(request, 'Scoring/manualScoring.html', {'form': form})
