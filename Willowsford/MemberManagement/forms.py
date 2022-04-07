@@ -10,3 +10,4 @@ class ApprovalForm(forms.ModelForm):
     class Meta:
         model = UserAccount
         fields = ("approved")
+
