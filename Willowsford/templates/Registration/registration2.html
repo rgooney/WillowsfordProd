@@ -21,10 +21,21 @@
         {{ form.lname }}
         <label for="{{ form.lname.id_for_label }}">Last Name</label>
       </div>
-      <div class="input-group">
+      <div class="input-group"></br></br>
         {{ form.gender }}
         <label for="{{ form.gender.id_for_label }}">Gender</label>
+      </div> </br>
+
+<!--      <p>Gender</p>-->
+<!--        <input type="radio" name = "gender" value="Male"> Male-->
+<!--        <input type="radio" name = "gender" value="Female"> Female-->
+<!--        <input type="radio" name = "gender" value="Other"> Other-->
+
+      <div class="input-group">
+        <input type="text" name="pnum" id="pnum" required>
+        <label for="pnum">Phone Number</label>
       </div>
+
       <div class="input-group">
         {{ form.bday }}
         <label for="{{ form.bday.id_for_label }}">Birthday</label>
@@ -37,15 +48,21 @@
         {{ form.city }}
         <label for="{{ form.city.id_for_label }}">City</label>
       </div>
-      <div class="input-group">
+      <div class="input-group"></br></br>
         {{ form.state }}
         <label for="{{ form.state.id_for_label }}">State</label>
-      </div>
+      </div></br>
+
+<!--      <p>State</p>-->
+<!--      <input type="radio" name = "state" value="VA"> VA-->
+<!--      <input type="radio" name = "state" value="DC"> DC-->
+<!--      <input type="radio" name = "state" value="MD"> MD</br></br>-->
 
       {% csrf_token %}
-      <input type="submit" value="Submit" class="submit-btn">
 
-      <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
+<!--      <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a></br>-->
+      <a href="{% static 'WAIVERS_Willowsford_Archery_Club.pdf' %}"> Terms and Conditions</a>
+      <input type="submit" value="Submit" class="submit-btn">
     </form>
 
   </div>
