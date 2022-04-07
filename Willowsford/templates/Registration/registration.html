@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{% static 'signInCSS.css' %}">
-  <title>Login Form Demo</title>
+  <title>WAC Registration</title>
 </head>
 {% endblock header %}
 
@@ -35,9 +35,8 @@
       </div>
 
       {% csrf_token %}
-      <input type="submit" value="Next" class="submit-btn">
-
       <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
+      <input type="submit" value="Next" class="submit-btn">
     </form>
   {% endblock registration %}
     <div id="forgot-pw">
