@@ -10,8 +10,8 @@ def manualScoring(request):
     if request.POST:
         form = ManualScoringForm(request.POST)
         if form.is_valid():
-            result = form['r1n1'].value() + form['r1n2'].value() + form['r1n3'].value()
-            return HttpResponseRedirect(reverse('manualScoring'))
+            form.result = int(form['r1n1'].value()) + int(form['r1n2'].value()) + int(form['r1n3'].value())
+            return render(request, 'Scoring/manualScoring.html', {'form': form})
         else:
             return render(request, 'Scoring/manualScoring.html', {'form': form})
     else:

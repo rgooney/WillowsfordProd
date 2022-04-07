@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e96164d0-e9e0-4ff4-a4c4-738403ea1e79" name="Changes" comment="">
+    <list default="true" id="e96164d0-e9e0-4ff4-a4c4-738403ea1e79" name="Changes" comment="Cleaned up directories and added form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Scoring/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Scoring/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Scoring/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Scoring/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Willowsford/Scoring/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Scoring/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Willowsford/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647801690717</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Cleaned up directories and added form">
+      <created>1649367704505</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649367704505</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,7 +117,8 @@
     <MESSAGE value="Update models and create scoring app" />
     <MESSAGE value="Update views and urls" />
     <MESSAGE value="Added templates and updated them to use django tags" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added templates and updated them to use django tags" />
+    <MESSAGE value="Cleaned up directories and added form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up directories and added form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
