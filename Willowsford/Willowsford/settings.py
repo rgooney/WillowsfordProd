@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'HomeSite.apps.HomesiteConfig',
     'MemberManagement.apps.MembermanagementConfig',
     'Registration.apps.RegistrationConfig',
+    'Scoring.apps.ScoringConfig'
 ]
 
 MIDDLEWARE = [
