@@ -1,5 +1,10 @@
+import email
 from django import forms
 
+
+class RenewBookForm(forms.Form):
+    email = forms.EmailField()
+    
 class ManualScoringForm(forms.Form):
     #round 1
     r1n1 = forms.IntegerField()
