@@ -28,6 +28,18 @@ def manualScoring(request):
         form = ManualScoringForm()
         return render(request, 'Scoring/manualScoring.html', {'form': form})
 
+def RenewBookForm(request):
+    if request.POST:
+        form = RenewBookForm(request.POST)
+        if form.is_valid():
+            form.result = "This works"
+            return render(request, 'Scoring/manualScoring.html', {'form': form})
+        else:
+            return render(request, 'Scoring/manualScoring.html', {'form': form})
+    else:
+        form = RenewBookForm()
+        return render(request, 'Scoring/manualScoring.html', {'form': form})
+
 def receiveInput(request):
    # if request.method == "POST":
        # mydict={}

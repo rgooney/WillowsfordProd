@@ -2,9 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
 </head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="" rel="">
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class ="navbar-brand" href="#"> Willowsford Scoring Application</a>
+
+</nav>
+  <div class="container-fluid">
+    <div class="row">
+        <div class ="col-md-6" style="margin: 1rem auto 0 auto;">
+            <div class="card">
+                <div class="card-body">
+                    <!doctype html>
+
+                    <form class="myForm" method = "POST" action ="receiveInput">
+                      {% csrf_token %} 
+                        <fieldset id="shooter_Name">
+                          <label for="customer_name"> Shooter's Name </label>
+                          <input type="text" name="shooter_name" id="shooter_name" required>
+                      
+                          <label for="witness_Name"> Witness's Name </label>
+                          <input type="text" name="witness_name" id="witness_name">
+                      
+                          <label for="witness_Signature"> Witness's Signature (Initials) </label>
+                          <input type="text" name="witness_signature" id="witness_signature">
+                        </fieldset>
+                        <fieldset id="taxi">
+                          <legend>Shooting Style?</legend>
+                          <label> <input type="radio" name="shootStylePick" id="rec_lb_no_sight" required value="car"> Recurve or longbow with no sights.  Finger release only - no mechanical release. </label>
+                          <label> <input type="radio" name="shootStylePick" id="rec_lb_with_sight" required value="van"> Recurve or longbow with sights.  Finger release only - no mechanical release. </label>
+                          <label> <input type="radio" name="shootStylePick" id="rec_lb_with_sight_mech_rel" required value="tuktuk"> Recurve or longbow with sights and mechanical release. </label>
+                          <label> <input type="radio" name="shootStylePick" id="comp_bow_stand_w_no_ext" required value="tuktuk"> Compound bow, standing with no external rest </label>
+                      
+                        </fieldset>
+                      
+                        <fieldset id="shoot_Date">
+                          <label for="shoot_Date"> Date </label>
+                          <input type="datetime-local" name="shoot_date" id="shoot_date" required>
+                        </fieldset>
+                      
+                        <fieldset id="dropoff">
+                          <label for="pickup_place"> Shooting Distance (Yards) </label>
+                          <select name="pickup_place" id="pickup_place">
+                            <option value="" selected="selected">Select One </option>
+                            <option value="office" > The Willowsford </option>
+                            <option value="town_hall" > 10 Yards </option>
+                            <option value="telepathy" > 20 Yards </option>
+                            <option value="telepathy" > 30 Yards </option>
+                            <option value="telepathy" > 40 Yards </option>
+                            <option value="telepathy" > 50 Yards </option>
+                          </select>
+                        </fieldset>
+                        
+                        <fieldset id="instructions">
+                          <label for="comments"> Additional Notes / Shooter's Signature</label>
+                          <textarea name="comments" id="comments" maxlength="500"></textarea>
+                          <input type ="submit" class="btn btn-primary">
+                        </fieldset>
+                      </form>
+
+
+
 
 
     <form class ="myForm" action="" method="post">
@@ -20,5 +84,85 @@
              <td>{{ form.result }} </td>
          </tr>
      </table>
+
+
+
+
+
+
+
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
 </body>
+
+
+
 </html>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  .myForm {
+    display: grid;
+    grid-template-areas: 
+      "customer taxi"
+      "customer extras"
+      "pickup dropoff"
+      "instructions instructions"
+      "submit submit";
+  	grid-template-columns: auto auto;  
+  	grid-template-rows: auto auto auto auto;
+    grid-gap: .8em .5em;
+    background: #eee;
+    padding: 1.2em;
+  }
+  .myForm textarea {
+    height: calc(100% - 1.5em);
+    }
+  .myForm button {
+    background: gray;
+    color: white;
+    padding: 1em;
+    }
+  .myForm input:not([type=radio]):not([type=checkbox]), 
+  .myForm textarea, 
+  .myForm select {
+   	width: 100%;
+    border: 0;
+    padding: 1em;
+    margin: .5em 0;
+  }
+  .myForm label {
+   display: block; 
+  }
+  fieldset {
+    border: 0;
+  }
+  #customer {
+    grid-area: customer;
+  }
+  #taxi {
+    grid-area: taxi;
+  }
+  #extras {
+    grid-area: extras;
+  }
+  #pickup {
+    grid-area: pickup;
+  }
+  #dropoff {
+    grid-area: dropoff;
+  }
+  #instructions {
+    grid-area: instructions;
+  }
+  #submit {
+    grid-area: submit;
+  }
