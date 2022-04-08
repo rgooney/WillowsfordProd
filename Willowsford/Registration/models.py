@@ -33,6 +33,11 @@ class UserAccount(models.Model):
     admin = models.BooleanField(default=False)
     officer = models.BooleanField(default=False)
     username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+   # email = models.CharField(max_length=30)
+   # pnum = PhoneField(blank=True, help_text='Contact phone number')
 
     def __str__(self):
-        return self.fname+' '+self.lname
+        if (self.approved == False):
+            return self.approved, self.lname, self.fname, self.street, self.city
+        else:
+            return self.approved, self.lname, self.fname

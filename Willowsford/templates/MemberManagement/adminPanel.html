@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -25,44 +26,13 @@
 <!--panels-->
     <div id="row1" class="bigbox">
         <div class="box" id="panel1">
-            <h2>Potential Members</h2>
-            <table>
-                <tr>
-                    <td>Name</td>
-                    <td>DOB</td>
-                    <td>Address</td>
-                </tr>
-            {% for i in users %}
-                {{ form.approval }}
-               <tr>
-                   <td> {{ i.fname }} {{ i.mid_initial }} {{ i.lname }}</td>
-                   <td> {{ i.bday }}</td>
-                   <td> {{ i.street }}, {{ i.city }} {{ i.state }}</td>
-               </tr>
-                <input type="submit" value="Login" class="submit-btn">
-            {% endfor %}
-            </table>
-
+            <h2>Email Approved Users</h2>
         </div>
         <div class="box" id="panel2">
             <h2>Approve Scores, Update PRs</h2>
-
-
-
         </div>
     </div>
-    <div id="row2" class="bigbox">
-        <div class="box" id="panel3">
-            <h2>Add Payment</h2>
-        </div>
-        <div class="box" id="panel4">
-            <h2>Add Waivers</h2>
-        </div>
-    </div>
-    <div id="row3" class="bigbox">
-        <div class="box" id="panel5">
-            <h2>Edit Volunteer Hours</h2>
-        </div>
+
 <!--end panel-->
 </body>
 </html>
