@@ -27,9 +27,80 @@
     <div id="row1" class="bigbox">
         <div class="box" id="panel1">
             <h2>Email Approved Users</h2>
+
+
+                <form id="selectUsers">
+                    <p><b> Select Recipients </b></p>
+
+                    <input type="checkbox" name="selectAll" value="all">
+                        <label>
+                            Select All Users
+                        </label><br>
+<!--                    tab whats under here-->
+                    {% if selectAll != checked %}
+                        {% for i in users %}
+                        <input type="checkbox" name="{{i.lname}},{{i.fname}}" value="{{i.email}}" checked>
+                            <label>
+                                {{i.lname}}, {{i.fname}}
+                            </label><br>
+                        {% endfor %}
+                    {% else %}
+                        {% for i in users %}
+                        <input type="checkbox" name="{{i.lname}},{{i.fname}}" value="{{i.email}}">
+                            <label>
+                                {{i.lname}}, {{i.fname}}
+                            </label><br>
+                        {% endfor %}
+                    {% endif %}
+                    <b>Message:</b><br>
+
+                    <select>
+                        <option value="approved">Approved Users</option>
+                        <option value="unapproved">Unapproved Users</option>
+                        <option value="payDues">Dues Notification</option>
+                        <option value="newWaivers">Update Waivers Notification</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <br>
+<!--                    if statement for dropdown-->
+
+                    <label for="msg"></label>
+                    <input type="text" id="approved" name="approved" value="Congratulations"><br>
+
+                    <label for="msg"></label>
+                    <input type="text" id="unapproved" name="approved" value="Regretfully"><br>
+
+                    <label for="msg"></label>
+                    <input type="text" id="payDues" name="approved" value="Dues are due soon"><br>
+
+                    <label for="msg"></label>
+                    <input type="text" id="new Waivers" name="approved" value="Waivers need to be updated"><br>
+
+                    <label for="msg"></label>
+                    <input type="text" id="other" name="approved" value="Input Value"><br>
+
+                    <input type="submit" value="Submit">
+
+                </form>
+
         </div>
         <div class="box" id="panel2">
-            <h2>Approve Scores, Update PRs</h2>
+            <h2>Update Dues</h2>
+            <form>
+                {% for i in users %}
+                    <input type="checkbox" name="{{i.lname}},{{i.fname}}" value="{{i.email}}">
+                    <label>
+                        {{i.lname}}, {{i.fname}}
+                    </label><br>
+                {% endfor %}
+                <p><b>Amount Added to Dues</b></p>
+                <label for="payment"></label>
+                <input type="number" id="dued" name="dues" value="Enter Amount"><br>
+                <input type="submit" value="Submit">
+                <!--                this is going to need to *add* to previous amount -->
+<!--                does the db update with paypal payments or do officers have to manually update -->
+
+            </form>
         </div>
     </div>
 

@@ -6,8 +6,8 @@ from django.core.exceptions import ValidationError
 
 from Registration import UserAccount
 
-class ApprovalForm(forms.ModelForm):
-    class Meta:
-        model = UserAccount
-        fields = ("approved")
+# class ApprovalForm(forms.ModelForm):
+#     class Meta:
+#         model = UserAccount
+#         fields = ("approved")
 
