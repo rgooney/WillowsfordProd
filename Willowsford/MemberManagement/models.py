@@ -17,8 +17,14 @@ class CheckIn(models.Model):
     time_out = models.TimeField()
     checkin_type = models.CharField(max_length=20, choices = MEMBER_CHOICES)
 
+    def __str__(self):
+        return self.checkin_id, self.date, self.checkin_type
+
 class Statement(models.Model):
     statement_id = models.AutoField(primary_key=True)
     bill_date = models.DateField(auto_now=True)
     amount_due = models.DecimalField(max_digits=8, decimal_places=2)
     account_id = models.ForeignKey(UserAccount, blank=True, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.statement_id, self.bill_date, self.amount_due
