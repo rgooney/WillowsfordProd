@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e96164d0-e9e0-4ff4-a4c4-738403ea1e79" name="Changes" comment="Cleaned up directories and added form">
+    <list default="true" id="e96164d0-e9e0-4ff4-a4c4-738403ea1e79" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/WillowsfordProd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WillowsfordProd.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Willowsford/Scoring/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/Scoring/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Willowsford/templates/Scoring/manualScoring.html" beforeDir="false" afterPath="$PROJECT_DIR$/Willowsford/templates/Scoring/manualScoring.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
