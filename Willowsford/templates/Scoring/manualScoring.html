@@ -73,12 +73,53 @@
 
     <form class ="myForm" action="" method="post">
     {% csrf_token %}
+    
      <table class="table">
          <tr>
+          <div class ="tableRounds"> 
              <td> Round 1 </td>
              <td> {{ form.r1n1 }} </td>
              <td> {{ form.r1n2 }} </td>
              <td> {{ form.r1n3 }} </td>
+            
+             
+             
+              <td> Round 2 </td>
+             <td> {{ form.r2n1 }} </td>
+             <td> {{ form.r2n2 }} </td>
+             <td> {{ form.r2n3 }} </td>
+             
+             
+            </div>
+            <!---
+              end the tableRounds css
+            --->
+             <!---
+             <td> {{ form.r3n1 }} </td>
+             <td> {{ form.r3n2 }} </td>
+             <td> {{ form.r3n3 }} </td>
+             <td> {{ form.r4n1 }} </td>
+             <td> {{ form.r4n2 }} </td>
+             <td> {{ form.r4n3 }} </td>
+             <td> {{ form.r5n1 }} </td>
+             <td> {{ form.r5n2 }} </td>
+             <td> {{ form.r5n3 }} </td>
+             <td> {{ form.r6n1 }} </td>
+             <td> {{ form.r6n2 }} </td>
+             <td> {{ form.r6n3 }} </td>
+             <td> {{ form.r7n1 }} </td>
+             <td> {{ form.r7n2 }} </td>
+             <td> {{ form.r7n3 }} </td>
+             <td> {{ form.r8n1 }} </td>
+             <td> {{ form.r8n2 }} </td>
+             <td> {{ form.r8n3 }} </td>
+             <td> {{ form.r9n1 }} </td>
+             <td> {{ form.r9n2 }} </td>
+             <td> {{ form.r9n3 }} </td>
+             <td> {{ form.r10n1 }} </td>
+             <td> {{ form.r10n2 }} </td>
+             <td> {{ form.r10n3 }} </td>
+             --->
          </tr>
          <tr>
              <td>&nbsp;</td>
@@ -111,6 +152,19 @@
 </html>
 
 <style>
+  .tableRounds {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 10%;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+
+
+
   * {
     box-sizing: border-box;
   }
