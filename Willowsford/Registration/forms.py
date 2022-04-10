@@ -19,7 +19,7 @@ class UserAccountForm(UserCreationForm):
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        fields = ("fname", "mid_initial", "lname", "gender", "bday", "street", "city", "state")
+        fields = ("fname", "mid_initial", "lname", "gender", "bday", "street", "city", "state", "membershipType")
         widgets = {
             "bday": forms.DateInput(),
         }

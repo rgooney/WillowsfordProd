@@ -18,6 +18,8 @@ STATES = (("Alabama","Alabama"),("Alaska","Alaska"),("Arizona","Arizona"),("Arka
 
 GENDER = (("Male", "Male"), ("Female", "Female"), ("Other", "Other"))
 
+MEMBERSHIP_TYPE = (("Individual", "Individual"), ("Household", "Household"))
+
 # Create your models here.
 class UserAccount(models.Model):
     account_id = models.AutoField(primary_key=True)
@@ -30,6 +32,7 @@ class UserAccount(models.Model):
     city = models.CharField(max_length=30, default="Aldie")
     state = models.CharField(max_length=30, choices=STATES, default="Virginia")
     approved = models.BooleanField(default=False)
+    membershipType = models.CharField(max_length=30, choices=MEMBERSHIP_TYPE, default="Individual")
     admin = models.BooleanField(default=False)
     officer = models.BooleanField(default=False)
     username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
