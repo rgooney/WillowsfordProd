@@ -20,7 +20,7 @@ GENDER = (("Male", "Male"), ("Female", "Female"), ("Other", "Other"))
 
 # Create your models here.
 class UserAccount(models.Model):
-    account_id = models.AutoField(max_length=10, primary_key=True)
+    account_id = models.AutoField(primary_key=True)
     fname = models.CharField(max_length=30)
     mid_initial = models.CharField(max_length=2)
     lname = models.CharField(max_length=30)
@@ -37,7 +37,4 @@ class UserAccount(models.Model):
    # pnum = PhoneField(blank=True, help_text='Contact phone number')
 
     def __str__(self):
-        if (self.approved == False):
-            return self.approved, self.lname, self.fname, self.street, self.city
-        else:
-            return self.approved, self.lname, self.fname
+        return self.fname + " " + self.lname
