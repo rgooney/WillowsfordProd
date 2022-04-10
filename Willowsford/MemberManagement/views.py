@@ -3,7 +3,9 @@ from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+
 from .models import *
+from django.views.generic import TemplateView
 from Registration.models import *
 
 # Create your views here.
@@ -31,20 +33,10 @@ def signIn(request):
 def dashboard(request):
     return render(request, 'MemberManagement/dashboard.html')
 
-def adminPanel(request):
-    users = UserAccount.objects.all()
 
-    # if request.method == "POST":
-    #     form = ApprovalForm(request.POST)
-    #     if form.is_valid():
-    #         accountApproval = form.save(commit=False)
-    #         accountApproval.save()
-    #         return HttpResponseRedirect(reverse('adminPanel'))
-    #     else:
-    #         return render(request, 'MemberManagement/adminPanel.html', {'form': form, 'users': users})
-    # else:
-    #     form = ApprovalForm()
-    #     return render(request, 'MemberManagement/adminPanel.html', {'form': form, 'users': users})
+class PaypalReturnView(TemplateView):
+    template_name = 'paypal_success.html'
 
 
-    return render(request, 'MemberManagement/adminPanel.html', {'users': users})
+class PaypalCancelView(TemplateView):
+    template_name = 'paypal_cancel.html'

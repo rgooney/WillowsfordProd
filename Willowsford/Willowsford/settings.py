@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'HomeSite.apps.HomesiteConfig',
     'MemberManagement.apps.MembermanagementConfig',
-    'Registration.apps.RegistrationConfig'
+    'Registration.apps.RegistrationConfig',
+    'paypal.standard.ipn'
 ]
 
 MIDDLEWARE = [
