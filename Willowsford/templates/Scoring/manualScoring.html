@@ -12,43 +12,47 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class ="navbar-brand" href="#"> Willowsford Scoring Application</a>
-
 </nav>
+
   <div class="container-fluid">
     <div class="row">
         <div class ="col-md-6" style="margin: 1rem auto 0 auto;">
             <div class="card">
                 <div class="card-body">
                     <!doctype html>
+                  
 
-                    <form class="myForm" method = "POST" action ="receiveInput">
+                    <form class="myForm" method = "POST" action ="">
                       {% csrf_token %} 
                         <fieldset id="shooter_Name">
                           <label for="customer_name"> Shooter's Name </label>
                           <input type="text" name="shooter_name" id="shooter_name" required>
+
+                          <label for="shooter_Signature"> Shooter's Signature </label>
+                          <input type="text" name="shooter_Signature" id="shooter_Signature">
                       
                           <label for="witness_Name"> Witness's Name </label>
                           <input type="text" name="witness_name" id="witness_name">
                       
-                          <label for="witness_Signature"> Witness's Signature (Initials) </label>
+                          <label for="witness_Signature"> Witness's Signature </label>
                           <input type="text" name="witness_signature" id="witness_signature">
                         </fieldset>
-                        <fieldset id="taxi">
+                        
+                        <fieldset id="shooting_Style">
                           <legend>Shooting Style?</legend>
                           <label> <input type="radio" name="shootStylePick" id="rec_lb_no_sight" required value="car"> Recurve or longbow with no sights.  Finger release only - no mechanical release. </label>
                           <label> <input type="radio" name="shootStylePick" id="rec_lb_with_sight" required value="van"> Recurve or longbow with sights.  Finger release only - no mechanical release. </label>
                           <label> <input type="radio" name="shootStylePick" id="rec_lb_with_sight_mech_rel" required value="tuktuk"> Recurve or longbow with sights and mechanical release. </label>
                           <label> <input type="radio" name="shootStylePick" id="comp_bow_stand_w_no_ext" required value="tuktuk"> Compound bow, standing with no external rest </label>
-                      
                         </fieldset>
-                      
+                    
                         <fieldset id="shoot_Date">
                           <label for="shoot_Date"> Date </label>
                           <input type="datetime-local" name="shoot_date" id="shoot_date" required>
                         </fieldset>
                       
-                        <fieldset id="dropoff">
-                          <label for="pickup_place"> Shooting Distance (Yards) </label>
+                        <fieldset id="shoot_Distance">
+                          <label for="shoot_Distance"> Distance (Yards) </label>
                           <select name="pickup_place" id="pickup_place">
                             <option value="" selected="selected">Select One </option>
                             <option value="office" > The Willowsford </option>
@@ -60,44 +64,161 @@
                           </select>
                         </fieldset>
                         
-                        <fieldset id="instructions">
-                          <label for="comments"> Additional Notes / Shooter's Signature</label>
-                          <textarea name="comments" id="comments" maxlength="500"></textarea>
-                          <input type ="submit" class="btn btn-primary">
-                        </fieldset>
-                      </form>
-
-
-
-
-
+                      
+<!--
+                <fieldset id = "roundTest"> 
+                  <table class = "table">
+                    <tr>
+                      <td>
+                        <label for="roundOne"> Round One </label>
+                      </td>
+                          <td> {{ form.r1n1 }} </td>
+                          <td> {{ form.r1n2 }} </td>
+                          <td> {{ form.r1n3 }} </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label for="roundTwo"> Round Two </label>
+                      </td>
+                          <td> {{ form.r1n1 }} </td>
+                          <td> {{ form.r1n2 }} </td>
+                          <td> {{ form.r1n3 }} </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label for="roundThree"> Round Three </label>
+                      </td>
+                          <td> {{ form.r1n1 }} </td>
+                          <td> {{ form.r1n2 }} </td>
+                          <td> {{ form.r1n3 }} </td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td><input type="submit" class="btn btn-primary" value="Submit"></td>
+                  </tr>
+                    </fieldset>
+                  
+                  <tr>
+                    <td>  Total: </td>
+                    <td>{{ form.result }} </td>
+                  </tr>
+                </table>
+                -->
+</form>
     <form class ="myForm" action="" method="post">
     {% csrf_token %}
-    
      <table class="table">
-         <tr>
-          <div class ="tableRounds"> 
-             <td> Round 1 </td>
-             <td> {{ form.r1n1 }} </td>
-             <td> {{ form.r1n2 }} </td>
-             <td> {{ form.r1n3 }} </td>
+      <tr>
+        <td>
+          <label for="roundOne"> Round 1 </label>
+        </td>
+            <td> {{ form.r1n1 }} </td>
+            <td> {{ form.r1n2 }} </td>
+            <td> {{ form.r1n3 }} </td>
+            <td> {{ form.cum1 }} </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="roundTwo"> Round 2 </label>
+        </td>
+            <td> {{ form.r2n1 }} </td>
+            <td> {{ form.r2n2 }} </td>
+            <td> {{ form.r2n3 }} </td>
             
-             
-             
-              <td> Round 2 </td>
-             <td> {{ form.r2n1 }} </td>
-             <td> {{ form.r2n2 }} </td>
-             <td> {{ form.r2n3 }} </td>
-             
-             
-            </div>
-            <!---
-              end the tableRounds css
-            --->
-             <!---
+      </tr>
+      <tr>
+        <td>
+          <label for="roundThree"> Round 3 </label>
+        </td>
+            <td> {{ form.r3n1 }} </td>
+            <td> {{ form.r3n2 }} </td>
+            <td> {{ form.r3n3 }} </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="roundFour"> Round 4 </label>
+        </td>
+            <td> {{ form.r4n1 }} </td>
+            <td> {{ form.r4n2 }} </td>
+            <td> {{ form.r4n3 }} </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="roundFive"> Round 5 </label>
+        </td>
+            <td> {{ form.r5n1 }} </td>
+            <td> {{ form.r5n2 }} </td>
+            <td> {{ form.r5n3 }} </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="roundSix"> Round 6 </label>
+        </td>
+            <td> {{ form.r6n1 }} </td>
+            <td> {{ form.r6n2 }} </td>
+            <td> {{ form.r6n3 }} </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="roundSeven"> Round 7 </label>
+        </td>
+            <td> {{ form.r7n1 }} </td>
+            <td> {{ form.r7n2 }} </td>
+            <td> {{ form.r7n3 }} </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="roundEight"> Round 8 </label>
+        </td>
+            <td> {{ form.r8n1 }} </td>
+            <td> {{ form.r8n2 }} </td>
+            <td> {{ form.r8n3 }} </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="roundNine"> Round 9 </label>
+        </td>
+            <td> {{ form.r9n1 }} </td>
+            <td> {{ form.r9n2 }} </td>
+            <td> {{ form.r9n3 }} </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="roundTen"> Round 10 </label>
+        </td>
+            <td> {{ form.r10n1 }} </td>
+            <td> {{ form.r10n2 }} </td>
+            <td> {{ form.r10n3 }} </td>
+      </tr>
+
+
+
+
+
+    
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" class="btn btn-primary" value="Submit"></td>
+    </tr>
+    <tr>
+        <td> Total: </td>
+        <td>{{ form.result }} </td>
+    </tr>
+</table>
+
+
+
+
+
+
+            <!--
+             <td> Round 3 </td>
+
              <td> {{ form.r3n1 }} </td>
              <td> {{ form.r3n2 }} </td>
              <td> {{ form.r3n3 }} </td>
+          
              <td> {{ form.r4n1 }} </td>
              <td> {{ form.r4n2 }} </td>
              <td> {{ form.r4n3 }} </td>
@@ -119,63 +240,28 @@
              <td> {{ form.r10n1 }} </td>
              <td> {{ form.r10n2 }} </td>
              <td> {{ form.r10n3 }} </td>
-             --->
-         </tr>
-         <tr>
-             <td>&nbsp;</td>
-             <td><input type="submit" class="btn btn-primary" value="Submit"></td>
-         </tr>
-         <tr>
-             <td>Total: </td>
-             <td>{{ form.result }} </td>
-         </tr>
-     </table>
-
-
-
-
-
-
+             -->
+        
+     
+<!-- end the table div-->
 
               </div>
             </div>
         </div>
     </div>
   </div>
-
-
-
 </body>
-
-
-
 </html>
 
 <style>
-  .tableRounds {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-column-gap: 10%;
-    grid-row-gap: 20px;
-    justify-items: stretch;
-    align-items: stretch;
-}
 
-
-
-
-  * {
-    box-sizing: border-box;
-  }
   .myForm {
     display: grid;
     grid-template-areas: 
-      "customer taxi"
-      "customer extras"
-      "pickup dropoff"
-      "instructions instructions"
-      "submit submit";
+      "shooter_Name shooting_Style"
+      "shoot_Date shoot_Distance"
+      "shoot_Sign shoot_Sign shoot_Sign"
+      "roundOne roundTwo" ;
   	grid-template-columns: auto auto;  
   	grid-template-rows: auto auto auto auto;
     grid-gap: .8em .5em;

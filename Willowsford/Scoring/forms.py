@@ -2,14 +2,15 @@ import email
 from django import forms
 
 
-class RenewBookForm(forms.Form):
-    email = forms.EmailField()
+#class RenewBookForm(forms.Form):
+    #email = forms.EmailField()
     
 class ManualScoringForm(forms.Form):
     #round 1
     r1n1 = forms.IntegerField()
     r1n2 = forms.IntegerField()
     r1n3 = forms.IntegerField()
+    cum1 = forms.IntegerField()
     #round 2
     r2n1 = forms.IntegerField()
     r2n2 = forms.IntegerField()
