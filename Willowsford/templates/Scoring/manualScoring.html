@@ -112,15 +112,17 @@
         <td>
           <label for="roundOne"> Round 1 </label>
         </td>
+            <td> <p> Cumulative Score </p>{{ form.round1 }} </td>
             <td> {{ form.r1n1 }} </td>
             <td> {{ form.r1n2 }} </td>
             <td> {{ form.r1n3 }} </td>
-            <td> {{ form.cum1 }} </td>
+            
       </tr>
       <tr>
         <td>
           <label for="roundTwo"> Round 2 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round2 }} </td>
             <td> {{ form.r2n1 }} </td>
             <td> {{ form.r2n2 }} </td>
             <td> {{ form.r2n3 }} </td>
@@ -130,6 +132,7 @@
         <td>
           <label for="roundThree"> Round 3 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round3 }} </td>
             <td> {{ form.r3n1 }} </td>
             <td> {{ form.r3n2 }} </td>
             <td> {{ form.r3n3 }} </td>
@@ -138,6 +141,7 @@
         <td>
           <label for="roundFour"> Round 4 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round4 }} </td>
             <td> {{ form.r4n1 }} </td>
             <td> {{ form.r4n2 }} </td>
             <td> {{ form.r4n3 }} </td>
@@ -146,6 +150,7 @@
         <td>
           <label for="roundFive"> Round 5 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round5 }} </td>
             <td> {{ form.r5n1 }} </td>
             <td> {{ form.r5n2 }} </td>
             <td> {{ form.r5n3 }} </td>
@@ -154,6 +159,7 @@
         <td>
           <label for="roundSix"> Round 6 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round6 }} </td>
             <td> {{ form.r6n1 }} </td>
             <td> {{ form.r6n2 }} </td>
             <td> {{ form.r6n3 }} </td>
@@ -162,6 +168,7 @@
         <td>
           <label for="roundSeven"> Round 7 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round7 }} </td>
             <td> {{ form.r7n1 }} </td>
             <td> {{ form.r7n2 }} </td>
             <td> {{ form.r7n3 }} </td>
@@ -170,6 +177,7 @@
         <td>
           <label for="roundEight"> Round 8 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round8 }} </td>
             <td> {{ form.r8n1 }} </td>
             <td> {{ form.r8n2 }} </td>
             <td> {{ form.r8n3 }} </td>
@@ -178,6 +186,7 @@
         <td>
           <label for="roundNine"> Round 9 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round9 }} </td>
             <td> {{ form.r9n1 }} </td>
             <td> {{ form.r9n2 }} </td>
             <td> {{ form.r9n3 }} </td>
@@ -186,6 +195,7 @@
         <td>
           <label for="roundTen"> Round 10 </label>
         </td>
+            <td> <p> Cumulative Score </p> {{ form.round10 }} </td>
             <td> {{ form.r10n1 }} </td>
             <td> {{ form.r10n2 }} </td>
             <td> {{ form.r10n3 }} </td>
@@ -202,48 +212,10 @@
         <td><input type="submit" class="btn btn-primary" value="Submit"></td>
     </tr>
     <tr>
-        <td> Total: </td>
+        <td> Total Score: </td>
         <td>{{ form.result }} </td>
     </tr>
 </table>
-
-
-
-
-
-
-            <!--
-             <td> Round 3 </td>
-
-             <td> {{ form.r3n1 }} </td>
-             <td> {{ form.r3n2 }} </td>
-             <td> {{ form.r3n3 }} </td>
-          
-             <td> {{ form.r4n1 }} </td>
-             <td> {{ form.r4n2 }} </td>
-             <td> {{ form.r4n3 }} </td>
-             <td> {{ form.r5n1 }} </td>
-             <td> {{ form.r5n2 }} </td>
-             <td> {{ form.r5n3 }} </td>
-             <td> {{ form.r6n1 }} </td>
-             <td> {{ form.r6n2 }} </td>
-             <td> {{ form.r6n3 }} </td>
-             <td> {{ form.r7n1 }} </td>
-             <td> {{ form.r7n2 }} </td>
-             <td> {{ form.r7n3 }} </td>
-             <td> {{ form.r8n1 }} </td>
-             <td> {{ form.r8n2 }} </td>
-             <td> {{ form.r8n3 }} </td>
-             <td> {{ form.r9n1 }} </td>
-             <td> {{ form.r9n2 }} </td>
-             <td> {{ form.r9n3 }} </td>
-             <td> {{ form.r10n1 }} </td>
-             <td> {{ form.r10n2 }} </td>
-             <td> {{ form.r10n3 }} </td>
-             -->
-        
-     
-<!-- end the table div-->
 
               </div>
             </div>
@@ -254,6 +226,7 @@
 </html>
 
 <style>
+
 
   .myForm {
     display: grid;
