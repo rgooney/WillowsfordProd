@@ -6,24 +6,42 @@
 
 
     <form action="{% url 'register' %}" class="form" method="post">
-      {% if form.errors %}
-      {% for field in form %}
-          {% for error in field.errors %}
-              <div class="alert alert-danger">
-                  <strong>{{ error|escape }}</strong>
-              </div>
-          {% endfor %}
-      {% endfor %}
-      {% for error in form.non_field_errors %}
-          <div class="alert alert-danger">
-              <strong>{{ error|escape }}</strong>
-          </div>
-      {% endfor %}
-    {% endif %}
+      {% csrf_token %}
+
+      {% if user_form.errors  %}
+        {% for field in user_form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in user_form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% elif extended_user_form.errors %}
+        {% for field in extended_user_form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in extended_user_form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+      {% endif %}
 
       <h2>Login</h2>
       <!-- User Form        -->
       <div class="input-group">
+        {% if form.errors %}
+          <p>{{ form.username.errors.as_text }}</p>
+        {% endif %}
           {{ user_form.username }}
         <label for="{{ user_form.username.id_for_label }}" class="">Username</label>
       </div>
@@ -78,7 +96,7 @@
         <label for="{{ extended_user_form.state.id_for_label }}">State</label>
       </div>
 
-      {% csrf_token %}
+
       <input type="submit" value="Submit" class="submit-btn">
 
       <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
