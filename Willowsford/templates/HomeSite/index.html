@@ -20,7 +20,7 @@
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'services' %}">Membership</a></li>
             {% if user.is_authenticated %}
-              <li><a href="{% url 'dashboard' %}">{{ user.username }}'s Dashboard</a></li>
+              <li><a href="{% url 'dashboard' %}">{{ request.user.useraccount.fname }}'s Dashboard</a></li>
               {% if user.is_staff %}
                 <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
               {% endif %}
@@ -38,6 +38,7 @@
     <section id="showcase">
       <div class="container">
         <h1></h1>
+
         <p></p>
       </div>
     </section>

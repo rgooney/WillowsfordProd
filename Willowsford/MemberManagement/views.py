@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
+from django.db.models import Sum
 
 from .models import *
 from django.views.generic import TemplateView
@@ -31,7 +33,15 @@ def signIn(request):
 
 
 def dashboard(request):
-    return render(request, 'MemberManagement/dashboard.html')
+    user = User.objects.get(username=request.user)
+    print (user.useraccount.fname)
+    try:
+        statement = Statement.objects.filter(account_id=user.useraccount).aggregate(tot_balance=Sum('amount_due'))
+        total_balance = statement['tot_balance']
+    except Statement.DoesNotExist:
+        statement = None
+
+    return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance})
 
 
 class PaypalReturnView(TemplateView):

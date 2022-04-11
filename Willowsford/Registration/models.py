@@ -22,6 +22,7 @@ MEMBERSHIP_TYPE = (("Individual", "Individual"), ("Household", "Household"))
 
 # Create your models here.
 class UserAccount(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     account_id = models.AutoField(primary_key=True)
     fname = models.CharField(max_length=30)
     mid_initial = models.CharField(max_length=2)
@@ -35,9 +36,6 @@ class UserAccount(models.Model):
     membershipType = models.CharField(max_length=30, choices=MEMBERSHIP_TYPE, default="Individual")
     admin = models.BooleanField(default=False)
     officer = models.BooleanField(default=False)
-    username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-   # email = models.CharField(max_length=30)
-   # pnum = PhoneField(blank=True, help_text='Contact phone number')
 
     def __str__(self):
         return self.fname + " " + self.lname
