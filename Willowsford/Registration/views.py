@@ -13,9 +13,15 @@ def register(request):
             extended_user_info = extended_user_form.save(commit=False)
             extended_user_info.save()
             return HttpResponseRedirect(reverse('index'))
+        else:
+            print(user_form.errors)
+            print(extended_user_form.errors)
+            return render(request, 'Registration/registration.html',
+                          {'user_form': user_form, 'extended_user_form': extended_user_form})
     else:
         user_form = UserAccountForm()
         extended_user_form = RegistrationForm()
+
 
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
 
