@@ -1,122 +1,118 @@
 {% extends 'HomeSite/index.html' %}
 {% load static %}
 
-{% block header %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{% static 'signInCSS.css' %}">
-  <title>WAC Registration</title>
-</head>
-{% endblock header %}
+  {% block content %}
+<div style="text-align:center;">
 
-<body>
-  {% block registration %}
-  <div class="login-wrapper">
+    <div class="flexbox-container">
+    <div class="flexbox-item flexbox-item-1">
+      <form action="{% url 'register' %}" class="form" method="post">
+        {% csrf_token %}
 
-
-    <form action="{% url 'register' %}" class="form" method="post">
-      {% csrf_token %}
-
-      {% if user_form.errors  %}
-        {% for field in user_form %}
-            {% for error in field.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-            {% endfor %}
-        {% endfor %}
-        {% for error in user_form.non_field_errors %}
-            <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-      {% elif extended_user_form.errors %}
-        {% for field in extended_user_form %}
-            {% for error in field.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-            {% endfor %}
-        {% endfor %}
-        {% for error in extended_user_form.non_field_errors %}
-            <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-      {% endif %}
-
-      <h2>Login</h2>
-      <!-- User Form        -->
-      <div class="input-group">
-        {% if form.errors %}
-          <p>{{ form.username.errors.as_text }}</p>
+        {% if user_form.errors  %}
+          {% for field in user_form %}
+              {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endfor %}
+          {% for error in user_form.non_field_errors %}
+              <div class="alert alert-danger">
+                  <strong>{{ error|escape }}</strong>
+              </div>
+          {% endfor %}
+        {% elif extended_user_form.errors %}
+          {% for field in extended_user_form %}
+              {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endfor %}
+          {% for error in extended_user_form.non_field_errors %}
+              <div class="alert alert-danger">
+                  <strong>{{ error|escape }}</strong>
+              </div>
+          {% endfor %}
         {% endif %}
-          {{ user_form.username }}
-        <label for="{{ user_form.username.id_for_label }}" class="">Username</label>
-      </div>
-      <div class="input-group">
-          {{ user_form.email }}
-        <label for="{{ user_form.email.id_for_label }}">Email</label>
-      </div>
-      <div class="input-group">
-        {{ user_form.password1 }}
-        <label for="{{ user_form.password1.id_for_label }}">Password</label>
-      </div>
-      <div class="input-group">
-        {{ user_form.password2 }}
-        <label for="{{ user_form.password2.id_for_label }}">Re-enter password</label>
-      </div>
 
-      <!-- Extended form       -->
+        <h2>Registration</h2>
+        <!-- User Form        -->
         <div class="input-group">
-        {{ extended_user_form.fname }}
-        <label for="{{ extended_user_form.fname.id_for_label }}">First Name</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.mid_initial}}
-        <label for="{{ extended_user_form.mid_initial.id_for_label }}">Middle Initial</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.lname }}
-        <label for="{{ extended_user_form.lname.id_for_label }}">Last Name</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.phonenumber }}
-        <label for="{{ extended_user_form.phonenumber.id_for_label }}">Gender</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.gender }}
-        <label for="{{ extended_user_form.gender.id_for_label }}">Gender</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.bday }}
-        <label for="{{ extended_user_form.bday.id_for_label }}">Birthday</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.membershipType }}
-        <label for="{{ extended_user_form.membershipType.id_for_label }}">Membership Type</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.street }}
-        <label for="{{ extended_user_form.street.id_for_label }}">Street</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.city }}
-        <label for="{{ extended_user_form.city.id_for_label }}">City</label>
-      </div>
-      <div class="input-group">
-        {{ extended_user_form.state }}
-        <label for="{{ extended_user_form.state.id_for_label }}">State</label>
-      </div>
+          {% if form.errors %}
+            <p>{{ form.username.errors.as_text }}</p>
+          {% endif %}
+
+          <label for="{{ user_form.username.id_for_label }}" class="">Username</label>
+          {{ user_form.username }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.password1.id_for_label }}">Password</label>
+          {{ user_form.password1 }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.password2.id_for_label }}">Re-enter password</label>
+          {{ user_form.password2 }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.email.id_for_label }}">Email</label>
+          {{ user_form.email }}
+        </div>
+
+          <div class="input-group">
+          <label for="{{ extended_user_form.fname.id_for_label }}">First Name</label>
+          {{ extended_user_form.fname }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.mid_initial.id_for_label }}">Middle Initial</label>
+          {{ extended_user_form.mid_initial}}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.lname.id_for_label }}">Last Name</label>
+          {{ extended_user_form.lname }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.phonenumber.id_for_label }}">Phone Number</label>
+          {{ extended_user_form.phonenumber }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.gender.id_for_label }}">Gender</label>
+          {{ extended_user_form.gender }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.bday.id_for_label }}">Birthday</label>
+          {{ extended_user_form.bday }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.membershipType.id_for_label }}">Membership Type</label>
+          {{ extended_user_form.membershipType }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.street.id_for_label }}">Street</label>
+          {{ extended_user_form.street }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.city.id_for_label }}">City</label>
+          {{ extended_user_form.city }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.state.id_for_label }}">State</label>
+          {{ extended_user_form.state }}
+        </div>
+          </br>
+          <a href="{% static 'WAIVERS_Willowsford_Archery_Club.pdf' %}">Terms and Conditions</a> </br>
+        <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
+          </br>
+        <input type="submit" value="Submit" class="submit-btn">
+
+      </form>
+    </div>
+  </div>
+
+<div>
 
 
-      <input type="submit" value="Submit" class="submit-btn">
 
-      <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
-      <input type="submit" value="Next" class="submit-btn">
-    </form>
+
   {% endblock content %}
