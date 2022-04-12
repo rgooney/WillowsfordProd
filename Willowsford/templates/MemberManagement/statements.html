@@ -1,0 +1,30 @@
+{% extends 'MemberManagement/dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <h2> Statements for {{ request.user.useraccount.fname }} {{ request.user.useraccount.lname }}</h2>
+    <div class="">
+        <table class="">
+        <tr class="">
+            <td> Statement ID </td>
+            <td> Bill Date </td>
+            <td> Due Date </td>
+            <td> Paid </td>
+            <td> Amount Due </td>
+        </tr>
+    {% for statement in statements %}
+        <tr class="active">
+            <td> {{statement.statement_id}}</td>
+            <td> {{statement.bill_date}} </td>
+            <td> {{statement.due_date}}</td>
+            <td> {{statement.paid}}</td>
+            <td> {{statement.amount_due}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    </div>
+    {% block footer %}
+    {% endblock footer %}
+</body>
+{% endblock content %}

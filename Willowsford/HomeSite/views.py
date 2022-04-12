@@ -2,11 +2,19 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.base import RedirectView
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 from django.urls import reverse
-
+from Registration.models import *
 
 # Create your views here.
 def index(request):
+    if request.user.is_authenticated:
+        try:
+            user = User.objects.get(username=request.user.username)
+            account_name = user.useraccount.fname
+        except UserAccount.DoesNotExist:
+            account = None
+
     return render(request, 'HomeSite/index.html')
 
 

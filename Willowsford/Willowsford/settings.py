@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'HomeSite.apps.HomesiteConfig',
     'MemberManagement.apps.MembermanagementConfig',
     'Registration.apps.RegistrationConfig',
+    'paypal.standard.ipn',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PHONENUMBER_DEFAULT_REGION="US"
+PHONENUMBER_DB_FORMAT="NATIONAL"

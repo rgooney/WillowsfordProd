@@ -3,7 +3,12 @@ from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
+from django.db.models import Sum
 
+from .models import *
+from django.views.generic import TemplateView
+from Registration.models import *
 
 # Create your views here.
 def signIn(request):
@@ -25,9 +30,33 @@ def signIn(request):
         form = AuthenticationForm()
 
     return render(request, 'MemberManagement/signIn.html', {"form": form})
-  
-def dashboard(request):
-    return render(request, 'MemberManagement/dashboard.html')
 
-def adminPanel(request):
-    return render(request, 'MemberManagement/adminPanel.html')
+
+def dashboard(request):
+    user = User.objects.get(username=request.user)
+    print (user.useraccount.fname)
+    try:
+        statement = Statement.objects.filter(account_id=user.useraccount).filter(paid=False).aggregate(tot_balance=Sum('amount_due'))
+        total_balance = statement['tot_balance']
+    except Statement.DoesNotExist:
+        statement = None
+
+    return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance})
+
+def statements(request):
+    user = User.objects.get(username=request.user)
+    try:
+        statements = Statement.objects.filter(account_id=user.useraccount).all()
+        statement_total = Statement.objects.filter(account_id=user.useraccount).filter(paid=False).aggregate(tot_balance=Sum('amount_due'))
+        total_balance = statement_total['tot_balance']
+    except Statement.DoesNotExist:
+        statement = None
+
+    return render(request, 'MemberManagement/statements.html', {'statements': statements, 'total_balance': total_balance})
+
+class PaypalReturnView(TemplateView):
+    template_name = 'paypal_success.html'
+
+
+class PaypalCancelView(TemplateView):
+    template_name = 'paypal_cancel.html'
