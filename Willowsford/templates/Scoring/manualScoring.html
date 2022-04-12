@@ -65,45 +65,7 @@
                         </fieldset>
                         
                       
-<!--
-                <fieldset id = "roundTest"> 
-                  <table class = "table">
-                    <tr>
-                      <td>
-                        <label for="roundOne"> Round One </label>
-                      </td>
-                          <td> {{ form.r1n1 }} </td>
-                          <td> {{ form.r1n2 }} </td>
-                          <td> {{ form.r1n3 }} </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label for="roundTwo"> Round Two </label>
-                      </td>
-                          <td> {{ form.r1n1 }} </td>
-                          <td> {{ form.r1n2 }} </td>
-                          <td> {{ form.r1n3 }} </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label for="roundThree"> Round Three </label>
-                      </td>
-                          <td> {{ form.r1n1 }} </td>
-                          <td> {{ form.r1n2 }} </td>
-                          <td> {{ form.r1n3 }} </td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td><input type="submit" class="btn btn-primary" value="Submit"></td>
-                  </tr>
-                    </fieldset>
-                  
-                  <tr>
-                    <td>  Total: </td>
-                    <td>{{ form.result }} </td>
-                  </tr>
-                </table>
-                -->
+
 </form>
     <form class ="myForm" action="" method="post">
     {% csrf_token %}
@@ -116,6 +78,7 @@
             <td> {{ form.r1n1 }} </td>
             <td> {{ form.r1n2 }} </td>
             <td> {{ form.r1n3 }} </td>
+            <td><input type="submit" class="btn btn-primary" value="Submit"></td>
             
       </tr>
       <tr>
