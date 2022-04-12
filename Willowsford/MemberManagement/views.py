@@ -36,13 +36,23 @@ def dashboard(request):
     user = User.objects.get(username=request.user)
     print (user.useraccount.fname)
     try:
-        statement = Statement.objects.filter(account_id=user.useraccount).aggregate(tot_balance=Sum('amount_due'))
+        statement = Statement.objects.filter(account_id=user.useraccount).filter(paid=False).aggregate(tot_balance=Sum('amount_due'))
         total_balance = statement['tot_balance']
     except Statement.DoesNotExist:
         statement = None
 
     return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance})
 
+def statements(request):
+    user = User.objects.get(username=request.user)
+    try:
+        statements = Statement.objects.filter(account_id=user.useraccount).all()
+        statement_total = Statement.objects.filter(account_id=user.useraccount).filter(paid=False).aggregate(tot_balance=Sum('amount_due'))
+        total_balance = statement_total['tot_balance']
+    except Statement.DoesNotExist:
+        statement = None
+
+    return render(request, 'MemberManagement/statements.html', {'statements': statements, 'total_balance': total_balance})
 
 class PaypalReturnView(TemplateView):
     template_name = 'paypal_success.html'

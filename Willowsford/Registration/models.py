@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from phonenumber_field.modelfields import PhoneNumberField
 
 STATES = (("Alabama","Alabama"),("Alaska","Alaska"),("Arizona","Arizona"),("Arkansas","Arkansas"),
           ("California","California"),("Colorado","Colorado"),("Connecticut","Connecticut"),
@@ -36,6 +36,7 @@ class UserAccount(models.Model):
     membershipType = models.CharField(max_length=30, choices=MEMBERSHIP_TYPE, default="Individual")
     admin = models.BooleanField(default=False)
     officer = models.BooleanField(default=False)
+    phonenumber = PhoneNumberField(blank=True)
 
     def __str__(self):
         return self.fname + " " + self.lname

@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+{% block head %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,12 @@
     <link rel="stylesheet" href="{% static 'dashboard.css' %}">
     <title>Dashboard</title>
 </head>
+{% endblock head %}
+
 <body>
     <div class= "wrapper"> 
         <!-- Top Container -->
+    {% block content %}
     <section class="top-container">
         <header class="showcase">
           <h1>Scoring App</h1>
@@ -21,7 +25,6 @@
           <h4>Membership Status</h4>
           <p class="price">Active</p>
           <h3>Membership Waivers</h3>
-        {{ statement.amount_due }} <br>
         Conservancy Waiver - [signed] <br>
         Code of Conduct - [not signed] <br>
         
@@ -29,18 +32,30 @@
         </div>
         <div class="top-box top-box-b">
           <h4>Payment Portal</h4>
+<!--          <div id="smart-button-container">-->
+<!--            <div style="text-align: center"><label for="description">Member Dues </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="{{ total_balance }}"></div>-->
+<!--              <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>-->
+<!--            <div style="text-align: center"><label for="amount">Enter Amount  </label><input name="amountInput" type="number" id="amount" value="{{ total_balance }}" ><span> USD</span></div>-->
+<!--              <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>-->
+<!--            <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid">You Pay </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="{{ total_balance }}" ></div>-->
+<!--              <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>-->
+<!--            -->
+<!--            <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>-->
+<!--          </div>-->
+<!--          <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>-->
           <div id="smart-button-container">
-            <div style="text-align: center"><label for="description">Member Dues </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="{{ total_balance }}"></div>
+            <div style="text-align: center"><label for="description">Membership Dues </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="{{ total_balance }}"></div>
               <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
-            <div style="text-align: center"><label for="amount">Enter Amount  </label><input name="amountInput" type="number" id="amount" value="{{ total_balance }}" ><span> USD</span></div>
+            <div style="text-align: center"><label for="amount">Payment Amount </label><input name="amountInput" type="number" id="amount" value="{{ total_balance }}" ><span> USD</span></div>
               <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
-            <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid">You Pay </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="{{ total_balance }}" ></div>
+            <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="{{ total_balance }}" ></div>
               <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+              <div><a href="{% url 'statements' %}">All statements</a></div>
             <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+
           </div>
           <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-
-        <script>
+          <script>
           function initPayPalButton() {
             var description = document.querySelector('#smart-button-container #description');
             var amount = document.querySelector('#smart-button-container #amount');
@@ -148,9 +163,6 @@
           }
           initPayPalButton();
           </script>
-          <!--<p class="price">$299/mo</p>
-          <a href="" class="btn">Pay Dues</a> -->
-        </div>
       </section>
   
       <!-- Boxes Section -->
@@ -164,16 +176,18 @@
           <i class="fas fa-globe fa-4x"></i>
           <h3>Account Information</h3>
             <ul>
-                <li>Contact Number</li>
-                <li>Birthday</li>
-                <li>Email</li>
+                <li>Contact Number: {{ request.user.useraccount.phonenumber }}</li>
+                <li>Birthday: {{ request.user.useraccount.bday }}</li>
+                <li>Email: {{ request.user.email }}</li>
             </ul>
         </div>
       </section>
-
+    {% endblock content %}
+    {% block footer %}
       <footer>
         <p>Willowsford Arhery Club &copy; 2018</p>
       </footer>
+    {% endblock footer %}
     </div>
    
 </body>
