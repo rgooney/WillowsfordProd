@@ -14,7 +14,7 @@ class StatementForm(forms.ModelForm):
         amount_due = forms.DecimalField(initial=10.00)
 
 class StatementAdmin(admin.ModelAdmin):
-    list_display = ('statement_id', 'bill_date', 'amount_due')
+    list_display = ('statement_id', 'account_id', 'bill_date', 'amount_due', 'paid')
     # form = StatementForm(initial={'amount_due': Decimal(10.00)})
     # form.base_fields['amount_due'].initial = Decimal(10.00)
 
