@@ -169,9 +169,27 @@
       <!-- Boxes Section -->
       <section class="boxes">
         <div class="box">
-          <i class="fas fa-chart-pie fa-4x"></i>
-          <h3>Scoring History</h3>
-          <p>Last 5 Scores</p>
+            <form action="" class="form" method="post">
+              <h2>Range Check-In</h2>
+              <div class="input-group">
+                <label for="{{ checkin_form.date.id_for_label }}">Date</label>
+                {{ checkin_form.date }}
+              </div>
+              <div class="input-group">
+                <label for="{{ checkin_form.time_in.id_for_label }}">Time In</label>
+                {{ checkin_form.time_in }}
+              </div>
+              <div class="input-group">
+                <label for="{{ form.time_out.id_for_label }}">Time Out</label>
+                {{ checkin_form.time_out }}
+              </div>
+              <div class="input-group">
+                <label for="{{ checkin_form.checkin_type.id_for_label }}">Checkin Type</label>
+                {{ checkin_form.checkin_type }}
+              </div>
+              {% csrf_token %}
+              <input type="submit" value="Check In" class="submit-btn">
+            </form>
         </div>
         <div class="box">
           <i class="fas fa-globe fa-4x"></i>

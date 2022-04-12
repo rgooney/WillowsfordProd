@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from django.views.generic import FormView
 from django.urls import reverse
 from paypal.standard.forms import PayPalPaymentsForm
-from .models import Statement
+from .models import Statement, CheckIn
 from Registration.models import UserAccount
 
 class PaypalFormView(FormView):
@@ -28,3 +28,12 @@ class PaypalFormView(FormView):
             "no_shipping": '1',
         }
 
+class CheckInForm(forms.ModelForm):
+    class Meta:
+        model = CheckIn
+        fields = ["date", "time_in","time_out","checkin_type", "account_id"]
+
+        widgets = {
+            "time_in": forms.TimeInput(),
+            "time_out": forms.TimeInput(),
+        }
