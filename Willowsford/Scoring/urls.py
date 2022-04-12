@@ -5,6 +5,4 @@ from django.urls import re_path
 
 urlpatterns = [
     path('manualScoring', views.manualScoring, name="manualScoring"),
-    path('calculateScore', views.calculateScore, name="calculateScore"),
-    path('receiveInput', views.receiveInput, name="receiveInput"),
 ]
