@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.db.models import Sum
 
 from .models import *
+from .forms import *
 from django.views.generic import TemplateView
 from Registration.models import *
 
@@ -34,14 +35,26 @@ def signIn(request):
 
 def dashboard(request):
     user = User.objects.get(username=request.user)
-    print (user.useraccount.fname)
     try:
         statement = Statement.objects.filter(account_id=user.useraccount).filter(paid=False).aggregate(tot_balance=Sum('amount_due'))
         total_balance = statement['tot_balance']
     except Statement.DoesNotExist:
         statement = None
 
-    return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance})
+    if request.method == "POST":
+        checkin_form = CheckInForm(request.POST)
+        if checkin_form.is_valid():
+            checkin = checkin_form.save(commit=False)
+            checkin.account_id = user.useraccount
+            checkin.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(checkin_form.errors)
+            return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance, 'checkin_form': checkin_form})
+    else:
+        checkin_form = CheckInForm()
+
+    return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance, 'checkin_form': checkin_form})
 
 def statements(request):
     user = User.objects.get(username=request.user)
