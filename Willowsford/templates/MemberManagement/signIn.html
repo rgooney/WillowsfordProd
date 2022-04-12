@@ -7,19 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{% static 'signInCSS.css' %}">
 
-  <title>Login Form Demo</title>
+  <title>WAC Sign In</title>
 </head>
 <body>
 
-  <div class="topnav" id="myTopnav">
-    <a href="{% url 'index' %}" class="active">Home</a>
-    <a href="#news">News</a>
-    <a href="{% url 'services' %}">Services</a>
-    <a href="{% url 'about' %}">About</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
+   <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Willowsford</span> Archery Club</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'services' %}">Membership</a></li>
+            <li><a href="{% url 'signIn' %}">Sign In</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
   <div class="login-wrapper">
     <form action="" class="form" method="post">
