@@ -224,3 +224,45 @@ footer{
     margin-bottom:5px;
   }
 }
+/* Registration Page CSS */
+
+.alert-danger {
+    color: firebrick;
+    background-color: gray;
+}
+
+.input-group {
+    color: #e08955;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 350px;
+    font-size: 15px;
+    font-family: Verdana;
+    line-height: 30px;
+    display:inline-block;
+
+}
+
+.flexbox-container {
+    display: flex;
+    justify-content: center;
+    color: #e08955;
+}
+
+.flexbox-item {
+    width: 500px;
+    height: auto;
+    margin: 10px;
+    border: 3px solid #333;
+    background: #667760;
+}
+
+.flexbox-item-1 {
+    min-height: 100px;
+
+}
+
+#id_username {
+
+}
