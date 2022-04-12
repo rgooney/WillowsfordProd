@@ -24,3 +24,30 @@ class RegistrationForm(forms.ModelForm):
         widgets = {
             "bday": forms.DateInput(),
         }
+
+class WillowsfordWaiverForm(forms.ModelForm):
+    class Meta:
+        model = UserAccount
+        fields = ("willowsfordWaiverSigned", "willowsfordWaiverSignedInitials", "willowsfordWaiverSignedDate")
+
+        widgets = {
+            "willowsfordWaiverSignedDate": forms.DateInput(),
+        }
+
+class ArcheryWaiverForm(forms.ModelForm):
+    class Meta:
+        model = UserAccount
+        fields = ("archeryClubWaiverSigned", "archeryClubWaiverSignedInitials", "archeryClubWaiverSignedDate")
+
+        widgets = {
+            "archeryClubWaiverSignedDate": forms.DateInput(),
+        }
+
+class RulesOfConductWaiverForm(forms.ModelForm):
+    class Meta:
+        model = UserAccount
+        fields = ("rulesOfConductWaiverSigned", "rulesOfConductWaiverSignedInitials", "rulesOfConductWaiverSignedDate")
+
+        widgets = {
+            "rulesOfConductWaiverSignedDate": forms.DateInput(),
+        }
