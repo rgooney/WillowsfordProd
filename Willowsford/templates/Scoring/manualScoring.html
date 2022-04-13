@@ -26,11 +26,9 @@
                       {% csrf_token %} 
                         <fieldset id="shooter_Name">
                           <label for="customer_name"> Shooter's Name </label>
-                          <input type="text" name="shooter_name" id="shooter_name" required>
+                          {{ user.useraccount.fname }} {{ user.useraccount.lname }}
 
-                          <label for="shooter_Signature"> Shooter's Signature </label>
-                          <input type="text" name="shooter_Signature" id="shooter_Signature">
-                      
+                          <!-- Remove if officers are always witnesses -->
                           <label for="witness_Name"> Witness's Name </label>
                           <input type="text" name="witness_name" id="witness_name">
                       
@@ -40,167 +38,166 @@
                         
                         <fieldset id="shooting_Style">
                           <legend>Shooting Style?</legend>
-                          <label> <input type="radio" name="shootStylePick" id="rec_lb_no_sight" required value="car"> Recurve or longbow with no sights.  Finger release only - no mechanical release. </label>
-                          <label> <input type="radio" name="shootStylePick" id="rec_lb_with_sight" required value="van"> Recurve or longbow with sights.  Finger release only - no mechanical release. </label>
-                          <label> <input type="radio" name="shootStylePick" id="rec_lb_with_sight_mech_rel" required value="tuktuk"> Recurve or longbow with sights and mechanical release. </label>
-                          <label> <input type="radio" name="shootStylePick" id="comp_bow_stand_w_no_ext" required value="tuktuk"> Compound bow, standing with no external rest </label>
+                            {{ form.shooting_style }}
+<!--                          <label> <input type="radio" name="shootStylePick" id="rec_lb_no_sight" required value="car"> Recurve or longbow with no sights.  Finger release only - no mechanical release. </label>-->
+<!--                          <label> <input type="radio" name="shootStylePick" id="rec_lb_with_sight" required value="van"> Recurve or longbow with sights.  Finger release only - no mechanical release. </label>-->
+<!--                          <label> <input type="radio" name="shootStylePick" id="rec_lb_with_sight_mech_rel" required value="tuktuk"> Recurve or longbow with sights and mechanical release. </label>-->
+<!--                          <label> <input type="radio" name="shootStylePick" id="comp_bow_stand_w_no_ext" required value="tuktuk"> Compound bow, standing with no external rest </label>-->
                         </fieldset>
                     
                         <fieldset id="shoot_Date">
                           <label for="shoot_Date"> Date </label>
-                          <input type="datetime-local" name="shoot_date" id="shoot_date" required>
+                            {{ form.datetime }}
+<!--                          <input type="datetime-local" name="shoot_date" id="shoot_date" required>-->
                         </fieldset>
                       
                         <fieldset id="shoot_Distance">
                           <label for="shoot_Distance"> Distance (Yards) </label>
-                          <select name="pickup_place" id="pickup_place">
-                            <option value="" selected="selected">Select One </option>
-                            <option value="office" > The Willowsford </option>
-                            <option value="town_hall" > 10 Yards </option>
-                            <option value="telepathy" > 20 Yards </option>
-                            <option value="telepathy" > 30 Yards </option>
-                            <option value="telepathy" > 40 Yards </option>
-                            <option value="telepathy" > 50 Yards </option>
+                            {{ form.distance }}
+<!--                          <select name="pickup_place" id="pickup_place">-->
+<!--                            <option value="" selected="selected">Select One </option>-->
+<!--                            <option value="office" > The Willowsford </option>-->
+<!--                            <option value="town_hall" > 10 Yards </option>-->
+<!--                            <option value="telepathy" > 20 Yards </option>-->
+<!--                            <option value="telepathy" > 30 Yards </option>-->
+<!--                            <option value="telepathy" > 40 Yards </option>-->
+<!--                            <option value="telepathy" > 50 Yards </option>-->
                           </select>
                         </fieldset>
-                        
-                      
 
-</form>
-    <form class ="myForm" action="" method="post">
-    {% csrf_token %}
-     <table class="table">
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round1Sub }} 
-          <h3> Round 1 </h3>
-        </td>
-            <p> </p>
-            <td> <p> Cumulative Total : </p> {{ form.round1 }} </td>
-            <td> {{ form.r1n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r1n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r1n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentOne }} <p> Notes </p> </td>
-      </tr>
-     
 
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round2Sub }} 
-          <h3> Round 2 </h3>
-        </td>
-            <td> <p> Cumulative Score : </p> {{ form.round2 }} </td>
-            <td> {{ form.r2n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r2n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r2n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentTwo }} <p> Notes </p> </td>
-            
-      </tr>
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round3Sub }} 
-          <h3> Round 3 </h3>
-        </td>
-            <td> <p> Cumulative Score : </p> {{ form.round3 }} </td>
-            <td> {{ form.r3n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r3n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r3n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentThree }} <p> Notes </p> </td>
-      </tr>
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round4Sub }} 
-          <h3> Round 4 </h3>
-        </td>
-            <td> <p> Cumulative Score : </p> {{ form.round4 }} </td>
-            <td> {{ form.r4n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r4n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r4n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentFour }} <p> Notes </p> </td>
-      </tr>
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round5Sub }} 
-          <h3> Round 5 </h3>
-        </td>
-            <td> <p> Cumulative Score : </p> {{ form.round5 }} </td>
-            <td> {{ form.r5n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r5n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r5n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentFive }} <p> Notes </p> </td>
-      </tr>
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round6Sub }} 
-          <h3> Round 6 </h3>
-        </td>
-            <td> <p> Cumulative Score : </p> {{ form.round6 }} </td>
-            <td> {{ form.r6n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r6n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r6n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentSix }} <p> Notes </p> </td>
-      </tr>
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round7Sub }} 
-          <h3> Round 7 </h3>
-        </td>
-            <td> <p> Cumulative Score : </p> {{ form.round7 }} </td>
-            <td> {{ form.r7n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r7n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r7n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentSeven }} <p> Notes </p> </td>
-      </tr>
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round8Sub }} 
-          <h3> Round 8 </h3>
-        </td>
-            <td> <p> Cumulative Score : </p> {{ form.round8 }} </td>
-            <td> {{ form.r8n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r8n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r8n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentEight }} <p> Notes </p> </td>
-      </tr>
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round9Sub }} 
-          <h3> Round 9 </h3>
-        </td>
-            <td> <p> Cumulative Total : </p> {{ form.round9 }} </td>
-            <td> {{ form.r9n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r9n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r9n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentNine }} <p> Notes </p> </td>
-      </tr>
-      <tr>
-        <td>
-          <p> Subtotal Cumulative: </p> {{ form.round10Sub }} 
-          <h3> Round 10 </h3>
-        </td>
-            <td> <p> Cumulative Score : </p> {{ form.round10 }} </td>
-            <td> {{ form.r10n1 }} <p> End 1 </p> </td>
-            <td> {{ form.r10n2 }} <p> End 2 </p> </td>
-            <td> {{ form.r10n3 }} <p> End 3 </p> </td>
-            <td> {{ form.commentTen }} <p> Notes </p> </td>
-      </tr>
+                         <table class="table">
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundOne }}
+                              <h3> Round 1 </h3>
+                            </td>
+                                <p> </p>
+                                <td> <p> Cumulative Total : </p> {{ form.cumulativeRoundOne }} </td>
+                                <td> {{ form.r1n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r1n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r1n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundOne }} <p> Notes </p> </td>
+                          </tr>
+
+
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundTwo }}
+                              <h3> Round 2 </h3>
+                            </td>
+                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundTwo }} </td>
+                                <td> {{ form.r2n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r2n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r2n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundTwo }} <p> Notes </p> </td>
+
+                          </tr>
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundThree }}
+                              <h3> Round 3 </h3>
+                            </td>
+                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundThree }} </td>
+                                <td> {{ form.r3n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r3n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r3n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundThree }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundFour }}
+                              <h3> Round 4 </h3>
+                            </td>
+                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundFour }} </td>
+                                <td> {{ form.r4n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r4n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r4n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundFour }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundFive }}
+                              <h3> Round 5 </h3>
+                            </td>
+                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundFive }} </td>
+                                <td> {{ form.r5n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r5n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r5n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundFive }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundSix }}
+                              <h3> Round 6 </h3>
+                            </td>
+                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundSix }} </td>
+                                <td> {{ form.r6n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r6n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r6n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundSix }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundSeven }}
+                              <h3> Round 7 </h3>
+                            </td>
+                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundSeven }} </td>
+                                <td> {{ form.r7n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r7n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r7n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundSeven }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundEight }}
+                              <h3> Round 8 </h3>
+                            </td>
+                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundEight }} </td>
+                                <td> {{ form.r8n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r8n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r8n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundEight }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundNine }}
+                              <h3> Round 9 </h3>
+                            </td>
+                                <td> <p> Cumulative Total : </p> {{ form.cumulativeRoundNine }} </td>
+                                <td> {{ form.r9n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r9n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r9n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundNine }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundTen }}
+                              <h3> Round 10 </h3>
+                            </td>
+                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundTen }} </td>
+                                <td> {{ form.r10n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r10n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r10n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundTen }} <p> Notes </p> </td>
+                          </tr>
 
 
 
 
 
-    
-    </tr>
-    <tr>
-        <td><h4> Ready to Calculate your Score?</h4> <input type="submit" class="btn btn-primary" value="Submit"></td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td> Total Score : </td>
-        <td>{{ form.result }} </td>
-    </tr>
-</table>
 
+                        </tr>
+                        <tr>
+                            <td><h4> Ready to Calculate your Score?</h4> <input type="submit" class="btn btn-primary" value="Submit"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td> Total Score : </td>
+                            <td>{{ form.score }} </td>
+                        </tr>
+                        </table>
+                    </form>
               </div>
             </div>
         </div>
