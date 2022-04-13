@@ -25,19 +25,54 @@ def register(request):
 
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
 
-# def registerptwo(request, user_fk):
-#     user_account = User.objects.get(username=user_fk)
-#     if request.POST:
-#         form = RegistrationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.username = user_account
-#             user.save()
-#             return HttpResponseRedirect(reverse('index'))
-#         # else:
-#         #     return render(request, 'registration/registration.html', {'form': form})
-#     else:
-#         form = RegistrationForm()
-#
-#     return render(request, 'Registration/registration2.html', {'form': form, 'username': user_fk})
+def willowsfordWaiver(request):
+    if request.method == "POST":
+        waiver_form = WillowsfordWaiverForm(request.POST)
+        if waiver_form.is_valid():
+            user = User.objects.get(username=request.user)
+            user.willowsfordWaiverSigned = waiver_form.fields['willowsfordWaiverSigned']
+            user.willowsfordWaiverSignedInitials = waiver_form.fields['willowsfordWaiverSignedInitials']
+            user.willowsfordWaiverSignedDate = waiver_form.fields['willowsfordWaiverSignedDate']
+            user.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(waiver_form.errors)
+            return render(request, 'Registration/willowsfordWaiver.html', {'waiver_form': waiver_form})
+    else:
+        waiver_form = WillowsfordWaiverForm()
 
+    return render(request, 'Registration/willowsfordWaiver.html', {'waiver_form': waiver_form})
+
+def archeryWaiver(request):
+    if request.method == "POST":
+        waiver_form = ArcheryWaiverForm(request.POST)
+        if waiver_form.is_valid():
+            user = User.objects.get(username=request.user)
+            user.useraccount.archeryClubWaiverSigned = waiver_form.fields['archeryClubWaiverSigned']
+            user.useraccount.archeryClubWaiverSignedInitials = waiver_form.fields['archeryClubWaiverSignedInitials']
+            user.useraccount.archeryClubWaiverSignedDate = waiver_form.fields['archeryClubWaiverSignedDate']
+            user.useraccount.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(waiver_form.errors)
+            return render(request, 'Registration/archeryWaiver.html.html', {'waiver_form': waiver_form})
+    else:
+        waiver_form = ArcheryWaiverForm()
+
+    return render(request, 'Registration/archeryWaiver.html', {'waiver_form': waiver_form})
+
+
+def rulesOfConductWaiver(request):
+    if request.method == "POST":
+        waiver_form = RulesOfConductWaiverForm(request.POST)
+        if waiver_form.is_valid():
+            user = waiver_form.save(commit=False)
+            user.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(waiver_form.errors)
+            return render(request, 'Registration/rulesOfConductWaiver.html', {'waiver_form': waiver_form})
+    else:
+        waiver_form = RulesOfConductWaiverForm()
+
+    return render(request, 'Registration/rulesOfConductWaiver.html', {'waiver_form': waiver_form})
