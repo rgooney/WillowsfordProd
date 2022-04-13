@@ -65,15 +65,15 @@
                           </select>
                         </fieldset>
 
-
+                        <fieldset id="scores">
                          <table class="table">
                           <tr>
+                              <td><h3> Round 1 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundOne }}
-                              <h3> Round 1 </h3>
+                               {{ form.subtotalRoundOne }} <p> Subtotal Cumulative: </p>
                             </td>
                                 <p> </p>
-                                <td> <p> Cumulative Total : </p> {{ form.cumulativeRoundOne }} </td>
+                                <td> {{ form.cumulativeRoundOne }} <p> Cumulative Total : </p> </td>
                                 <td> {{ form.r1n1 }} <p> End 1 </p> </td>
                                 <td> {{ form.r1n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r1n3 }} <p> End 3 </p> </td>
@@ -82,100 +82,106 @@
 
 
                           <tr>
+                              <td><h3> Round 2 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundTwo }}
-                              <h3> Round 2 </h3>
-                            </td>
-                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundTwo }} </td>
-                                <td> {{ form.r2n1 }} <p> End 1 </p> </td>
-                                <td> {{ form.r2n2 }} <p> End 2 </p> </td>
-                                <td> {{ form.r2n3 }} <p> End 3 </p> </td>
-                                <td> {{ form.commentRoundTwo }} <p> Notes </p> </td>
+                              {{ form.subtotalRoundTwo }} <p> Subtotal Cumulative: </p>
 
+                            </td>
+                            <td> {{ form.cumulativeRoundTwo }} <p> Cumulative Score : </p> </td>
+                            <td> {{ form.r2n1 }} <p> End 1 </p> </td>
+                            <td> {{ form.r2n2 }} <p> End 2 </p> </td>
+                            <td> {{ form.r2n3 }} <p> End 3 </p> </td>
+                            <td> {{ form.commentRoundTwo }} <p> Notes </p> </td>
                           </tr>
                           <tr>
+                              <td><h3> Round 3 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundThree }}
-                              <h3> Round 3 </h3>
+                              {{ form.subtotalRoundThree }} <p> Subtotal Cumulative: </p>
+
                             </td>
-                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundThree }} </td>
-                                <td> {{ form.r3n1 }} <p> End 1 </p> </td>
-                                <td> {{ form.r3n2 }} <p> End 2 </p> </td>
-                                <td> {{ form.r3n3 }} <p> End 3 </p> </td>
-                                <td> {{ form.commentRoundThree }} <p> Notes </p> </td>
+                            <td> {{ form.cumulativeRoundThree }} <p> Cumulative Score : </p>  </td>
+                            <td> {{ form.r3n1 }} <p> End 1 </p> </td>
+                            <td> {{ form.r3n2 }} <p> End 2 </p> </td>
+                            <td> {{ form.r3n3 }} <p> End 3 </p> </td>
+                            <td> {{ form.commentRoundThree }} <p> Notes </p> </td>
                           </tr>
                           <tr>
+                              <td><h3> Round 4 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundFour }}
-                              <h3> Round 4 </h3>
+                              {{ form.subtotalRoundFour }} <p> Subtotal Cumulative: </p>
+
                             </td>
-                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundFour }} </td>
+                                <td> {{ form.cumulativeRoundFour }} <p> Cumulative Score : </p>  </td>
                                 <td> {{ form.r4n1 }} <p> End 1 </p> </td>
                                 <td> {{ form.r4n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r4n3 }} <p> End 3 </p> </td>
                                 <td> {{ form.commentRoundFour }} <p> Notes </p> </td>
                           </tr>
                           <tr>
+                              <td><h3> Round 5 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundFive }}
-                              <h3> Round 5 </h3>
+                              {{ form.subtotalRoundFive }} <p> Subtotal Cumulative: </p>
+
                             </td>
-                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundFive }} </td>
+                                <td> {{ form.cumulativeRoundFive }} <p> Cumulative Score : </p> </td>
                                 <td> {{ form.r5n1 }} <p> End 1 </p> </td>
                                 <td> {{ form.r5n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r5n3 }} <p> End 3 </p> </td>
                                 <td> {{ form.commentRoundFive }} <p> Notes </p> </td>
                           </tr>
                           <tr>
+                              <td><h3> Round 6 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundSix }}
-                              <h3> Round 6 </h3>
+                              {{ form.subtotalRoundSix }} <p> Subtotal Cumulative: </p>
                             </td>
-                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundSix }} </td>
+                                <td> {{ form.cumulativeRoundSix }} <p> Cumulative Score : </p>  </td>
                                 <td> {{ form.r6n1 }} <p> End 1 </p> </td>
                                 <td> {{ form.r6n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r6n3 }} <p> End 3 </p> </td>
                                 <td> {{ form.commentRoundSix }} <p> Notes </p> </td>
                           </tr>
                           <tr>
+                              <td><h3> Round 7 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundSeven }}
-                              <h3> Round 7 </h3>
+                               {{ form.subtotalRoundSeven }} <p> Subtotal Cumulative: </p>
+
                             </td>
-                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundSeven }} </td>
+                                <td> {{ form.cumulativeRoundSeven }} <p> Cumulative Score : </p> </td>
                                 <td> {{ form.r7n1 }} <p> End 1 </p> </td>
                                 <td> {{ form.r7n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r7n3 }} <p> End 3 </p> </td>
                                 <td> {{ form.commentRoundSeven }} <p> Notes </p> </td>
                           </tr>
                           <tr>
+                              <td><h3> Round 8 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundEight }}
-                              <h3> Round 8 </h3>
+                               {{ form.subtotalRoundEight }} <p> Subtotal Cumulative: </p>
+
                             </td>
-                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundEight }} </td>
+                                <td>  {{ form.cumulativeRoundEight }} <p> Cumulative Score : </p> </td>
                                 <td> {{ form.r8n1 }} <p> End 1 </p> </td>
                                 <td> {{ form.r8n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r8n3 }} <p> End 3 </p> </td>
                                 <td> {{ form.commentRoundEight }} <p> Notes </p> </td>
                           </tr>
                           <tr>
+                              <td><h3> Round 9 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundNine }}
-                              <h3> Round 9 </h3>
+                              {{ form.subtotalRoundNine }} <p> Subtotal Cumulative: </p>
+
                             </td>
-                                <td> <p> Cumulative Total : </p> {{ form.cumulativeRoundNine }} </td>
+                                <td>  {{ form.cumulativeRoundNine }} <p> Cumulative Total : </p> </td>
                                 <td> {{ form.r9n1 }} <p> End 1 </p> </td>
                                 <td> {{ form.r9n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r9n3 }} <p> End 3 </p> </td>
                                 <td> {{ form.commentRoundNine }} <p> Notes </p> </td>
                           </tr>
                           <tr>
+                              <td><h3> Round 10 </h3></td>
                             <td>
-                              <p> Subtotal Cumulative: </p> {{ form.subtotalRoundTen }}
-                              <h3> Round 10 </h3>
+                              {{ form.subtotalRoundTen }} <p> Subtotal Cumulative: </p>
                             </td>
-                                <td> <p> Cumulative Score : </p> {{ form.cumulativeRoundTen }} </td>
+                                <td> {{ form.cumulativeRoundTen }} <p> Cumulative Score : </p>  </td>
                                 <td> {{ form.r10n1 }} <p> End 1 </p> </td>
                                 <td> {{ form.r10n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r10n3 }} <p> End 3 </p> </td>
@@ -189,14 +195,15 @@
 
                         </tr>
                         <tr>
-                            <td><h4> Ready to Calculate your Score?</h4> <input type="submit" class="btn btn-primary" value="Submit"></td>
+                            <td colspan="3"><h4> Ready to Calculate your Score?</h4> <input type="submit" class="btn btn-primary" value="Submit"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td> Total Score : </td>
+                            <td> Total Score: </td>
                             <td>{{ form.score }} </td>
                         </tr>
                         </table>
+                        </fieldset>
                     </form>
               </div>
             </div>
@@ -264,4 +271,7 @@
   }
   #submit {
     grid-area: submit;
+  }
+  #scores {
+      grid-column: span 2;
   }
