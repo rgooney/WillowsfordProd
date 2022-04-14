@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from .forms import *
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 # Create your views here.
 def register(request):
