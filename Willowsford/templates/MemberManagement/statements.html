@@ -5,8 +5,8 @@
 <body>
     <h2> Statements for {{ request.user.useraccount.fname }} {{ request.user.useraccount.lname }}</h2>
     <div class="">
-        <table class="">
-        <tr class="">
+        <table class="table">
+        <tr class="table-header">
             <td> Statement ID </td>
             <td> Bill Date </td>
             <td> Due Date </td>
@@ -24,6 +24,7 @@
     {% endfor %}
     </table>
     </div>
+
     {% block footer %}
     {% endblock footer %}
 </body>
