@@ -19,31 +19,36 @@
         <header class="showcase">
           <h1>Scoring App</h1>
           <p>Information regarding Scoring and how to use the application are provided under the scoring app information section.</p>
-          <a href="#" class="btn">Open Scoring App</a>
+          <a href="{% url 'manualScoring' %}" class="btn">Open Scoring App</a>
         </header>
         <div class="top-box top-box-a">
           <h4>Membership Status</h4>
           <p class="price">Active</p>
           <h3>Membership Waivers</h3>
-        Conservancy Waiver - [signed] <br>
-        Code of Conduct - [not signed] <br>
+            <a href="{% static 'ArcheryClubWaiver.pdf' %}">Archery Club Waiver</a>
+            {% if request.user.useraccount.archeryClubWaiverSigned == False %}
+                <a href="{% url 'archeryWaiver' %}">Please review and sign</a><br>
+            {% else %}
+                Signed {{ request.user.useraccount.archeryClubWaiverSignedDate }}<br>
+            {% endif %}
+            <a href="{% static 'RulesOfConduct.pdf' %}">Rules of Conduct</a> <br>
+            {% if request.user.useraccount.rulesOfConductWaiverSigned == False %}
+                <a href="{% url 'rulesOfConductWaiver' %}">Please review and sign</a><br>
+            {% else %}
+                Signed {{ request.user.useraccount.rulesOfConductWaiverSignedDate }}<br>
+            {% endif %}
+            <a href="{% static 'WillowsfordWaiver.pdf' %}">Willowsford Conservancy Waiver</a> <br>
+            {% if request.user.useraccount.willowsfordWaiverSigned == False %}
+                <a href="{% url 'willowsfordWaiver' %}">Please review and sign</a><br>
+            {% else %}
+                Signed {{ request.user.useraccount.willowsfordWaiverSignedDate }}<br>
+            {% endif %}
         
           <a href="" class="btn">Sign Waivers</a>
         </div>
         <div class="top-box top-box-b">
           <h4>Payment Portal</h4>
-<!--          <div id="smart-button-container">-->
-<!--            <div style="text-align: center"><label for="description">Member Dues </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="{{ total_balance }}"></div>-->
-<!--              <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>-->
-<!--            <div style="text-align: center"><label for="amount">Enter Amount  </label><input name="amountInput" type="number" id="amount" value="{{ total_balance }}" ><span> USD</span></div>-->
-<!--              <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>-->
-<!--            <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid">You Pay </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="{{ total_balance }}" ></div>-->
-<!--              <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>-->
-<!--            -->
-<!--            <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>-->
-<!--          </div>-->
-<!--          <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>-->
-          <div id="smart-button-container">
+            <div id="smart-button-container">
             <div style="text-align: center"><label for="description">Membership Dues </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="{{ total_balance }}"></div>
               <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
             <div style="text-align: center"><label for="amount">Payment Amount </label><input name="amountInput" type="number" id="amount" value="{{ total_balance }}" ><span> USD</span></div>

@@ -25,19 +25,57 @@ def register(request):
 
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
 
-# def registerptwo(request, user_fk):
-#     user_account = User.objects.get(username=user_fk)
-#     if request.POST:
-#         form = RegistrationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.username = user_account
-#             user.save()
-#             return HttpResponseRedirect(reverse('index'))
-#         # else:
-#         #     return render(request, 'registration/registration.html', {'form': form})
-#     else:
-#         form = RegistrationForm()
-#
-#     return render(request, 'Registration/registration2.html', {'form': form, 'username': user_fk})
+def willowsfordWaiver(request):
+    if request.method == "POST":
+        user = User.objects.get(username=request.user, instance=user.useraccount)
+        waiver_form = WillowsfordWaiverForm(request.POST)
+        if waiver_form.is_valid():
+            user = User.objects.get(username=request.user)
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday
+            waiver.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(waiver_form.errors)
+            return render(request, 'Registration/willowsfordWaiver.html', {'waiver_form': waiver_form})
+    else:
+        waiver_form = WillowsfordWaiverForm()
 
+    return render(request, 'Registration/willowsfordWaiver.html', {'waiver_form': waiver_form})
+
+def archeryWaiver(request):
+    if request.method == "POST":
+        user = User.objects.get(username=request.user)
+        waiver_form = ArcheryWaiverForm(request.POST, instance=user.useraccount)
+        if waiver_form.is_valid():
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday #Form breaks for some reason if bday isnt there.
+            waiver.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(waiver_form.errors)
+            return render(request, 'Registration/archeryWaiver.html.html', {'waiver_form': waiver_form})
+    else:
+        waiver_form = ArcheryWaiverForm()
+
+    return render(request, 'Registration/archeryWaiver.html', {'waiver_form': waiver_form})
+
+
+def rulesOfConductWaiver(request):
+    if request.method == "POST":
+        user = User.objects.get(username=request.user)
+        waiver_form = RulesOfConductWaiverForm(request.POST, instance=user.useraccount)
+        if waiver_form.is_valid():
+            user = User.objects.get(username=request.user)
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday
+
+            waiver.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(waiver_form.errors)
+            return render(request, 'Registration/rulesOfConductWaiver.html', {'waiver_form': waiver_form})
+    else:
+        waiver_form = RulesOfConductWaiverForm()
+
+    return render(request, 'Registration/rulesOfConductWaiver.html', {'waiver_form': waiver_form})

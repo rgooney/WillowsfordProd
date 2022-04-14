@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+import datetime
 
 STATES = (("Alabama","Alabama"),("Alaska","Alaska"),("Arizona","Arizona"),("Arkansas","Arkansas"),
           ("California","California"),("Colorado","Colorado"),("Connecticut","Connecticut"),
@@ -37,6 +38,16 @@ class UserAccount(models.Model):
     admin = models.BooleanField(default=False)
     officer = models.BooleanField(default=False)
     phonenumber = PhoneNumberField(blank=True)
+
+    willowsfordWaiverSigned = models.BooleanField(default=False)
+    willowsfordWaiverSignedInitials = models.CharField(blank=True, null=True, max_length=5)
+    willowsfordWaiverSignedDate = models.DateField(blank=True, null=True, default=datetime.date.today)
+    archeryClubWaiverSigned = models.BooleanField(default=False)
+    archeryClubWaiverSignedInitials = models.CharField(blank=True, null=True, max_length=5)
+    archeryClubWaiverSignedDate = models.DateField(blank=True, null=True, default=datetime.date.today)
+    rulesOfConductWaiverSigned = models.BooleanField(default=False)
+    rulesOfConductWaiverSignedInitials = models.CharField(blank=True, null=True, max_length=5)
+    rulesOfConductWaiverSignedDate = models.DateField(blank=True, null=True, default=datetime.date.today)
 
     def __str__(self):
         return self.fname + " " + self.lname

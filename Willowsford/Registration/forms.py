@@ -22,5 +22,35 @@ class RegistrationForm(forms.ModelForm):
         fields = ("fname", "mid_initial", "lname", "gender", "bday", "street", "city", "state", "membershipType", "phonenumber")
 
         widgets = {
-            "bday": forms.DateInput(),
+            "bday": forms.DateInput(attrs={'type': 'date'})
+        }
+
+class WillowsfordWaiverForm(forms.ModelForm):
+    class Meta:
+        model = UserAccount
+        fields = ["willowsfordWaiverSigned", "willowsfordWaiverSignedInitials", "willowsfordWaiverSignedDate"]
+
+        widgets = {
+            "willowsfordWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
+            "willowsfordWaiverSigned": forms.BooleanField(),
+        }
+
+class ArcheryWaiverForm(forms.ModelForm):
+    class Meta:
+        model = UserAccount
+        fields = ["archeryClubWaiverSigned", "archeryClubWaiverSignedInitials", "archeryClubWaiverSignedDate"]
+
+        widgets = {
+            "archeryClubWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
+            "willowsfordWaiverSigned": forms.BooleanField(),
+        }
+
+class RulesOfConductWaiverForm(forms.ModelForm):
+    class Meta:
+        model = UserAccount
+        fields = ["rulesOfConductWaiverSigned", "rulesOfConductWaiverSignedInitials", "rulesOfConductWaiverSignedDate"]
+
+        widgets = {
+            "rulesOfConductWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
+            "willowsfordWaiverSigned": forms.BooleanField(),
         }

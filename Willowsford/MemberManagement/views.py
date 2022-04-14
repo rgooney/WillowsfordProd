@@ -5,10 +5,11 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.db.models import Sum
+from django.views.generic import TemplateView
 
 from .models import *
 from .forms import *
-from django.views.generic import TemplateView
+from Registration.forms import *
 from Registration.models import *
 
 # Create your views here.
@@ -41,6 +42,7 @@ def dashboard(request):
     except Statement.DoesNotExist:
         statement = None
 
+    # Form field data for check-in
     if request.method == "POST":
         checkin_form = CheckInForm(request.POST)
         if checkin_form.is_valid():
@@ -66,6 +68,7 @@ def statements(request):
         statement = None
 
     return render(request, 'MemberManagement/statements.html', {'statements': statements, 'total_balance': total_balance})
+
 
 class PaypalReturnView(TemplateView):
     template_name = 'paypal_success.html'
