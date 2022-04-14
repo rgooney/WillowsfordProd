@@ -49,7 +49,7 @@ def archeryWaiver(request):
         waiver_form = ArcheryWaiverForm(request.POST, instance=user.useraccount)
         if waiver_form.is_valid():
             waiver = waiver_form.save(commit=False)
-            waiver.bday = user.useraccount.bday
+            waiver.bday = user.useraccount.bday #Form breaks for some reason if bday isnt there.
             waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
