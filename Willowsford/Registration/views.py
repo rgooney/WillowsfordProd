@@ -27,13 +27,13 @@ def register(request):
 
 def willowsfordWaiver(request):
     if request.method == "POST":
+        user = User.objects.get(username=request.user, instance=user.useraccount)
         waiver_form = WillowsfordWaiverForm(request.POST)
         if waiver_form.is_valid():
             user = User.objects.get(username=request.user)
-            user.willowsfordWaiverSigned = waiver_form.fields['willowsfordWaiverSigned']
-            user.willowsfordWaiverSignedInitials = waiver_form.fields['willowsfordWaiverSignedInitials']
-            user.willowsfordWaiverSignedDate = waiver_form.fields['willowsfordWaiverSignedDate']
-            user.save()
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday
+            waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
             print(waiver_form.errors)
@@ -45,13 +45,12 @@ def willowsfordWaiver(request):
 
 def archeryWaiver(request):
     if request.method == "POST":
-        waiver_form = ArcheryWaiverForm(request.POST)
+        user = User.objects.get(username=request.user)
+        waiver_form = ArcheryWaiverForm(request.POST, instance=user.useraccount)
         if waiver_form.is_valid():
-            user = User.objects.get(username=request.user)
-            user.useraccount.archeryClubWaiverSigned = waiver_form.fields['archeryClubWaiverSigned']
-            user.useraccount.archeryClubWaiverSignedInitials = waiver_form.fields['archeryClubWaiverSignedInitials']
-            user.useraccount.archeryClubWaiverSignedDate = waiver_form.fields['archeryClubWaiverSignedDate']
-            user.useraccount.save()
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday #Form breaks for some reason if bday isnt there.
+            waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
             print(waiver_form.errors)
@@ -64,10 +63,14 @@ def archeryWaiver(request):
 
 def rulesOfConductWaiver(request):
     if request.method == "POST":
-        waiver_form = RulesOfConductWaiverForm(request.POST)
+        user = User.objects.get(username=request.user)
+        waiver_form = RulesOfConductWaiverForm(request.POST, instance=user.useraccount)
         if waiver_form.is_valid():
-            user = waiver_form.save(commit=False)
-            user.save()
+            user = User.objects.get(username=request.user)
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday
+
+            waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
             print(waiver_form.errors)
