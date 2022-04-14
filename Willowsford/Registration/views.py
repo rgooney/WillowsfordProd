@@ -25,6 +25,7 @@ def register(request):
 
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
 
+@login_required(login_url='signIn')
 def willowsfordWaiver(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user, instance=user.useraccount)
@@ -43,6 +44,7 @@ def willowsfordWaiver(request):
 
     return render(request, 'Registration/willowsfordWaiver.html', {'waiver_form': waiver_form})
 
+@login_required(login_url='signIn')
 def archeryWaiver(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)
@@ -60,7 +62,7 @@ def archeryWaiver(request):
 
     return render(request, 'Registration/archeryWaiver.html', {'waiver_form': waiver_form})
 
-
+@login_required(login_url='signIn')
 def rulesOfConductWaiver(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from .forms import ManualScoringModelForm
 
 # Create your views here.
-
+@login_required(login_url='signIn')
 def manualScoring(request):
     if request.POST:
         form = ManualScoringModelForm(request.POST)

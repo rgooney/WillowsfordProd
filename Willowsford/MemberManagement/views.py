@@ -33,7 +33,7 @@ def signIn(request):
 
     return render(request, 'MemberManagement/signIn.html', {"form": form})
 
-
+@login_required(login_url='signIn')
 def dashboard(request):
     user = User.objects.get(username=request.user)
     try:
@@ -58,6 +58,7 @@ def dashboard(request):
 
     return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance, 'checkin_form': checkin_form})
 
+@login_required(login_url='signIn')
 def statements(request):
     user = User.objects.get(username=request.user)
     try:
