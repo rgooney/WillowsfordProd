@@ -22,10 +22,12 @@ def signIn(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None:
+            if user is not None and user.useraccount.approved == True:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
                 return HttpResponseRedirect(reverse('index'))
+            elif user.useraccount.approved == False:
+                messages.error(request, "Account is not yet approved. Please contanct a club officer.")
             else:
                 messages.error(request, "Invalid username or password")
         else:

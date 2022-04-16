@@ -31,9 +31,12 @@
     <form action="" class="form" method="post">
       <img src="{% static 'img/avatar.png' %}" alt="">
       <h2>Login</h2>
-      {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-      {% endif %}
+      {% for message in messages %}
+        <div class="alert alert-success">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+               {{ message }}
+        </div>
+      {% endfor %}
       <div class="input-group">
         {{ form.username }}
         <label for="{{ form.username.id_for_label }}">User Name</label>
