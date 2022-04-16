@@ -14,6 +14,8 @@ def register(request):
             user.save()
             extended_user_info = extended_user_form.save(commit=False)
             extended_user_info.save()
+            user_form.first_name = extended_user_form.cleaned_data['fname']
+            user_form.last_name = extended_user_form.cleaned_data['lname']
             return HttpResponseRedirect(reverse('index'))
         else:
             print(user_form.errors)

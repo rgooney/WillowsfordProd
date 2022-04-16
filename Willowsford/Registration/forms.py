@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 import datetime
 
 from .models import *
+from phonenumber_field.formfields import *
 
 year = datetime.datetime.now().date().strftime("%Y")
 
@@ -17,13 +18,18 @@ class UserAccountForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
 class RegistrationForm(forms.ModelForm):
+    phonenumber = PhoneNumberField(widget=forms.TextInput(attrs={'onkeydown':'phoneNumberFormatter()'}))
+
     class Meta:
         model = UserAccount
         fields = ("fname", "mid_initial", "lname", "gender", "bday", "street", "city", "state", "membershipType", "phonenumber")
 
+
         widgets = {
-            "bday": forms.DateInput(attrs={'type': 'date'})
+            "bday": forms.DateInput(attrs={'type': 'date'}),
         }
+
+
 
 class WillowsfordWaiverForm(forms.ModelForm):
     class Meta:
