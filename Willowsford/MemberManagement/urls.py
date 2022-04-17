@@ -9,4 +9,5 @@ urlpatterns = [
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('paypal-return/', views.PaypalReturnView.as_view(), name='paypal-return'),
     path('paypal-cancel/', views.PaypalCancelView.as_view(), name='paypal-cancel'),
+    path('scores', views.scores, name="scores"),
 ]
