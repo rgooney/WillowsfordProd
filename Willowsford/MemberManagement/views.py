@@ -12,6 +12,7 @@ import datetime
 
 from .models import *
 from .forms import *
+from Scoring.models import *
 from Registration.forms import *
 from Registration.models import *
 
@@ -108,6 +109,15 @@ def statements(request):
     return render(request, 'MemberManagement/statements.html', {'statements': statements, 'total_balance': total_balance,
                                                                 'waiver_date': waiver_date, 'volunteer_sum': volunteer_sum})
 
+@login_required(login_url='signIn')
+def scores(request):
+    user = User.objects.get(username=request.user)
+    try:
+        scores = Scores.objects.filter(account_id=user.useraccount).all()
+    except Statement.DoesNotExist:
+        scores = None
+
+    return render(request, 'Scoring/viewScores.html', {'scores': scores,})
 
 class PaypalReturnView(TemplateView):
     template_name = 'paypal_success.html'
