@@ -1,0 +1,135 @@
+{% extends 'MemberManagement/statements.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <h2> Scores for {{ request.user.useraccount.fname }} {{ request.user.useraccount.lname }}</h2>
+    <div class="">
+        <table class="table">
+
+    {% for score in scores %}
+        <tr class="table-header">
+            <td> Score ID </td>
+            <td> Shooting Style </td>
+            <td> Distance </td>
+            <td> Total Score </td>
+            <td> Date and Time </td>
+            <td> Validator </td>
+            <td> Approved </td>
+        </tr>
+        <tr class="active">
+            <td> {{score.score_id}} </td>
+            <td> {{score.shooting_style}} </td>
+            <td> {{score.distance}} </td>
+            <td> {{score.score}} </td>
+            <td> {{score.datetime}} </td>
+            <td> {{score.validator_name}} </td>
+            <td> {{score.validator_approval}} </td>
+        </tr>
+        <tr class="table-header">
+            <td> Round </td>
+            <td> Round Cumulative </td>
+            <td> Round Subtotal </td>
+            <td> End 1 </td>
+            <td> End 2 </td>
+            <td> End 3 </td>
+            <td> Comments </td>
+        </tr>
+        <tr class="active">
+            <td> Round 1 </td>
+            <td> {{score.cumulativeRoundOne}} </td>
+            <td> {{score.subtotalRoundOne}} </td>
+            <td> {{score.r1n1}} </td>
+            <td> {{score.r1n2}} </td>
+            <td> {{score.r1n3}} </td>
+            <td> {{score.commentRoundOne}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 2 </td>
+            <td> {{score.cumulativeRoundTwo}} </td>
+            <td> {{score.subtotalRoundTwo}} </td>
+            <td> {{score.r2n1}} </td>
+            <td> {{score.r2n2}} </td>
+            <td> {{score.r2n3}} </td>
+            <td> {{score.commentRoundTwo}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 3 </td>
+            <td> {{score.cumulativeRoundThree}} </td>
+            <td> {{score.subtotalRoundThree}} </td>
+            <td> {{score.r3n1}} </td>
+            <td> {{score.r3n2}} </td>
+            <td> {{score.r3n3}} </td>
+            <td> {{score.commentRoundThree}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 4 </td>
+            <td> {{score.cumulativeRoundFour}} </td>
+            <td> {{score.subtotalRoundFour}} </td>
+            <td> {{score.r4n1}} </td>
+            <td> {{score.r4n2}} </td>
+            <td> {{score.r4n3}} </td>
+            <td> {{score.commentRoundFour}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 5 </td>
+            <td> {{score.cumulativeRoundFive}} </td>
+            <td> {{score.subtotalRoundFive}} </td>
+            <td> {{score.r5n1}} </td>
+            <td> {{score.r5n2}} </td>
+            <td> {{score.r5n3}} </td>
+            <td> {{score.commentRoundFive}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 6 </td>
+            <td> {{score.cumulativeRoundSix}} </td>
+            <td> {{score.subtotalRoundSix}} </td>
+            <td> {{score.r6n1}} </td>
+            <td> {{score.r6n2}} </td>
+            <td> {{score.r6n3}} </td>
+            <td> {{score.commentRoundSix}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 7 </td>
+            <td> {{score.cumulativeRoundSeven}} </td>
+            <td> {{score.subtotalRoundSeven}} </td>
+            <td> {{score.r7n1}} </td>
+            <td> {{score.r7n2}} </td>
+            <td> {{score.r7n3}} </td>
+            <td> {{score.commentRoundSeven}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 8 </td>
+            <td> {{score.cumulativeRoundEight}} </td>
+            <td> {{score.subtotalRoundEight}} </td>
+            <td> {{score.r8n1}} </td>
+            <td> {{score.r8n2}} </td>
+            <td> {{score.r8n3}} </td>
+            <td> {{score.commentRoundEight}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 9 </td>
+            <td> {{score.cumulativeRoundNine}} </td>
+            <td> {{score.subtotalRoundNine}} </td>
+            <td> {{score.r9n1}} </td>
+            <td> {{score.r9n2}} </td>
+            <td> {{score.r9n3}} </td>
+            <td> {{score.commentRoundNine}} </td>
+        </tr>
+        <tr class="active">
+            <td> Round 10 </td>
+            <td> {{score.cumulativeRoundTen}} </td>
+            <td> {{score.subtotalRoundTen}} </td>
+            <td> {{score.r10n1}} </td>
+            <td> {{score.r10n2}} </td>
+            <td> {{score.r10n3}} </td>
+            <td> {{score.commentRoundTen}} </td>
+        </tr>
+    {% endfor %}
+    </table>
+    </div>
+
+    {% block footer %}
+    {% endblock footer %}
+</body>
+{% endblock content %}
