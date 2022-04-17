@@ -53,6 +53,7 @@ def dashboard(request):
             checkin = checkin_form.save(commit=False)
             checkin.account_id = user.useraccount
             checkin.save()
+            messages.success(request, "Successfully Checked In.")
             return HttpResponseRedirect(reverse('dashboard'))
         else:
             print(checkin_form.errors)

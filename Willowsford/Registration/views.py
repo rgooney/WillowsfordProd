@@ -13,10 +13,7 @@ def register(request):
             user = user_form.save()
             extended_user_info = extended_user_form.save(commit=False)
             extended_user_info.user = user
-
-
             extended_user_info.save()
-
             return HttpResponseRedirect(reverse('index'))
         else:
             print(user_form.errors)

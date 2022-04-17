@@ -5,7 +5,21 @@ from .models import *
 
 
 class RegistrationAdmin(admin.ModelAdmin):
-    list_display = ('account_id','approved', 'fname', 'lname', 'street', 'city')
-
+    list_display = ('account_id', 'fname', 'lname', 'approved', 'membershipType', 'officer')
+    fieldsets = (
+        (None, {
+            'fields': ('user', 'fname', 'mid_initial', 'lname', 'gender', 'bday', 'approved', 'officer', 'membershipType')
+        }),
+        ('Contact Information', {
+            'classes': ('collapse',),
+            'fields': ('street', 'city', 'state', 'phonenumber')
+        }),
+        ('Waivers', {
+            'classes': ('collapse',),
+            'fields': ('willowsfordWaiverSigned', 'willowsfordWaiverSignedInitials', 'willowsfordWaiverSignedDate',
+                       'archeryClubWaiverSigned', 'archeryClubWaiverSignedInitials', 'archeryClubWaiverSignedDate',
+                       'rulesOfConductWaiverSigned', 'rulesOfConductWaiverSignedInitials', 'rulesOfConductWaiverSignedDate')
+        }),
+    )
 admin.site.register(UserAccount, RegistrationAdmin)
 

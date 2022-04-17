@@ -20,6 +20,7 @@
           <h1>Scoring App</h1>
           <p>Information regarding Scoring and how to use the application are provided under the scoring app information section.</p>
           <a href="{% url 'manualScoring' %}" class="btn">Open Scoring App</a>
+          <a href="#" class="btn">View Past Scores</a>
         </header>
         <div class="top-box top-box-a">
           <h4>Membership Status</h4>
@@ -51,9 +52,9 @@
             <div id="smart-button-container">
             <div style="text-align: center"><label for="description">Membership Dues </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="{{ total_balance }}"></div>
               <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
-            <div style="text-align: center"><label for="amount">Payment Amount </label><input name="amountInput" type="number" id="amount" value="{{ total_balance }}" ><span> USD</span></div>
+            <div style="text-align: center"><label for="amount">Payment Amount </label><input name="amountInput" type="number" id="amount" value="0" ><span> USD</span></div>
               <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
-            <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="{{ total_balance }}" ></div>
+            <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="0" ></div>
               <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
               <div><a href="{% url 'statements' %}">All statements</a></div>
             <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
@@ -174,6 +175,13 @@
       <!-- Boxes Section -->
       <section class="boxes">
         <div class="box">
+            {% if messages %}
+            <ul class="messages" style="list-style: none;">
+                {% for message in messages %}
+                <p {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </p>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <form action="" class="form" method="post">
               <h2>Range Check-In</h2>
               <div class="input-group">
@@ -199,7 +207,7 @@
         <div class="box">
           <i class="fas fa-globe fa-4x"></i>
           <h3>Account Information</h3>
-            <ul>
+            <ul style="list-style: none;">
                 <li>Contact Number: {{ request.user.useraccount.phonenumber }}</li>
                 <li>Birthday: {{ request.user.useraccount.bday }}</li>
                 <li>Email: {{ request.user.email }}</li>
