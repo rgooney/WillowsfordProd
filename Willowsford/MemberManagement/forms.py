@@ -34,6 +34,7 @@ class CheckInForm(forms.ModelForm):
         fields = ["date", "time_in","time_out","checkin_type", "account_id"]
 
         widgets = {
+            "date": forms.DateInput(attrs={'type': 'date'}),
             "time_in": forms.TimeInput(attrs={'type': 'time'}),
             "time_out": forms.TimeInput(attrs={'type': 'time'}),
         }

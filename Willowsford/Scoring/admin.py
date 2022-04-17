@@ -4,7 +4,10 @@ from .models import *
 # Register your models here.
 
 class ScoringAdmin(admin.ModelAdmin):
-    list_display = ('score_id', 'account_id', 'datetime', 'validator_name', 'validator_approval')
+    list_display = ('score_id', 'account_id', 'datetime', 'validator_name', 'validator_approval', 'shooting_style' ,'distance', 'score')
+    search_fields = ['score_id', 'account_id', 'datetime', 'validator_name']
+    list_filter = ('validator_approval', 'shooting_style' ,'distance',)
+
     readonly_fields = ('cumulativeRoundOne', 'cumulativeRoundTwo', 'cumulativeRoundThree', 'cumulativeRoundFour',
                        'cumulativeRoundFive', 'cumulativeRoundSix', 'cumulativeRoundSeven', 'cumulativeRoundEight',
                        'cumulativeRoundNine', 'cumulativeRoundTen', 'subtotalRoundOne', 'subtotalRoundTwo',
