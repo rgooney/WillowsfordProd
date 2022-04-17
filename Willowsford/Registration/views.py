@@ -10,24 +10,27 @@ def register(request):
         user_form = UserAccountForm(request.POST)
         extended_user_form = RegistrationForm(request.POST)
         if user_form.is_valid() and extended_user_form.is_valid():
-            user = user_form.save(commit=False)
-            user.save()
+            user = user_form.save()
             extended_user_info = extended_user_form.save(commit=False)
+            extended_user_info.user = user
+
+
             extended_user_info.save()
-            user_form.first_name = extended_user_form.cleaned_data['fname']
-            user_form.last_name = extended_user_form.cleaned_data['lname']
+
             return HttpResponseRedirect(reverse('index'))
         else:
             print(user_form.errors)
             print(extended_user_form.errors)
             return render(request, 'Registration/registration.html',
                           {'user_form': user_form, 'extended_user_form': extended_user_form})
+            # return render(request, 'Registration/registration.html', {'extended_user_form': extended_user_form})
     else:
         user_form = UserAccountForm()
         extended_user_form = RegistrationForm()
 
 
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
+    # return render(request, 'Registration/registration.html',{'extended_user_form': extended_user_form})
 
 @login_required(login_url='signIn')
 def willowsfordWaiver(request):
