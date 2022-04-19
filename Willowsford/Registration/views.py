@@ -20,14 +20,13 @@ def register(request):
             print(extended_user_form.errors)
             return render(request, 'Registration/registration.html',
                           {'user_form': user_form, 'extended_user_form': extended_user_form})
-            # return render(request, 'Registration/registration.html', {'extended_user_form': extended_user_form})
     else:
         user_form = UserAccountForm()
         extended_user_form = RegistrationForm()
 
 
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
-    # return render(request, 'Registration/registration.html',{'extended_user_form': extended_user_form})
+
 
 @login_required(login_url='signIn')
 def willowsfordWaiver(request):
