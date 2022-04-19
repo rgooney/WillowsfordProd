@@ -25,7 +25,7 @@ class Scores(models.Model):
     validator_name = models.CharField(max_length=20, blank=True, null=True)
     validator_approval = models.BooleanField(default=False)
     account_id = models.ForeignKey(UserAccount, blank=True, null=True, on_delete=models.CASCADE)
-
+    
     r1n1 = models.IntegerField("Round 1 End 1", default=0,validators=[MaxValueValidator(5),MinValueValidator(0)])
     r1n2 = models.IntegerField("Round 1 End 2", default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
     r1n3 = models.IntegerField("Round 1 End 3",default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
