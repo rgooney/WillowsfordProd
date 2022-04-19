@@ -116,7 +116,6 @@ def scores(request):
         scores = Scores.objects.filter(account_id=user.useraccount).all()
         maxValue = 0
         for i in scores:
-            
             #going thru each of the scores in users, for that user, referencing Scoring and models [score ' total score' ]
             # find max score, set a var to 0 and compare it to that, after - sitatuion w/ mult scores w/ same max value 
             #greater than or equal if i.score >= the last score that has the highest score record the last one it looks at 
