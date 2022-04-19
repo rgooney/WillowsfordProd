@@ -114,10 +114,21 @@ def scores(request):
     user = User.objects.get(username=request.user)
     try:
         scores = Scores.objects.filter(account_id=user.useraccount).all()
+        maxValue = 0
+        for i in scores:
+            #going thru each of the scores in users, for that user, referencing Scoring and models [score ' total score' ]
+            # find max score, set a var to 0 and compare it to that, after - sitatuion w/ mult scores w/ same max value 
+            #greater than or equal if i.score >= the last score that has the highest score record the last one it looks at 
+            #last one it looks at should be max score 
+            # just do it to point where u can print max score
+            # dont do date time comparison
+            # save into a variable and pass it back into the page, instead of print save into a var 
+            if i.score >= maxValue:
+                max = i #saving the whole object score id and date and everything
     except Statement.DoesNotExist:
         scores = None
 
-    return render(request, 'Scoring/viewScores.html', {'scores': scores,})
+    return render(request, 'Scoring/viewScores.html', {'scores': scores, 'max' : max}) #passing object 
 
 class PaypalReturnView(TemplateView):
     template_name = 'paypal_success.html'
