@@ -8,6 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'dashboard.css' %}">
     <title>Dashboard</title>
+    <div class="container">
+        <div id="branding">
+            <h1><span class="highlight">Willowsford</span> Archery Club</h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="current"><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'services' %}">Membership</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">{{ request.user.useraccount.fname }}'s Dashboard</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
+                {% endif %}
+                <li><a href="{% url 'signout' %}">Signout</a></li>
+                {% else %}
+                <li><a href="{% url 'signIn' %}">Sign In</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
 </head>
 {% endblock head %}
 
@@ -45,7 +66,6 @@
                 Signed {{ request.user.useraccount.willowsfordWaiverSignedDate }}<br>
             {% endif %}
         
-          <a href="" class="btn">Sign Waivers</a>
         </div>
         <div class="top-box top-box-b">
           <h4>Payment Portal</h4>
@@ -217,7 +237,7 @@
     {% endblock content %}
     {% block footer %}
       <footer>
-        <p>Willowsford Arhery Club &copy; 2018</p>
+        <p>Willowsford Archery Club &copy; 2022</p>
       </footer>
     {% endblock footer %}
     </div>
