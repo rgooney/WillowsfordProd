@@ -2,7 +2,8 @@
 {% load static %}
 
     {% block content %}
-        <embed src="{% static 'ArcheryClubWaiver.pdf' %}" width="500" height="375" type="application/pdf">
+        <center>
+                    <embed src="{% static 'ArcheryClubWaiver.pdf' %}" width="700" height="400" type="application/pdf">
          <div class="box">
             <form action="" class="form" method="post">
               <h2>Waiver Agreement</h2>
@@ -22,4 +23,6 @@
               <input type="submit" value="Check In" class="submit-btn">
             </form>
         </div>
+        </center>
+
     {% endblock content %}
