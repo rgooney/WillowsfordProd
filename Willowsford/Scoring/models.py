@@ -14,7 +14,7 @@ DISTANCE = (('The Willowsford', 'The Willowsford'),
             ('10 yards', '20 yards'),
             ('10 yards', '30 yards'),
             ('10 yards', '40 yards'),
-            ('10 yards', '50 yards'))
+            ('10 yards', '60 yards'))
 
 class Scores(models.Model):
     score_id = models.AutoField(primary_key=True)
