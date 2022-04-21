@@ -355,4 +355,9 @@ footer{
     align-items: center;
     justify-content: center;
 }
-
+.facebook {
+  float:left;
+}
+.join {
+  float:right;
+}
