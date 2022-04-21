@@ -95,9 +95,9 @@ header a:hover{
   background:#667760
 }
 
-#newsletter h1{
+/* #newsletter h1{
   float:left;
-}
+} */
 
 #newsletter form {
   float:right;
@@ -357,7 +357,9 @@ footer{
 }
 .facebook {
   float:left;
+  color:white;
 }
 .join {
   float:right;
+  color:white;
 }
