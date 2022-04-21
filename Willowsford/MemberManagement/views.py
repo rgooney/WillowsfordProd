@@ -29,7 +29,7 @@ def signIn(request):
                 messages.info(request, f"You are now logged in as {username}.")
                 return HttpResponseRedirect(reverse('index'))
             elif user.useraccount.approved == False:
-                messages.error(request, "Account is not yet approved. Please contanct a club officer.")
+                messages.error(request, "Account is not yet approved. Please contact a club officer.")
             else:
                 messages.error(request, "Invalid username or password")
         else:
@@ -116,15 +116,12 @@ def scores(request):
         scores = Scores.objects.filter(account_id=user.useraccount).all()
         maxValue = 0
         for i in scores:
-            #going thru each of the scores in users, for that user, referencing Scoring and models [score ' total score' ]
-            # find max score, set a var to 0 and compare it to that, after - sitatuion w/ mult scores w/ same max value 
-            #greater than or equal if i.score >= the last score that has the highest score record the last one it looks at 
-            #last one it looks at should be max score 
-            # just do it to point where u can print max score
-            # dont do date time comparison
-            # save into a variable and pass it back into the page, instead of print save into a var 
             if i.score >= maxValue:
-                max = i #saving the whole object score id and date and everything
+                print('Current ID: ' + str(i.score_id))
+                print('Current Score:' + str(i.score))
+                print('Current Max:' + str(maxValue))
+                maxValue = i.score
+                max = i
     except Statement.DoesNotExist:
         scores = None
 

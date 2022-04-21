@@ -95,3 +95,6 @@ class Scores(models.Model):
     commentRoundTen = models.CharField(null=True, blank=True, max_length=50)
     cumulativeRoundTen = models.IntegerField(default=0)
     subtotalRoundTen = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = "scores"

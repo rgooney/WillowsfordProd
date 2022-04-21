@@ -27,8 +27,10 @@ class Statement(models.Model):
     bill_date = models.DateField(default=datetime.date.today)
     due_date = models.DateField(blank=True, null=True)
     paid = models.BooleanField(default=False)
+    paid_date = models.DateField(blank=True, null=True)
     account_id = models.ForeignKey(UserAccount, blank=True, null=True, on_delete=models.CASCADE)
     amount_due = models.DecimalField(max_digits=8, decimal_places=2)
+    amount_paid = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True, default=0)
 
     def __str__(self):
         return str(self.statement_id) + ": " + self.account_id.fname + self.account_id.lname

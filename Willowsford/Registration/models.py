@@ -26,7 +26,7 @@ class UserAccount(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     account_id = models.AutoField(primary_key=True)
     fname = models.CharField("First Name", max_length=30)
-    mid_initial = models.CharField("Middle Initial", max_length=2)
+    mid_initial = models.CharField("Middle Initial", max_length=2, blank=True, null=True)
     lname = models.CharField("Last name", max_length=30)
     gender = models.CharField("Gender", max_length=10, choices=GENDER)
     bday = models.DateField("Birthday")
@@ -34,6 +34,7 @@ class UserAccount(models.Model):
     street = models.CharField("Street Address", max_length=30)
     city = models.CharField(max_length=30, default="Aldie")
     state = models.CharField(max_length=30, choices=STATES, default="Virginia")
+    zip = models.CharField(max_length=5, blank=False, null=False)
     phonenumber = PhoneNumberField("Phone Number", blank=True)
 
     approved = models.BooleanField(default=False)

@@ -89,7 +89,7 @@
           {{ extended_user_form.membershipType }}
         </div>
         <div class="input-group">
-          <label for="{{ extended_user_form.street.id_for_label }}">Street</label>
+          <label for="{{ extended_user_form.street.id_for_label }}">Address</label>
           {{ extended_user_form.street }}
         </div>
         <div class="input-group">
@@ -99,6 +99,10 @@
         <div class="input-group">
           <label for="{{ extended_user_form.state.id_for_label }}">State</label>
           {{ extended_user_form.state }}
+        </div>
+        <div class="input-group">
+          <label for="{{ extended_user_form.state.id_for_label }}">Zip</label>
+          {{ extended_user_form.zip}}
         </div>
           </br>
           <a href="{% static 'WAIVERS_Willowsford_Archery_Club.pdf' %}">Terms and Conditions</a> </br>
