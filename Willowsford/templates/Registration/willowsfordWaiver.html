@@ -2,24 +2,26 @@
 {% load static %}
 
     {% block content %}
-        <embed src="{% static 'WillowsfordWaiver.pdf' %}" width="500" height="375" type="application/pdf">
-         <div class="box">
-            <form action="" class="form" method="post">
-              <h2>Waiver Agreement</h2>
-              <div class="input-group">
-                <label for="{{ waiver_form.willowsfordWaiverSignedDate.id_for_label }}">Date</label>
-                {{ waiver_form.willowsfordWaiverSignedDate }}
-              </div>
-              <div class="input-group">
-                <label for="{{ waiver_form.willowsfordWaiverSignedInitials.id_for_label }}">Initials</label>
-                {{ waiver_form.willowsfordWaiverSignedInitials }}
-              </div>
-              <div class="input-group">
-                <label for="{{ waiver_form.willowsfordWaiverSigned.id_for_label }}">I agree</label>
-                {{ waiver_form.willowsfordWaiverSigned }}
-              </div>
-              {% csrf_token %}
-              <input type="submit" value="Check In" class="submit-btn">
-            </form>
-        </div>
+        <center>
+            <embed src="{% static 'WillowsfordWaiver.pdf' %}" width="700" height="400" type="application/pdf">
+             <div class="box">
+                <form action="" class="form" method="post">
+                  <h2>Waiver Agreement</h2>
+                  <div class="input-group">
+                    <label for="{{ waiver_form.willowsfordWaiverSignedDate.id_for_label }}">Date</label>
+                    {{ waiver_form.willowsfordWaiverSignedDate }}
+                  </div>
+                  <div class="input-group">
+                    <label for="{{ waiver_form.willowsfordWaiverSignedInitials.id_for_label }}">Initials</label>
+                    {{ waiver_form.willowsfordWaiverSignedInitials }}
+                  </div>
+                  <div class="input-group">
+                    <label for="{{ waiver_form.willowsfordWaiverSigned.id_for_label }}">I agree</label>
+                    {{ waiver_form.willowsfordWaiverSigned }}
+                  </div>
+                  {% csrf_token %}
+                  <input type="submit" value="Check In" class="submit-btn">
+                </form>
+            </div>
+        </center>
     {% endblock content %}

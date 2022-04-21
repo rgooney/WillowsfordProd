@@ -6,6 +6,7 @@
 
     <div class="flexbox-container">
     <div class="flexbox-item flexbox-item-1">
+
       <form action="{% url 'register' %}" class="form" method="post">
         {% csrf_token %}
 
@@ -105,10 +106,11 @@
           {{ extended_user_form.zip}}
         </div>
           </br>
-          <a href="{% static 'WAIVERS_Willowsford_Archery_Club.pdf' %}">Terms and Conditions</a> </br>
+           </br>
         <a href="{% url 'signIn' %}" class="forgot-pw">Already have an account</a>
           </br>
         <input type="submit" value="Submit" class="submit-btn">
+        <p>Please note that your application will have to be approved by an officer.</p>
 
 
         <script>
@@ -135,8 +137,6 @@
       </form>
     </div>
   </div>
-
-<div>
 
 
 
