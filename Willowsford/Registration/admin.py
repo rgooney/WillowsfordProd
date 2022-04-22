@@ -47,5 +47,10 @@ class RegistrationAdmin(admin.ModelAdmin):
 
         return most_recent_payment_amnt
 
+    def export_as_csv(self, request, queryset):
+        pass
+
+    export_as_csv.short_description = "Export Selected"
+
 admin.site.register(UserAccount, RegistrationAdmin)
 
