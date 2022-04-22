@@ -4,19 +4,32 @@ from decimal import Decimal
 from . import models
 from django.utils import timezone
 from Registration.models import UserAccount
-
+import csv
+from django.http import HttpResponse
 
 class CheckInAdmin(admin.ModelAdmin):
+    actions = ["export_as_csv"]
     list_display= ('checkin_id', 'account_id', 'date','checkin_type', 'time_in', 'time_out')
     search_fields = ['checkin_id', 'account_id', 'date', 'checkin_type']
     list_filter = ('checkin_type',)
 
-class StatementAdminForm(forms.ModelForm):
-    class Meta:
-        model = models.Statement
-        fields = ('statement_id', 'account_id', 'bill_date', 'amount_due', 'paid')
+    def export_as_csv(self, request, queryset):
+        meta = self.model._meta
+        field_names = [field.name for field in meta.fields]
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+        writer = csv.writer(response)
+
+        writer.writerow(field_names)
+        for obj in queryset:
+            row = writer.writerow([getattr(obj, field) for field in field_names])
+
+        return response
+
+    export_as_csv.short_description = "Export Selected as CSV"
 
 class StatementAdmin(admin.ModelAdmin):
+    actions = ["export_as_csv"]
     readonly_fields = ('volunteer_hours', 'current_year')
     fields = ('account_id', 'bill_date', 'due_date', 'amount_due', 'paid', 'amount_paid', 'paid_date', 'volunteer_hours', 'current_year')
     list_display = ('statement_id', 'account_id', 'bill_date', 'amount_due', 'paid', 'paid_date')
@@ -39,6 +52,20 @@ class StatementAdmin(admin.ModelAdmin):
     def current_year(self, obj):
         return timezone.now().year
 
+    def export_as_csv(self, request, queryset):
+        meta = self.model._meta
+        field_names = [field.name for field in meta.fields]
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+        writer = csv.writer(response)
+
+        writer.writerow(field_names)
+        for obj in queryset:
+            row = writer.writerow([getattr(obj, field) for field in field_names])
+
+        return response
+
+    export_as_csv.short_description = "Export Selected as CSV"
 
 # Register your models here.
 admin.site.register(models.CheckIn, CheckInAdmin)

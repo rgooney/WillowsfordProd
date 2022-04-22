@@ -2,11 +2,14 @@ from django.contrib import admin
 from .models import *
 from MemberManagement.models import Statement
 from datetime import datetime
+import csv
+from django.http import HttpResponse
 
 # Register your models here.
 
 
 class RegistrationAdmin(admin.ModelAdmin):
+    actions = ["export_as_csv"]
     list_display = ('account_id', 'fname', 'lname', 'approved', 'membershipType', 'officer', 'most_recent_payment_date',
                     'most_recent_payment_amnt')
     search_fields = ['account_id', 'fname', 'lname']
@@ -48,9 +51,19 @@ class RegistrationAdmin(admin.ModelAdmin):
         return most_recent_payment_amnt
 
     def export_as_csv(self, request, queryset):
-        pass
+        meta = self.model._meta
+        field_names = [field.name for field in meta.fields]
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+        writer = csv.writer(response)
 
-    export_as_csv.short_description = "Export Selected"
+        writer.writerow(field_names)
+        for obj in queryset:
+            row = writer.writerow([getattr(obj, field) for field in field_names])
+
+        return response
+
+    export_as_csv.short_description = "Export Selected as CSV"
 
 admin.site.register(UserAccount, RegistrationAdmin)
 
