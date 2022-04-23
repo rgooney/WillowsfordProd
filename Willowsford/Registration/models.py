@@ -42,14 +42,18 @@ class UserAccount(models.Model):
     officer = models.BooleanField(default=False)
 
     willowsfordWaiverSigned = models.BooleanField("Willowsford Waiver Signed", default=False)
-    willowsfordWaiverSignedInitials = models.CharField("Willowsford Waiver Initials", blank=True, null=True, max_length=5)
-    willowsfordWaiverSignedDate = models.DateField("Willowsford Waiver Signed Date", blank=True, null=True, default=datetime.date.today)
+    # willowsfordWaiverSignedInitials = models.CharField("Willowsford Waiver Initials", blank=True, null=True, max_length=5)
+    # willowsfordWaiverSignedDate = models.DateField("Willowsford Waiver Signed Date", blank=True, null=True, default=datetime.date.today)
     archeryClubWaiverSigned = models.BooleanField("Archery Club Waiver Signed", default=False)
-    archeryClubWaiverSignedInitials = models.CharField("Archery Club Waiver Initials", blank=True, null=True, max_length=5)
-    archeryClubWaiverSignedDate = models.DateField("Archery Club Waiver Signed Date", blank=True, null=True, default=datetime.date.today)
+    # archeryClubWaiverSignedInitials = models.CharField("Archery Club Waiver Initials", blank=True, null=True, max_length=5)
+    # archeryClubWaiverSignedDate = models.DateField("Archery Club Waiver Signed Date", blank=True, null=True, default=datetime.date.today)
     rulesOfConductWaiverSigned = models.BooleanField("Rules of Conduct Waiver Signed", default=False)
-    rulesOfConductWaiverSignedInitials = models.CharField("Rules of Conduct Waiver Initials", blank=True, null=True, max_length=5)
-    rulesOfConductWaiverSignedDate = models.DateField("Rules of ConductWaiver Signed Date", blank=True, null=True, default=datetime.date.today)
+    # rulesOfConductWaiverSignedInitials = models.CharField("Rules of Conduct Waiver Initials", blank=True, null=True, max_length=5)
+    # rulesOfConductWaiverSignedDate = models.DateField("Rules of ConductWaiver Signed Date", blank=True, null=True, default=datetime.date.today)
+
+    willowsfordWaiver = models.FileField(upload_to='waivers/member/', blank=True)
+    archeryClubWaiver = models.FileField(upload_to='waivers/member/', blank=True)
+    rulesOfConductWaiver = models.FileField(upload_to='waivers/member/', blank=True)
 
     def __str__(self):
         return self.fname + " " + self.lname

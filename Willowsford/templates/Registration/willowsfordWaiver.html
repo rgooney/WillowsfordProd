@@ -5,22 +5,15 @@
         <center>
             <embed src="{% static 'WillowsfordWaiver.pdf' %}" width="700" height="400" type="application/pdf">
              <div class="box">
-                <form action="" class="form" method="post">
+                <form action="" class="form" method="post" enctype="multipart/form-data">
                   <h2>Waiver Agreement</h2>
                   <div class="input-group">
-                    <label for="{{ waiver_form.willowsfordWaiverSignedDate.id_for_label }}">Date</label>
-                    {{ waiver_form.willowsfordWaiverSignedDate }}
+                    <label for="{{ waiver_form.willowsfordWaiver.id_for_label }}">Date</label>
+                    {{ waiver_form.willowsfordWaiver }}
                   </div>
-                  <div class="input-group">
-                    <label for="{{ waiver_form.willowsfordWaiverSignedInitials.id_for_label }}">Initials</label>
-                    {{ waiver_form.willowsfordWaiverSignedInitials }}
-                  </div>
-                  <div class="input-group">
-                    <label for="{{ waiver_form.willowsfordWaiverSigned.id_for_label }}">I agree</label>
-                    {{ waiver_form.willowsfordWaiverSigned }}
-                  </div>
+<!--                    {{ waiver_form.as_p }}-->
                   {% csrf_token %}
-                  <input type="submit" value="Check In" class="submit-btn">
+                  <input type="submit" value="Submit" class="submit-btn">
                 </form>
             </div>
         </center>
