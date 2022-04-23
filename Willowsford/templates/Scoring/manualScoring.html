@@ -25,14 +25,11 @@
                       {% csrf_token %} 
                         <fieldset id="shooter_Name">
                           <label for="customer_name"> Shooter's Name </label>
-                          {{ user.useraccount.fname }} {{ user.useraccount.lname }}
+                          <h2> {{ user.useraccount.fname }} {{ user.useraccount.lname }} </h2>
 
                           <!-- Remove if officers are always witnesses -->
                           <label for="witness_Name"> Witness's Name </label>
                           <input type="text" name="witness_name" id="witness_name">
-                      
-                          <label for="witness_Signature"> Witness's Signature </label>
-                          <input type="text" name="witness_signature" id="witness_signature">
                         </fieldset>
                         
                         <fieldset id="shooting_Style">
@@ -65,7 +62,7 @@
                                 <td> {{ form.r1n1 }} <p> Arrow 1 </p> </td>
                                 <td> {{ form.r1n2 }} <p> Arrow 2 </p> </td>
                                 <td> {{ form.r1n3 }} <p> Arrow 3 </p> </td>
-                                <td> {{ form.commentRoundOne }} <p> Notes </p> </td>
+                                <td> {{ form.commentRoundOne }} <p> # of X's </p> </td>
                           </tr>
 
 
@@ -79,7 +76,7 @@
                             <td> {{ form.r2n1 }} <p> Arrow 1 </p> </td>
                             <td> {{ form.r2n2 }} <p> Arrow 2 </p> </td>
                             <td> {{ form.r2n3 }} <p> Arrow 3 </p> </td>
-                            <td> {{ form.commentRoundTwo }} <p> Notes </p> </td>
+                            <td> {{ form.commentRoundTwo }} <p> # of X's </p> </td>
                           </tr>
                           <tr>
                               <td><h3> Round 3 </h3></td>
@@ -91,7 +88,7 @@
                             <td> {{ form.r3n1 }} <p> Arrow 1 </p> </td>
                             <td> {{ form.r3n2 }} <p> Arrow 2 </p> </td>
                             <td> {{ form.r3n3 }} <p> Arrow 3 </p> </td>
-                            <td> {{ form.commentRoundThree }} <p> Notes </p> </td>
+                            <td> {{ form.commentRoundThree }} <p> # of X's </p> </td>
                           </tr>
                           <tr>
                               <td><h3> Round 4 </h3></td>
@@ -103,7 +100,7 @@
                                 <td> {{ form.r4n1 }} <p> Arrow 1 </p> </td>
                                 <td> {{ form.r4n2 }} <p> Arrow 2 </p> </td>
                                 <td> {{ form.r4n3 }} <p> Arrow 3 </p> </td>
-                                <td> {{ form.commentRoundFour }} <p> Notes </p> </td>
+                                <td> {{ form.commentRoundFour }} <p> # of X's </p> </td>
                           </tr>
                           <tr>
                               <td><h3> Round 5 </h3></td>
@@ -115,7 +112,7 @@
                                 <td> {{ form.r5n1 }} <p> Arrow 1 </p> </td>
                                 <td> {{ form.r5n2 }} <p> Arrow 2 </p> </td>
                                 <td> {{ form.r5n3 }} <p> Arrow 3 </p> </td>
-                                <td> {{ form.commentRoundFive }} <p> Notes </p> </td>
+                                <td> {{ form.commentRoundFive }} <p> # of X's </p> </td>
                           </tr>
                           <tr>
                               <td><h3> Round 6 </h3></td>
@@ -126,7 +123,7 @@
                                 <td> {{ form.r6n1 }} <p> Arrow 1 </p> </td>
                                 <td> {{ form.r6n2 }} <p> Arrow 2 </p> </td>
                                 <td> {{ form.r6n3 }} <p> Arrow 3 </p> </td>
-                                <td> {{ form.commentRoundSix }} <p> Notes </p> </td>
+                                <td> {{ form.commentRoundSix }} <p> # of X's </p> </td>
                           </tr>
                           <tr>
                               <td><h3> Round 7 </h3></td>
@@ -138,7 +135,7 @@
                                 <td> {{ form.r7n1 }} <p> Arrow 1 </p> </td>
                                 <td> {{ form.r7n2 }} <p> Arrow 2 </p> </td>
                                 <td> {{ form.r7n3 }} <p> Arrow 3 </p> </td>
-                                <td> {{ form.commentRoundSeven }} <p> Notes </p> </td>
+                                <td> {{ form.commentRoundSeven }} <p> # of X's </p> </td>
                           </tr>
                           <tr>
                               <td><h3> Round 8 </h3></td>
@@ -150,7 +147,7 @@
                                 <td> {{ form.r8n1 }} <p> Arrow 1 </p> </td>
                                 <td> {{ form.r8n2 }} <p> Arrow 2 </p> </td>
                                 <td> {{ form.r8n3 }} <p> Arrow 3 </p> </td>
-                                <td> {{ form.commentRoundEight }} <p> Notes </p> </td>
+                                <td> {{ form.commentRoundEight }} <p> # of X's </p> </td>
                           </tr>
                           <tr>
                               <td><h3> Round 9 </h3></td>
@@ -162,7 +159,7 @@
                                 <td> {{ form.r9n1 }} <p> Arrow 1 </p> </td>
                                 <td> {{ form.r9n2 }} <p> Arrow 2 </p> </td>
                                 <td> {{ form.r9n3 }} <p> Arrow 3 </p> </td>
-                                <td> {{ form.commentRoundNine }} <p> Notes </p> </td>
+                                <td> {{ form.commentRoundNine }} <p> # of X's </p> </td>
                           </tr>
                           <tr>
                               <td><h3> Round 10 </h3></td>
@@ -173,7 +170,7 @@
                                 <td> {{ form.r10n1 }} <p> Arrow 1 </p> </td>
                                 <td> {{ form.r10n2 }} <p> Arrow 2 </p> </td>
                                 <td> {{ form.r10n3 }} <p> Arrow 3 </p> </td>
-                                <td> {{ form.commentRoundTen }} <p> Notes </p> </td>
+                                <td> {{ form.commentRoundTen }} <p> # of X's </p> </td>
                           </tr>
 
 
