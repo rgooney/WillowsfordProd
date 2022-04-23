@@ -8,189 +8,259 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'dashboard.css' %}">
     <title>Dashboard</title>
-    <div class="container">
-        <div id="branding">
-            <h1><span class="highlight">Willowsford</span> Archery Club</h1>
-        </div>
-        <nav>
-            <ul>
-                <li class="current"><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'services' %}">Membership</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'dashboard' %}">{{ request.user.useraccount.fname }}'s Dashboard</a></li>
-                {% if user.is_staff %}
-                <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
-                {% endif %}
-                <li><a href="{% url 'signout' %}">Signout</a></li>
-                {% else %}
-                <li><a href="{% url 'signIn' %}">Sign In</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </div>
+     
 </head>
 {% endblock head %}
 
 <body>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <h1><span class="highlight">Willowsford</span> Archery Club</h1>
+      </div>
+      <nav>
+        <ul>
+          <li class="current"><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'services' %}">Membership</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'dashboard' %}">{{ request.user.useraccount.fname }}'s Dashboard</a></li>
+            {% if user.is_staff %}
+               <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
+           {% endif %}
+            <li><a href="{% url 'signout' %}">Signout</a></li>
+          {% else %}
+            <li><a href="{% url 'signIn' %}">Sign In</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
     <div class= "wrapper"> 
         <!-- Top Container -->
     {% block content %}
+
+
+    <section class="boxes">
+      <div class="box">
+          {% if messages %}
+          <ul class="messages" style="list-style: none;">
+              {% for message in messages %}
+              <p {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </p>
+              {% endfor %}
+          </ul>
+          {% endif %}
+          <form action="" class="form" method="post">
+            <h2>Range Check-In</h2>
+            <div class="input-group">
+              <label for="{{ checkin_form.date.id_for_label }}">Date</label>
+              {{ checkin_form.date }}
+            </div>
+            <div class="input-group">
+              <label for="{{ checkin_form.time_in.id_for_label }}">Time In</label>
+              {{ checkin_form.time_in }}
+            </div>
+            <div class="input-group">
+              <label for="{{ form.time_out.id_for_label }}">Time Out</label>
+              {{ checkin_form.time_out }}
+            </div>
+            <div class="input-group">
+              <label for="{{ checkin_form.checkin_type.id_for_label }}">Checkin Type</label>
+              {{ checkin_form.checkin_type }}
+            </div>
+            {% csrf_token %}
+            <input type="submit" value="Check In" class="submit-btn">
+          </form>
+      </div>
+
+<div class="box">
+  <h4>Membership Status</h4>
+  <p class="price">Active</p>
+  <h3>Membership Waivers</h3>
+    <a href="{% static 'ArcheryClubWaiver.pdf' %}">Archery Club Waiver</a>
+    {% if request.user.useraccount.archeryClubWaiverSigned == False %}
+        <a href="{% url 'archeryWaiver' %}">Please review and sign</a><br>
+    {% else %}
+        Signed {{ request.user.useraccount.archeryClubWaiverSignedDate }}<br>
+    {% endif %}
+    <a href="{% static 'RulesOfConduct.pdf' %}">Rules of Conduct</a> <br>
+    {% if request.user.useraccount.rulesOfConductWaiverSigned == False %}
+        <a href="{% url 'rulesOfConductWaiver' %}">Please review and sign</a><br>
+    {% else %}
+        Signed {{ request.user.useraccount.rulesOfConductWaiverSignedDate }}<br>
+    {% endif %}
+    <a href="{% static 'WillowsfordWaiver.pdf' %}">Willowsford Conservancy Waiver</a> <br>
+    {% if request.user.useraccount.willowsfordWaiverSigned == False %}
+        <a href="{% url 'willowsfordWaiver' %}">Please review and sign</a><br>
+    {% else %}
+        Signed <br>
+    {% endif %}
+
+
+  
+</div>
+
+
+
+
+      <div class="box">
+        <i class="fas fa-globe fa-4x"></i>
+        <h3>Account Information</h3>
+          <ul style="list-style: none;">
+              <li>Contact Number: {{ request.user.useraccount.phonenumber }}</li>
+              <li>Birthday: {{ request.user.useraccount.bday }}</li>
+              <li>Email: {{ request.user.email }}</li>
+          </ul>
+      </div>
+
+      <div class="box">
+        <h4>Payment Portal</h4>
+          <div id="smart-button-container">
+          <div style="text-align: center"><label for="description">Membership Dues </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="{{ total_balance }}"></div>
+            <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
+          <div style="text-align: center"><label for="amount">Payment Amount </label><input name="amountInput" type="number" id="amount" value="0" ><span> USD</span></div>
+            <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+          <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="0" ></div>
+            <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+            <div><a href="{% url 'statements' %}">All statements</a></div>
+          <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+
+
+        </div>
+        <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+        <script>
+        function initPayPalButton() {
+          var description = document.querySelector('#smart-button-container #description');
+          var amount = document.querySelector('#smart-button-container #amount');
+          var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+          var priceError = document.querySelector('#smart-button-container #priceLabelError');
+          var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+          var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+          var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+
+          var elArr = [description, amount];
+
+          if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+            invoiceidDiv.style.display = "block";
+          }
+
+          var purchase_units = [];
+          purchase_units[0] = {};
+          purchase_units[0].amount = {};
+
+          function validate(event) {
+            return event.value.length > 0;
+          }
+
+          paypal.Buttons({
+            style: {
+              color: 'gold',
+              shape: 'rect',
+              label: 'paypal',
+              layout: 'vertical',
+
+            },
+
+            onInit: function (data, actions) {
+              actions.disable();
+
+              if(invoiceidDiv.style.display === "block") {
+                elArr.push(invoiceid);
+              }
+
+              elArr.forEach(function (item) {
+                item.addEventListener('keyup', function (event) {
+                  var result = elArr.every(validate);
+                  if (result) {
+                    actions.enable();
+                  } else {
+                    actions.disable();
+                  }
+                });
+              });
+            },
+
+            onClick: function () {
+              if (description.value.length < 1) {
+                descriptionError.style.visibility = "visible";
+              } else {
+                descriptionError.style.visibility = "hidden";
+              }
+
+              if (amount.value.length < 1) {
+                priceError.style.visibility = "visible";
+              } else {
+                priceError.style.visibility = "hidden";
+              }
+
+              if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+                invoiceidError.style.visibility = "visible";
+              } else {
+                invoiceidError.style.visibility = "hidden";
+              }
+
+              purchase_units[0].description = description.value;
+              purchase_units[0].amount.value = amount.value;
+
+              if(invoiceid.value !== '') {
+                purchase_units[0].invoice_id = invoiceid.value;
+              }
+            },
+
+            createOrder: function (data, actions) {
+              return actions.order.create({
+                purchase_units: purchase_units,
+              });
+            },
+
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function (orderData) {
+
+                // Full available details
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                // Show a success message within this page, e.g.
+                const element = document.getElementById('paypal-button-container');
+                element.innerHTML = '';
+                element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                // Or go to another URL:  actions.redirect('thank_you.html');
+
+              });
+            },
+
+            onError: function (err) {
+              console.log(err);
+            }
+          }).render('#paypal-button-container');
+        }
+        initPayPalButton();
+        </script>
+      </div>
+
+
+
+
+    </section>
+
+
+
+
+
     <section class="top-container">
+      <div class="box">
         <header class="showcase">
           <h1>Scoring App</h1>
           <p>Information regarding Scoring and how to use the application are provided under the scoring app information section.</p>
           <a href="{% url 'manualScoring' %}" class="btn">Open Scoring App</a>
           <a href="{% url 'scores' %}" class="btn">View Past Scores</a>
         </header>
-        <div class="top-box top-box-a">
-          <h4>Membership Status</h4>
-          <p class="price">Active</p>
-          <h3>Membership Waivers</h3>
-            <a href="{% static 'ArcheryClubWaiver.pdf' %}">Archery Club Waiver</a>
-            {% if request.user.useraccount.archeryClubWaiverSigned == False %}
-                <a href="{% url 'archeryWaiver' %}">Please review and sign</a><br>
-            {% else %}
-                Signed {{ request.user.useraccount.archeryClubWaiverSignedDate }}<br>
-            {% endif %}
-            <a href="{% static 'RulesOfConduct.pdf' %}">Rules of Conduct</a> <br>
-            {% if request.user.useraccount.rulesOfConductWaiverSigned == False %}
-                <a href="{% url 'rulesOfConductWaiver' %}">Please review and sign</a><br>
-            {% else %}
-                Signed {{ request.user.useraccount.rulesOfConductWaiverSignedDate }}<br>
-            {% endif %}
-            <a href="{% static 'WillowsfordWaiver.pdf' %}">Willowsford Conservancy Waiver</a> <br>
-            {% if request.user.useraccount.willowsfordWaiverSigned == False %}
-                <a href="{% url 'willowsfordWaiver' %}">Please review and sign</a><br>
-            {% else %}
-                Signed <br>
-            {% endif %}
+      </div>
+        </section>
         
         </div>
-        <div class="top-box top-box-b">
-          <h4>Payment Portal</h4>
-            <div id="smart-button-container">
-            <div style="text-align: center"><label for="description">Membership Dues </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="{{ total_balance }}"></div>
-              <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
-            <div style="text-align: center"><label for="amount">Payment Amount </label><input name="amountInput" type="number" id="amount" value="0" ><span> USD</span></div>
-              <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
-            <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="0" ></div>
-              <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
-              <div><a href="{% url 'statements' %}">All statements</a></div>
-            <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
-
-          </div>
-          <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-          <script>
-          function initPayPalButton() {
-            var description = document.querySelector('#smart-button-container #description');
-            var amount = document.querySelector('#smart-button-container #amount');
-            var descriptionError = document.querySelector('#smart-button-container #descriptionError');
-            var priceError = document.querySelector('#smart-button-container #priceLabelError');
-            var invoiceid = document.querySelector('#smart-button-container #invoiceid');
-            var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
-            var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
-
-            var elArr = [description, amount];
-
-            if (invoiceidDiv.firstChild.innerHTML.length > 1) {
-              invoiceidDiv.style.display = "block";
-            }
-
-            var purchase_units = [];
-            purchase_units[0] = {};
-            purchase_units[0].amount = {};
-
-            function validate(event) {
-              return event.value.length > 0;
-            }
-
-            paypal.Buttons({
-              style: {
-                color: 'gold',
-                shape: 'rect',
-                label: 'paypal',
-                layout: 'vertical',
-
-              },
-
-              onInit: function (data, actions) {
-                actions.disable();
-
-                if(invoiceidDiv.style.display === "block") {
-                  elArr.push(invoiceid);
-                }
-
-                elArr.forEach(function (item) {
-                  item.addEventListener('keyup', function (event) {
-                    var result = elArr.every(validate);
-                    if (result) {
-                      actions.enable();
-                    } else {
-                      actions.disable();
-                    }
-                  });
-                });
-              },
-
-              onClick: function () {
-                if (description.value.length < 1) {
-                  descriptionError.style.visibility = "visible";
-                } else {
-                  descriptionError.style.visibility = "hidden";
-                }
-
-                if (amount.value.length < 1) {
-                  priceError.style.visibility = "visible";
-                } else {
-                  priceError.style.visibility = "hidden";
-                }
-
-                if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
-                  invoiceidError.style.visibility = "visible";
-                } else {
-                  invoiceidError.style.visibility = "hidden";
-                }
-
-                purchase_units[0].description = description.value;
-                purchase_units[0].amount.value = amount.value;
-
-                if(invoiceid.value !== '') {
-                  purchase_units[0].invoice_id = invoiceid.value;
-                }
-              },
-
-              createOrder: function (data, actions) {
-                return actions.order.create({
-                  purchase_units: purchase_units,
-                });
-              },
-
-              onApprove: function (data, actions) {
-                return actions.order.capture().then(function (orderData) {
-
-                  // Full available details
-                  console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-
-                  // Show a success message within this page, e.g.
-                  const element = document.getElementById('paypal-button-container');
-                  element.innerHTML = '';
-                  element.innerHTML = '<h3>Thank you for your payment!</h3>';
-
-                  // Or go to another URL:  actions.redirect('thank_you.html');
-
-                });
-              },
-
-              onError: function (err) {
-                console.log(err);
-              }
-            }).render('#paypal-button-container');
-          }
-          initPayPalButton();
-          </script>
-        </div>
-      </section>
+        
+     <!--  </section> -->
   
       <!-- Boxes Section -->
       <section class="boxes">
