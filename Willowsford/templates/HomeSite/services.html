@@ -19,8 +19,7 @@
             </li>
             <li>
               <h3>Volunteer Discount</h3>
-              <p>For every hour a WAC member works as a volunteer to support the WAC, that member’s dues for the following year are reduced by $10/hour, up to four (4) hours / $40.  There are many volunteer opportunities each year.  
-              [Add instructions for how to apply for a membership (using the app) and for how returning members can pay their annual dues.]
+              <p>For every hour a WAC member works as a volunteer to support the WAC, that member’s dues for the following year are reduced by $10/hour, up to four (4) hours / $40.  There are many volunteer opportunities each year.
               </p>
 						  <p>Price: Varies</p>
             </li>
@@ -30,21 +29,13 @@
         <aside id="sidebar">
           <div class="dark">
             <h3>Have A Question?</h3>
-            <form class="quote">
-  						<div>
-  							<label>Name</label><br>
-  							<input type="text" placeholder="{{ UserAccount.fname }}">
-  						</div>
-  						<div>
-  							<label>Email</label><br>
-  							<input type="email" placeholder="Email Address">
-  						</div>
-  						<div>
-  							<label>Message</label><br>
-  							<textarea placeholder="Message"></textarea>
-  						</div>
-  						<button class="button_1" type="submit">Send</button>
-					</form>
+              <form method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <div class="form-actions">
+                      <button type="submit">Send</button>
+                  </div>
+              </form>
           </div>
         </aside>
       </div>
