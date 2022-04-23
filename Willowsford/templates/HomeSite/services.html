@@ -1,5 +1,38 @@
-{% extends "HomeSite/index.html" %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Willowsford Archery Club</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+  </head>
+<body>
+
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Willowsford</span> Archery Club</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li class="current"><a href="{% url 'services' %}">Membership</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'dashboard' %}">{{ request.user.useraccount.fname }}'s Dashboard</a></li>
+              {% if user.is_staff %}
+                <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
+              {% endif %}
+              <li><a href="{% url 'signout' %}">Signout</a></li>
+            {% else %}
+              <li><a href="{% url 'signIn' %}">Sign In</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <section id="main">
       <div class="container">
@@ -19,10 +52,9 @@
             </li>
             <li>
               <h3>Volunteer Discount</h3>
-              <p>For every hour a WAC member works as a volunteer to support the WAC, that member’s dues for the following year are reduced by $10/hour, up to four (4) hours / $40.  There are many volunteer opportunities each year.  
-              [Add instructions for how to apply for a membership (using the app) and for how returning members can pay their annual dues.]
+              <p>For every hour a WAC member works as a volunteer to support the WAC, that member’s dues for the following year are reduced by $10/hour, up to four (4) hours / $40.  There are many volunteer opportunities each year.
               </p>
-						  <p>Price: Varies</p>
+						  <p></p>
             </li>
           </ul>
         </article>
@@ -30,25 +62,23 @@
         <aside id="sidebar">
           <div class="dark">
             <h3>Have A Question?</h3>
-            <form class="quote">
-  						<div>
-  							<label>Name</label><br>
-  							<input type="text" placeholder="{{ UserAccount.fname }}">
-  						</div>
-  						<div>
-  							<label>Email</label><br>
-  							<input type="email" placeholder="Email Address">
-  						</div>
-  						<div>
-  							<label>Message</label><br>
-  							<textarea placeholder="Message"></textarea>
-  						</div>
-  						<button class="button_1" type="submit">Send</button>
-					</form>
+              <form method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <div class="form-actions">
+                      <button type="submit">Send</button>
+                  </div>
+              </form>
           </div>
         </aside>
       </div>
     </section>
-{% endblock content %}
 
 
+    <footer>
+      <p>Willowsford Archery Club | willowsfordarcheryclub@gmail.com
+      </p>
+    </footer>
+
+</body>
+</html>
