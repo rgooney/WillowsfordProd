@@ -6,6 +6,16 @@
     <h2> Scores for {{ request.user.useraccount.fname }} {{ request.user.useraccount.lname }}</h2>
     <div class="">
         <table class="table">
+            <tr class="table-header">
+                <td> PERSONAL BEST </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> PERSONAL BEST </td>
+            </tr>
+
     <tr class="table-header">
             <td> Score ID </td>
             <td> Shooting Style </td>
@@ -15,6 +25,7 @@
             <td> Validator </td>
             <td> Approved </td>
         </tr>
+        
         <tr class="active">
             <td> {{max.score_id}} </td>
             <td> {{max.shooting_style}} </td>
@@ -25,6 +36,34 @@
             <td> {{max.validator_approval}} </td>
         </tr>
         <tr class="table-header">
+            <td> PERSONAL BEST </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> PERSONAL BEST </td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr class="table-header">
             <td> Round </td>
             <td> Round Cumulative </td>
             <td> Round Subtotal </td>
@@ -33,6 +72,7 @@
             <td> Arrow 3 </td>
             <td> Comments </td>
         </tr>
+        
         <tr class="active">
             <td> Round 1 </td>
             <td> {{max.cumulativeRoundOne}} </td>
