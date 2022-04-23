@@ -7,172 +7,69 @@
     <div class="">
         <table class="table">
             <tr class="table-header">
-                <td> PERSONAL BEST </td>
+                <td> PERSONAL BEST For 10 Yards</td>
                 <td> </td>
                 <td> </td>
                 <td> </td>
                 <td> </td>
                 <td> </td>
-                <td> PERSONAL BEST </td>
+                <td> PERSONAL BEST For 10 Yards</td>
             </tr>
 
-    <tr class="table-header">
-            <td> Score ID </td>
-            <td> Shooting Style </td>
-            <td> Distance </td>
-            <td> Total Score </td>
-            <td> Date and Time </td>
-            <td> Validator </td>
-            <td> Approved </td>
-        </tr>
         
-        <tr class="active">
-            <td> {{max.score_id}} </td>
-            <td> {{max.shooting_style}} </td>
-            <td> {{max.distance}} </td>
-            <td> {{max.score}} </td>
-            <td> {{max.datetime}} </td>
-            <td> {{max.validator_name}} </td>
-            <td> {{max.validator_approval}} </td>
-        </tr>
-        <tr class="table-header">
-            <td> PERSONAL BEST </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> PERSONAL BEST </td>
-        </tr>
-        <tr>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-        </tr>
 
-        <tr class="table-header">
-            <td> Round </td>
-            <td> Round Cumulative </td>
-            <td> Round Subtotal </td>
-            <td> Arrow 1 </td>
-            <td> Arrow 2 </td>
-            <td> Arrow 3 </td>
-            <td> Comments </td>
+            <!--LIST of 10 YARDS-->
+            <tr class="table-header">
+                <td> Score ID </td>
+                <td> Shooting Style </td>
+                <td> Distance </td>
+                <td> Total Score </td>
+                <td> Date and Time </td>
+                <td> Validator </td>
+                <td> Approved </td>
+            </tr>
+            {% for i in listof10 %}
+            <tr class="active">
+                <td> {{i.score_id}} </td>
+                <td> {{i.shooting_style}} </td>
+                <td> {{i.distance}} </td>
+                <td> {{i.score}} </td>
+                <td> {{i.datetime}} </td>
+                <td> {{i.validator_name}} </td>
+                <td> {{i.validator_approval}} </td>
+            </tr>
+            
+        {% endfor %}
+            
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         
-        <tr class="active">
-            <td> Round 1 </td>
-            <td> {{max.cumulativeRoundOne}} </td>
-            <td> {{max.subtotalRoundOne}} </td>
-            <td> {{max.r1n1}} </td>
-            <td> {{max.r1n2}} </td>
-            <td> {{max.r1n3}} </td>
-            <td> {{max.commentRoundOne}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 2 </td>
-            <td> {{max.cumulativeRoundTwo}} </td>
-            <td> {{max.subtotalRoundTwo}} </td>
-            <td> {{max.r2n1}} </td>
-            <td> {{max.r2n2}} </td>
-            <td> {{max.r2n3}} </td>
-            <td> {{max.commentRoundTwo}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 3 </td>
-            <td> {{max.cumulativeRoundThree}} </td>
-            <td> {{max.subtotalRoundThree}} </td>
-            <td> {{max.r3n1}} </td>
-            <td> {{max.r3n2}} </td>
-            <td> {{max.r3n3}} </td>
-            <td> {{max.commentRoundThree}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 4 </td>
-            <td> {{max.cumulativeRoundFour}} </td>
-            <td> {{max.subtotalRoundFour}} </td>
-            <td> {{max.r4n1}} </td>
-            <td> {{max.r4n2}} </td>
-            <td> {{max.r4n3}} </td>
-            <td> {{max.commentRoundFour}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 5 </td>
-            <td> {{max.cumulativeRoundFive}} </td>
-            <td> {{max.subtotalRoundFive}} </td>
-            <td> {{max.r5n1}} </td>
-            <td> {{max.r5n2}} </td>
-            <td> {{max.r5n3}} </td>
-            <td> {{max.commentRoundFive}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 6 </td>
-            <td> {{max.cumulativeRoundSix}} </td>
-            <td> {{max.subtotalRoundSix}} </td>
-            <td> {{max.r6n1}} </td>
-            <td> {{max.r6n2}} </td>
-            <td> {{max.r6n3}} </td>
-            <td> {{max.commentRoundSix}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 7 </td>
-            <td> {{max.cumulativeRoundSeven}} </td>
-            <td> {{max.subtotalRoundSeven}} </td>
-            <td> {{max.r7n1}} </td>
-            <td> {{max.r7n2}} </td>
-            <td> {{max.r7n3}} </td>
-            <td> {{max.commentRoundSeven}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 8 </td>
-            <td> {{max.cumulativeRoundEight}} </td>
-            <td> {{max.subtotalRoundEight}} </td>
-            <td> {{max.r8n1}} </td>
-            <td> {{max.r8n2}} </td>
-            <td> {{max.r8n3}} </td>
-            <td> {{max.commentRoundEight}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 9 </td>
-            <td> {{max.cumulativeRoundNine}} </td>
-            <td> {{max.subtotalRoundNine}} </td>
-            <td> {{max.r9n1}} </td>
-            <td> {{max.r9n2}} </td>
-            <td> {{max.r9n3}} </td>
-            <td> {{max.commentRoundNine}} </td>
-        </tr>
-        <tr class="active">
-            <td> Round 10 </td>
-            <td> {{max.cumulativeRoundTen}} </td>
-            <td> {{max.subtotalRoundTen}} </td>
-            <td> {{max.r10n1}} </td>
-            <td> {{max.r10n2}} </td>
-            <td> {{max.r10n3}} </td>
-            <td> {{max.commentRoundTen}} </td>
-        </tr>
     {% for score in scores %}
-        <tr class="table-header">
-            <td> Score ID </td>
-            <td> Shooting Style </td>
-            <td> Distance </td>
-            <td> Total Score </td>
-            <td> Date and Time </td>
-            <td> Validator </td>
-            <td> Approved </td>
-        </tr>
+    <tr class="table-header">
+        <td> Score ID </td>
+        <td> Shooting Style </td>
+        <td> Distance </td>
+        <td> Total Score </td>
+        <td> Date and Time </td>
+        <td> Validator </td>
+        <td> Approved </td>
+    </tr>
         <tr class="active">
             <td> {{score.score_id}} </td>
             <td> {{score.shooting_style}} </td>
@@ -181,15 +78,6 @@
             <td> {{score.datetime}} </td>
             <td> {{score.validator_name}} </td>
             <td> {{score.validator_approval}} </td>
-        </tr>
-        <tr class="table-header">
-            <td> Round </td>
-            <td> Round Cumulative </td>
-            <td> Round Subtotal </td>
-            <td> Arrow 1 </td>
-            <td> Arrow 2 </td>
-            <td> Arrow 3 </td>
-            <td> Comments </td>
         </tr>
         <tr class="active">
             <td> Round 1 </td>

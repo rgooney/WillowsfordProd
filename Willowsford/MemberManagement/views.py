@@ -114,21 +114,40 @@ def scores(request):
     user = User.objects.get(username=request.user)
     try:
         scores = Scores.objects.filter(account_id=user.useraccount).all()
+        listof10 = []
+        listof20 = []
+        listof30 = []
+        listof40 = []
+        listof60 = []
+        listofWillow = []
         maxValue = 0
+        max10 = 0 
+        max20 = 0
+        max30 = 0
+        max40 = 0
+        max60 = 0
+        maxWillow = 0
         for i in scores:
-            #going thru each of the scores in users, for that user, referencing Scoring and models [score ' total score' ]
-            # find max score, set a var to 0 and compare it to that, after - sitatuion w/ mult scores w/ same max value 
-            #greater than or equal if i.score >= the last score that has the highest score record the last one it looks at 
-            #last one it looks at should be max score 
-            # just do it to point where u can print max score
-            # dont do date time comparison
-            # save into a variable and pass it back into the page, instead of print save into a var 
-            if i.score >= maxValue:
-                max = i #saving the whole object score id and date and everything
+            if i.distance == "10 yards" and i.score >= max10:
+                max10 = i.score
+            if i.distance == "20 yards": #and i.score >= max20:
+                listof20.append(i)
+            if i.distance == "30 yards": #and i.score >= max30:
+                listof30.append(i) 
+            if i.distance == "40 yards": #and i.score >= max40:
+                listof40.append(i)
+            if i.distance == "60 yards": #and i.score >= max60:
+                listof60.append(i)
+            if i.distance == "The Willowsford": #and i.score >= max20:
+                listofWillow.append(i)
+
     except Statement.DoesNotExist:
         scores = None
 
-    return render(request, 'Scoring/viewScores.html', {'scores': scores, 'max' : max}) #passing object 
+    return render(request, 'Scoring/viewScores.html', {'scores': scores, 'max' : max, 'listof10': listof10, 'listof20': listof20,
+    'listof30': listof30, 'listof40': listof40, 'listof60': listof60, 'listofWillow': listofWillow}) #passing object 
+
+
 
 class PaypalReturnView(TemplateView):
     template_name = 'paypal_success.html'
