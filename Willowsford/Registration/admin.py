@@ -6,8 +6,6 @@ import csv
 from django.http import HttpResponse
 
 # Register your models here.
-
-
 class RegistrationAdmin(admin.ModelAdmin):
     actions = ["export_as_csv"]
     list_display = ('account_id', 'fname', 'lname', 'approved', 'membershipType', 'officer', 'most_recent_payment_date',
@@ -65,5 +63,25 @@ class RegistrationAdmin(admin.ModelAdmin):
 
     export_as_csv.short_description = "Export Selected as CSV"
 
+class GuestsAdmin(admin.ModelAdmin):
+    actions = ["export_as_csv"]
+    list_display = ('guest_id', 'fname', 'lname', 'willowsfordWaiverSigned', 'archeryClubWaiverSigned', 'rulesOfConductWaiverSigned')
+    search_fields = ['account_id', 'fname', 'lname']
+
+    fieldsets = (
+        (None, {
+            'fields': (
+            'fname', 'mid_initial', 'lname', 'gender', 'bday',)
+        }),
+        ('Waivers', {
+            'classes': ('collapse',),
+            'fields': ('willowsfordWaiverSigned', 'willowsfordWaiver',
+                       'archeryClubWaiverSigned', 'archeryClubWaiver',
+                       'rulesOfConductWaiverSigned', 'rulesOfConductWaiver')
+        }),
+    )
+
+
 admin.site.register(UserAccount, RegistrationAdmin)
+admin.site.register(Guests, GuestsAdmin)
 

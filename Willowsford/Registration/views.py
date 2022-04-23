@@ -40,6 +40,26 @@ def register(request):
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
 
 @login_required(login_url='signIn')
+def guestRegister(request):
+    if request.POST:
+        user_form = GuestRegistrationForm(request.POST, request.FILES)
+        if user_form.is_valid():
+            form = user_form.save(commit=False)
+            form.willowsfordWaiverSigned = True
+            form.archeryClubWaiverSigned = True
+            form.rulesOfConductWaiverSigned = True
+            form.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(user_form.errors)
+            return render(request, 'Registration/registration_guest.html', {'user_form': user_form,})
+    else:
+        user_form = GuestRegistrationForm()
+
+    return render(request, 'Registration/registration_guest.html', {'user_form': user_form,})
+
+
+@login_required(login_url='signIn')
 def willowsfordWaiver(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)

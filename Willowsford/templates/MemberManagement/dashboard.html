@@ -226,12 +226,8 @@
         </div>
         <div class="box">
           <i class="fas fa-globe fa-4x"></i>
-          <h3>Account Information</h3>
-            <ul style="list-style: none;">
-                <li>Contact Number: {{ request.user.useraccount.phonenumber }}</li>
-                <li>Birthday: {{ request.user.useraccount.bday }}</li>
-                <li>Email: {{ request.user.email }}</li>
-            </ul>
+          <h3>Guest Check-in</h3>
+            <p><a href="{% url 'guestRegistration' %}">Register Guest</a></p>
         </div>
       </section>
     {% endblock content %}
