@@ -1,10 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.generic.base import RedirectView
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.urls import reverse
 from Registration.models import *
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from .forms import *
 
 # Create your views here.
 def index(request):
@@ -23,7 +25,26 @@ def about(request):
 
 
 def services(request):
-    return render(request, 'HomeSite/services.html')
+    if request.method == 'GET':
+        form = emailForm()
+    else:
+        form = emailForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                message += '\nThis email is from '
+                message += name
+                message += " at "
+                message += from_email
+                subject = 'questions from '
+                subject += name
+                send_mail(subject, message, from_email, ['rachel.gooney@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('HomeSite/services/questionResponse.html/')
+    return render(request, 'HomeSite/services.html', {'form': form})
 
 
 class SignOut(RedirectView):
@@ -33,5 +54,6 @@ class SignOut(RedirectView):
     def get_redirect_url(self):
         logout(self.request)
         return reverse('index')
+
 
 
