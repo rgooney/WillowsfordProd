@@ -1,10 +1,6 @@
 .container {
     padding: 1rem;
-    background-color: blueviolet;
-    border: 2px solid #fff;
-    color: #fff;
-    text-align: center;
-    float: inherit;
+
 }
 
 /*admin page css starts here */
@@ -134,7 +130,7 @@
   .boxes {
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
   
   .box {
@@ -211,5 +207,102 @@
     }
   }
   
-  
-  
+
+.table {
+    width: 100%;
+    text-align: center;
+}
+
+.table-header {
+    font-weight: bold;
+}
+
+/* Global */
+
+.container{
+  background:#667760;
+  color:#ffffff;
+  margin:auto;
+  overflow:hidden;
+}
+
+ul{
+  margin:0;
+  padding:0;
+}
+
+.button_1{
+  height:38px;
+  background:#e08955;
+  border:0;
+  padding-left: 20px;
+  padding-right:20px;
+  color:#ffffff;
+}
+
+.dark{
+  padding:15px;
+  background:#667760;
+  color:#ffffff;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+header #branding{
+  float:left;
+}
+
+header #branding h1{
+  margin:0;
+}
+
+header .highlight, header .current a{
+color:#e08955;
+font-weight:bold;
+}
+/* Header **/
+header{
+  background:#667760;
+  color:#ffffff;
+  padding-top:30px;
+  min-height:70px;
+  border-bottom:#e08955 3px solid;
+  margin-top: -20px;
+  margin-bottom: 50px;
+}
+
+header a{
+  color:#ffffff;
+  text-decoration:none;
+  text-transform: uppercase;
+  font-size:16px;
+}
+
+header li{
+  float:left;
+  display:inline;
+  padding: 0 20px 0 20px;
+}
+
+header #branding{
+  float:left;
+}
+
+header #branding h1{
+  margin:0;
+}
+
+header nav{
+  float:right;
+  margin-top:10px;
+  margin-bottom: 20px;
+}
+
+header .highlight, header .current a{
+  color:#e08955;
+  font-weight:bold;
+}
+
+header a:hover{
+  color:#cccccc;
+  font-weight:bold;
+}

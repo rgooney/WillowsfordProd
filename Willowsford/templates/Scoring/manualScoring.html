@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="" rel="">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class ="navbar-brand" href="/"> Home</a>
+    <a class ="navbar-brand" href="/about"> About</a>
+    <a class ="navbar-brand" href="/services"> Membership</a>
+      <a class ="navbar-brand" href="/member/dashboard" >Back to Dashboard</a>
+</nav>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class ="col-md-6" style="margin: 1rem auto 0 auto;">
+            <div class="card">
+                <div class="card-body">
+                    <!doctype html>
+                    <form class="myForm" method = "POST" action ="">
+                      {% csrf_token %} 
+                        <fieldset id="shooter_Name">
+                          <label for="customer_name"> Shooter's Name </label>
+                          {{ user.useraccount.fname }} {{ user.useraccount.lname }}
+
+                          <!-- Remove if officers are always witnesses -->
+                          <label for="witness_Name"> Witness's Name </label>
+                          <input type="text" name="witness_name" id="witness_name">
+                      
+                          <label for="witness_Signature"> Witness's Signature </label>
+                          <input type="text" name="witness_signature" id="witness_signature">
+                        </fieldset>
+                        
+                        <fieldset id="shooting_Style">
+                          <legend>Shooting Style?</legend>
+                            {{ form.shooting_style }}
+                        </fieldset>
+                    
+                        <fieldset id="shoot_Date">
+                          <label for="shoot_Date"> Date </label>
+                            {{ form.datetime }}
+                        </fieldset>
+                      
+                        <fieldset id="shoot_Distance">
+                          <label for="shoot_Distance"> Distance (Yards) </label>
+                            {{ form.distance }}
+
+                          </select>
+                        </fieldset>
+
+                        <fieldset id="scores">
+                         <table class="table">
+                          <tr>
+                              <td><h3> Round 1 </h3></td>
+                            <td>
+                               {{ form.subtotalRoundOne }} <p> Round Score </p>
+                            </td>
+                                <p> </p>
+                                <td> {{ form.cumulativeRoundOne }} <p> Cumulative Score </p> </td>
+                                <td> {{ form.r1n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r1n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r1n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundOne }} <p> Notes </p> </td>
+                                <button onClick="window.location.reload();">Update Subtotals</button>
+                          </tr>
+
+
+                          <tr>
+                              <td><h3> Round 2 </h3></td>
+                            <td>
+                              {{ form.subtotalRoundTwo }} <p> Round Score </p>
+
+                            </td>
+                            <td> {{ form.cumulativeRoundTwo }} <p> Cumulative Score  </p> </td>
+                            <td> {{ form.r2n1 }} <p> End 1 </p> </td>
+                            <td> {{ form.r2n2 }} <p> End 2 </p> </td>
+                            <td> {{ form.r2n3 }} <p> End 3 </p> </td>
+                            <td> {{ form.commentRoundTwo }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                              <td><h3> Round 3 </h3></td>
+                            <td>
+                              {{ form.subtotalRoundThree }} <p> Round Score </p>
+
+                            </td>
+                            <td> {{ form.cumulativeRoundThree }} <p> Cumulative Score  </p>  </td>
+                            <td> {{ form.r3n1 }} <p> End 1 </p> </td>
+                            <td> {{ form.r3n2 }} <p> End 2 </p> </td>
+                            <td> {{ form.r3n3 }} <p> End 3 </p> </td>
+                            <td> {{ form.commentRoundThree }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                              <td><h3> Round 4 </h3></td>
+                            <td>
+                              {{ form.subtotalRoundFour }} <p> Round Score </p>
+
+                            </td>
+                                <td> {{ form.cumulativeRoundFour }} <p> Cumulative Score  </p>  </td>
+                                <td> {{ form.r4n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r4n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r4n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundFour }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                              <td><h3> Round 5 </h3></td>
+                            <td>
+                              {{ form.subtotalRoundFive }} <p> Round Score </p>
+
+                            </td>
+                                <td> {{ form.cumulativeRoundFive }} <p> Cumulative Score  </p> </td>
+                                <td> {{ form.r5n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r5n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r5n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundFive }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                              <td><h3> Round 6 </h3></td>
+                            <td>
+                              {{ form.subtotalRoundSix }} <p> Round Score </p>
+                            </td>
+                                <td> {{ form.cumulativeRoundSix }} <p> Cumulative Score  </p>  </td>
+                                <td> {{ form.r6n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r6n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r6n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundSix }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                              <td><h3> Round 7 </h3></td>
+                            <td>
+                               {{ form.subtotalRoundSeven }} <p> Round Score </p>
+
+                            </td>
+                                <td> {{ form.cumulativeRoundSeven }} <p> Cumulative Score  </p> </td>
+                                <td> {{ form.r7n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r7n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r7n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundSeven }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                              <td><h3> Round 8 </h3></td>
+                            <td>
+                               {{ form.subtotalRoundEight }} <p> Round Score </p>
+
+                            </td>
+                                <td>  {{ form.cumulativeRoundEight }} <p> Cumulative Score  </p> </td>
+                                <td> {{ form.r8n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r8n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r8n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundEight }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                              <td><h3> Round 9 </h3></td>
+                            <td>
+                              {{ form.subtotalRoundNine }} <p> Round Score </p>
+
+                            </td>
+                                <td>  {{ form.cumulativeRoundNine }} <p> Cumulative Score  </p> </td>
+                                <td> {{ form.r9n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r9n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r9n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundNine }} <p> Notes </p> </td>
+                          </tr>
+                          <tr>
+                              <td><h3> Round 10 </h3></td>
+                            <td>
+                              {{ form.subtotalRoundTen }} <p> Round Score </p>
+                            </td>
+                                <td> {{ form.cumulativeRoundTen }} <p> Cumulative Score  </p>  </td>
+                                <td> {{ form.r10n1 }} <p> End 1 </p> </td>
+                                <td> {{ form.r10n2 }} <p> End 2 </p> </td>
+                                <td> {{ form.r10n3 }} <p> End 3 </p> </td>
+                                <td> {{ form.commentRoundTen }} <p> Notes </p> </td>
+                          </tr>
+
+
+
+
+
+
+                        </tr>
+                        <tr>
+                            <td colspan="3"><h4> Ready to Calculate your Score?</h4> <input type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you are ready to submit your score?');" value="Submit"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td> Total Score: </td>
+                            <td>{{ form.score }} </td>
+                        </tr>
+                        </table>
+                        </fieldset>
+                    </form>
+                    <script type="text/javascript">
+                        var r1n1 = document.getElementById('id_r1n1').value;
+                        var r1n2 = document.getElementById('id_r1n2').value;
+                        var r1n3 = document.getElementById('id_r1n3').value;
+                        // If statement for entering X's to equal 5
+                        var r1tot = parseInt(r1n1)+parseInt(r1n2)+parseInt(r1n3);
+                        var r1cum = r1tot;
+
+                        var r2n1 = document.getElementById('id_r2n1');
+                        var r2n2 = document.getElementById('id_r2n2');
+                        var r2n3 = document.getElementById('id_r2n3');
+                        var r2tot = parseInt(r2n1.value)+parseInt(r2n2.value)+parseInt(r2n3.value);
+                        var r2cum = r1cum + r2tot;
+
+                        var r3n1 = document.getElementById('id_r3n1');
+                        var r3n2 = document.getElementById('id_r3n2');
+                        var r3n3 = document.getElementById('id_r3n3');
+                        var r3tot = parseInt(r3n1.value)+parseInt(r3n2.value)+parseInt(r3n3.value);
+                        var r3cum = r2cum + r3tot;
+
+                        var r4n1 = document.getElementById('id_r4n1');
+                        var r4n2 = document.getElementById('id_r4n2');
+                        var r4n3 = document.getElementById('id_r4n3');
+                        var r4tot = parseInt(r4n1.value)+parseInt(r4n2.value)+parseInt(r4n3.value);
+                        var r4cum = r3cum + r4tot;
+
+                        var r5n1 = document.getElementById('id_r5n1');
+                        var r5n2 = document.getElementById('id_r5n2');
+                        var r5n3 = document.getElementById('id_r5n3');
+                        var r5tot = parseInt(r5n1.value)+parseInt(r5n2.value)+parseInt(r5n3.value);
+                        var r5cum = r4cum + r5tot;
+
+                        var r6n1 = document.getElementById('id_r6n1');
+                        var r6n2 = document.getElementById('id_r6n2');
+                        var r6n3 = document.getElementById('id_r6n3');
+                        var r6tot = parseInt(r6n1.value)+parseInt(r6n2.value)+parseInt(r6n3.value);
+                        var r6cum = r5cum + r6tot;
+
+                        var r7n1 = document.getElementById('id_r7n1');
+                        var r7n2 = document.getElementById('id_r7n2');
+                        var r7n3 = document.getElementById('id_r7n3');
+                        var r7tot = parseInt(r7n1.value)+parseInt(r7n2.value)+parseInt(r7n3.value);
+                        var r7cum = r6cum + r7tot;
+
+                        var r8n1 = document.getElementById('id_r8n1');
+                        var r8n2 = document.getElementById('id_r8n2');
+                        var r8n3 = document.getElementById('id_r8n3');
+                        var r8tot = parseInt(r8n1.value)+parseInt(r8n2.value)+parseInt(r8n3.value);
+                        var r8cum = r7cum + r8tot;
+
+                        var r9n1 = document.getElementById('id_r9n1');
+                        var r9n2 = document.getElementById('id_r9n2');
+                        var r9n3 = document.getElementById('id_r9n3');
+                        var r9tot = parseInt(r9n1.value)+parseInt(r9n2.value)+parseInt(r9n3.value);
+                        var r9cum = r8cum + r9tot;
+
+                        var r10n1 = document.getElementById('id_r10n1');
+                        var r10n2 = document.getElementById('id_r10n2');
+                        var r10n3 = document.getElementById('id_r10n3');
+                        var r10tot = parseInt(r10n1.value)+parseInt(r10n2.value)+parseInt(r10n3.value);
+                        var r10cum = r9cum + r10tot;
+
+                        document.getElementById('id_subtotalRoundOne').value = r1tot;
+                        document.getElementById('id_cumulativeRoundOne').value = r1cum;
+                        document.getElementById('id_subtotalRoundTwo').value = r2tot;
+                        document.getElementById('id_cumulativeRoundTwo').value = r2cum;
+                        document.getElementById('id_subtotalRoundThree').value = r3tot;
+                        document.getElementById('id_cumulativeRoundThree').value = r3cum;
+                        document.getElementById('id_subtotalRoundFour').value = r4tot;
+                        document.getElementById('id_cumulativeRoundFour').value = r4cum;
+                        document.getElementById('id_subtotalRoundFive').value = r5tot;
+                        document.getElementById('id_cumulativeRoundFive').value = r5cum;
+                        document.getElementById('id_subtotalRoundSix').value = r6tot;
+                        document.getElementById('id_cumulativeRoundSix').value = r6cum;
+                        document.getElementById('id_subtotalRoundSeven').value = r7tot;
+                        document.getElementById('id_cumulativeRoundSeven').value = r7cum;
+                        document.getElementById('id_subtotalRoundEight').value = r8tot;
+                        document.getElementById('id_cumulativeRoundEight').value = r8cum;
+                        document.getElementById('id_subtotalRoundNine').value = r9tot;
+                        document.getElementById('id_cumulativeRoundNine').value = r9cum;
+                        document.getElementById('id_subtotalRoundTen').value = r10tot;
+                        document.getElementById('id_cumulativeRoundTen').value = r10cum;
+                        document.getElementById('id_score').value = r10cum;
+
+                    </script>
+                    <script>
+                        function confirmSubmission() {
+                          var txt;
+                          if (confirm("Are you sure you'd like to submit!")) {
+                            txt = "Submitted!";
+                          }
+                          document.getElementById("demo").innerHTML = txt;
+                        }
+                    </script>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<style>
+  .myForm {
+    display: grid;
+    grid-template-areas: 
+      "shooter_Name shooting_Style"
+      "shoot_Date shoot_Distance"
+      "shoot_Sign shoot_Sign shoot_Sign"
+      "roundOne roundTwo" ;
+  	grid-template-columns: auto auto;  
+  	grid-template-rows: auto auto auto auto;
+    grid-gap: .8em .5em;
+    background: #eee;
+    padding: 1.2em;
+  }
+  .myForm textarea {
+    height: calc(100% - 1.5em);
+    }
+  .myForm button {
+    background: gray;
+    color: white;
+    padding: 1em;
+    }
+  .myForm input:not([type=radio]):not([type=checkbox]), 
+  .myForm textarea, 
+  .myForm select {
+   	width: 100%;
+    border: 0;
+    padding: 1em;
+    margin: .5em 0;
+  }
+  .myForm label {
+   display: block; 
+  }
+  fieldset {
+    border: 0;
+  }
+  #customer {
+    grid-area: customer;
+  }
+  #taxi {
+    grid-area: taxi;
+  }
+  #extras {
+    grid-area: extras;
+  }
+  #pickup {
+    grid-area: pickup;
+  }
+  #dropoff {
+    grid-area: dropoff;
+  }
+  #instructions {
+    grid-area: instructions;
+  }
+  #submit {
+    grid-area: submit;
+  }
+  #scores {
+      grid-column: span 2;
+  }
+</style>

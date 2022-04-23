@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from django.views.generic import FormView
 from django.urls import reverse
 from paypal.standard.forms import PayPalPaymentsForm
-from .models import Statement, CheckIn
+from .models import *
 from Registration.models import UserAccount
 
 class PaypalFormView(FormView):
@@ -34,6 +34,17 @@ class CheckInForm(forms.ModelForm):
         fields = ["date", "time_in","time_out","checkin_type", "account_id"]
 
         widgets = {
-            "time_in": forms.TimeInput(),
-            "time_out": forms.TimeInput(),
+            "date": forms.DateInput(attrs={'type': 'date'}),
+            "time_in": forms.TimeInput(attrs={'type': 'time'}),
+            "time_out": forms.TimeInput(attrs={'type': 'time'}),
+        }
+
+class GuestCheckInForm(forms.ModelForm):
+    class Meta:
+        model = GuestCheckIn
+        fields = ["date", "time_in", "guest_id", "member_id"]
+
+        widgets = {
+            "date": forms.DateInput(attrs={'type': 'date'}),
+            "time_in": forms.TimeInput(attrs={'type': 'time'}),
         }

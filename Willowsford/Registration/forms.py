@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 import datetime
 
 from .models import *
+from phonenumber_field.formfields import *
 
 year = datetime.datetime.now().date().strftime("%Y")
 
@@ -17,37 +18,42 @@ class UserAccountForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
 class RegistrationForm(forms.ModelForm):
+    phonenumber = PhoneNumberField(widget=forms.TextInput(attrs={'onkeydown':'phoneNumberFormatter()'}))
+
     class Meta:
         model = UserAccount
-        fields = ("fname", "mid_initial", "lname", "gender", "bday", "street", "city", "state", "membershipType", "phonenumber")
+        fields = ("fname", "mid_initial", "lname", "gender", "bday", "street", "city", "state", "membershipType", "phonenumber", "user", "zip")
+
 
         widgets = {
-            "bday": forms.DateInput(),
+            "bday": forms.DateInput(attrs={'type': 'date'}),
         }
+
+class GuestRegistrationForm(forms.ModelForm):
+
+    class Meta:
+        model = Guests
+        fields = ("fname", "mid_initial", "lname", "gender", "bday", "willowsfordWaiver", "archeryClubWaiver", "rulesOfConductWaiver")
+
+
+        widgets = {
+            "bday": forms.DateInput(attrs={'type': 'date'}),
+        }
+
 
 class WillowsfordWaiverForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        fields = ("willowsfordWaiverSigned", "willowsfordWaiverSignedInitials", "willowsfordWaiverSignedDate")
+        fields = ["willowsfordWaiver"]
 
-        widgets = {
-            "willowsfordWaiverSignedDate": forms.DateInput(),
-        }
 
 class ArcheryWaiverForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        fields = ("archeryClubWaiverSigned", "archeryClubWaiverSignedInitials", "archeryClubWaiverSignedDate")
+        fields = ["archeryClubWaiver", "archeryClubWaiverSigned"]
 
-        widgets = {
-            "archeryClubWaiverSignedDate": forms.DateInput(),
-        }
 
 class RulesOfConductWaiverForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        fields = ("rulesOfConductWaiverSigned", "rulesOfConductWaiverSignedInitials", "rulesOfConductWaiverSignedDate")
-
-        widgets = {
-            "rulesOfConductWaiverSignedDate": forms.DateInput(),
-        }
+        fields = ["rulesOfConductWaiver", "archeryClubWaiverSigned"]

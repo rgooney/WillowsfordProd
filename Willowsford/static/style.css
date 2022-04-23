@@ -301,7 +301,7 @@ footer{
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
-}}
+}
 
 /* Registration Page CSS */
 
@@ -346,11 +346,6 @@ footer{
     align-items: center;
     justify-content: center;
 }
-
-#id_username {
-
-}
-
 .form {
     align-items: center;
     justify-content: center;

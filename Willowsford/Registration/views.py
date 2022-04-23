@@ -1,6 +1,20 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from .forms import *
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
+# Password Reset Imports
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
 
 # Create your views here.
 def register(request):
@@ -8,9 +22,9 @@ def register(request):
         user_form = UserAccountForm(request.POST)
         extended_user_form = RegistrationForm(request.POST)
         if user_form.is_valid() and extended_user_form.is_valid():
-            user = user_form.save(commit=False)
-            user.save()
+            user = user_form.save()
             extended_user_info = extended_user_form.save(commit=False)
+            extended_user_info.user = user
             extended_user_info.save()
             return HttpResponseRedirect(reverse('index'))
         else:
@@ -25,15 +39,38 @@ def register(request):
 
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
 
+@login_required(login_url='signIn')
+def guestRegister(request):
+    if request.POST:
+        user_form = GuestRegistrationForm(request.POST, request.FILES)
+        if user_form.is_valid():
+            form = user_form.save(commit=False)
+            form.willowsfordWaiverSigned = True
+            form.archeryClubWaiverSigned = True
+            form.rulesOfConductWaiverSigned = True
+            form.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(user_form.errors)
+            return render(request, 'Registration/registration_guest.html', {'user_form': user_form,})
+    else:
+        user_form = GuestRegistrationForm()
+
+    return render(request, 'Registration/registration_guest.html', {'user_form': user_form,})
+
+
+@login_required(login_url='signIn')
 def willowsfordWaiver(request):
     if request.method == "POST":
-        waiver_form = WillowsfordWaiverForm(request.POST)
+        user = User.objects.get(username=request.user)
+        waiver_form = WillowsfordWaiverForm(request.POST, request.FILES, instance=user.useraccount)
+
         if waiver_form.is_valid():
-            user = User.objects.get(username=request.user)
-            user.willowsfordWaiverSigned = waiver_form.fields['willowsfordWaiverSigned']
-            user.willowsfordWaiverSignedInitials = waiver_form.fields['willowsfordWaiverSignedInitials']
-            user.willowsfordWaiverSignedDate = waiver_form.fields['willowsfordWaiverSignedDate']
-            user.save()
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday #Form breaks for some reason if bday isnt there.
+            waiver.willowsfordWaiverSigned = True
+            waiver.willowsfordWaiver = request.FILES['willowsfordWaiver']
+            waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
             print(waiver_form.errors)
@@ -43,15 +80,18 @@ def willowsfordWaiver(request):
 
     return render(request, 'Registration/willowsfordWaiver.html', {'waiver_form': waiver_form})
 
+@login_required(login_url='signIn')
 def archeryWaiver(request):
     if request.method == "POST":
-        waiver_form = ArcheryWaiverForm(request.POST)
+        user = User.objects.get(username=request.user)
+        waiver_form = ArcheryWaiverForm(request.POST, request.FILES, instance=user.useraccount)
+
         if waiver_form.is_valid():
-            user = User.objects.get(username=request.user)
-            user.useraccount.archeryClubWaiverSigned = waiver_form.fields['archeryClubWaiverSigned']
-            user.useraccount.archeryClubWaiverSignedInitials = waiver_form.fields['archeryClubWaiverSignedInitials']
-            user.useraccount.archeryClubWaiverSignedDate = waiver_form.fields['archeryClubWaiverSignedDate']
-            user.useraccount.save()
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday #Form breaks for some reason if bday isnt there.
+            waiver.archeryClubWaiverSigned = True
+            waiver.archeryClubWaiver = request.FILES['archeryClubWaiver']
+            waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
             print(waiver_form.errors)
@@ -61,13 +101,18 @@ def archeryWaiver(request):
 
     return render(request, 'Registration/archeryWaiver.html', {'waiver_form': waiver_form})
 
-
+@login_required(login_url='signIn')
 def rulesOfConductWaiver(request):
     if request.method == "POST":
-        waiver_form = RulesOfConductWaiverForm(request.POST)
+        user = User.objects.get(username=request.user)
+        waiver_form = RulesOfConductWaiverForm(request.POST, request.FILES, instance=user.useraccount)
+
         if waiver_form.is_valid():
-            user = waiver_form.save(commit=False)
-            user.save()
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday  # Form breaks for some reason if bday isnt there.
+            waiver.rulesOfConductWaiverSigned = True
+            waiver.rulesOfConductWaiver = request.FILES['rulesOfConductWaiver']
+            waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
             print(waiver_form.errors)
@@ -76,3 +121,34 @@ def rulesOfConductWaiver(request):
         waiver_form = RulesOfConductWaiverForm()
 
     return render(request, 'Registration/rulesOfConductWaiver.html', {'waiver_form': waiver_form})
+
+
+def password_reset_request(request):
+    if request.method == "POST":
+        password_reset_form = PasswordResetForm(request.POST)
+        if password_reset_form.is_valid():
+            data = password_reset_form.cleaned_data['email']
+            associated_users = User.objects.filter(Q(email=data))
+            if associated_users.exists():
+                for user in associated_users:
+                    subject = 'Password Reset Requested'
+                    email_template_name = 'password_reset_email.txt'
+                    # The following needs to be corrected for WAC
+                    c = {
+                        "email":user.email,
+                        'domain':'127.0.0.1:8000',
+                        'site_name': 'Willowsford Archery Club',
+                        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                        "user": user,
+                        'token': default_token_generator.make_token(user),
+                        'protocol': 'http',
+                    }
+                    email = render_to_string(email_template_name, c)
+                    try:
+                        #The following needs to be registered to a real email
+                        send_mail(subject, email, 'rachel.gooney@gmail.com' , [user.email], fail_silently=False)
+                    except BadHeaderError:
+                        return HttpResponse('Invalid header found.')
+                    return redirect ('/password_reset/done/')
+    password_reset_form = PasswordResetForm()
+    return render(request=request, template_name='password_reset.html', context={'password_reset_form':password_reset_form})
