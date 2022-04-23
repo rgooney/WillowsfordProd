@@ -34,29 +34,29 @@ class RegistrationForm(forms.ModelForm):
 class WillowsfordWaiverForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        fields = ["willowsfordWaiverSigned", "willowsfordWaiverSignedInitials", "willowsfordWaiverSignedDate"]
-
-        widgets = {
-            "willowsfordWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
-            "willowsfordWaiverSigned": forms.BooleanField(),
-        }
+        # fields = ["willowsfordWaiverSigned", "willowsfordWaiverSignedInitials", "willowsfordWaiverSignedDate"]
+        fields = ["willowsfordWaiver"]
+        # widgets = {
+        #     "willowsfordWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
+        #     "willowsfordWaiverSigned": forms.BooleanField(),
+        # }
 
 class ArcheryWaiverForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        fields = ["archeryClubWaiverSigned", "archeryClubWaiverSignedInitials", "archeryClubWaiverSignedDate"]
-
-        widgets = {
-            "archeryClubWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
-            "willowsfordWaiverSigned": forms.BooleanField(),
-        }
+        # fields = ["archeryClubWaiverSigned", "archeryClubWaiverSignedInitials", "archeryClubWaiverSignedDate"]
+        fields = ["archeryClubWaiver", "archeryClubWaiverSigned"]
+        # widgets = {
+        #     "archeryClubWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
+        #     "willowsfordWaiverSigned": forms.BooleanField(),
+        # }
 
 class RulesOfConductWaiverForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        fields = ["rulesOfConductWaiverSigned", "rulesOfConductWaiverSignedInitials", "rulesOfConductWaiverSignedDate"]
-
-        widgets = {
-            "rulesOfConductWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
-            "willowsfordWaiverSigned": forms.BooleanField(),
-        }
+        # fields = ["rulesOfConductWaiverSigned", "rulesOfConductWaiverSignedInitials", "rulesOfConductWaiverSignedDate"]
+        fields = ["rulesOfConductWaiver", "archeryClubWaiverSigned"]
+        # widgets = {
+        #     "rulesOfConductWaiverSignedDate": forms.DateInput(attrs={'type': 'date'}),
+        #     "willowsfordWaiverSigned": forms.BooleanField(),
+        # }

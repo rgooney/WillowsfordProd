@@ -44,19 +44,19 @@ def dashboard(request):
     user = User.objects.get(username=request.user)
 
     # Waiver Checks
-    willowsford_renewal_check = False
-    archery_renewal_check = False
-    rules_of_conduct_renewal_check = False
-    renewal_check_date = datetime.datetime.now() - datetime.timedelta(days=1*365)
-    renewal_check_date = renewal_check_date.date()
-    print('Waiver date: ' + str(request.user.useraccount.willowsfordWaiverSignedDate) + ' One year ago: ' + str(
-        renewal_check_date))
-    if renewal_check_date > request.user.useraccount.willowsfordWaiverSignedDate:
-        willowsford_renewal_check = True
-    elif renewal_check_date > request.user.useraccount.archeryClubWaiverSignedDate:
-        archery_renewal_check = True
-    elif renewal_check_date > request.user.useraccount.rulesOfConductWaiverSignedDate:
-        rules_of_conduct_renewal_check = True
+    # willowsford_renewal_check = False
+    # archery_renewal_check = False
+    # rules_of_conduct_renewal_check = False
+    # renewal_check_date = datetime.datetime.now() - datetime.timedelta(days=1*365)
+    # renewal_check_date = renewal_check_date.date()
+    # print('Waiver date: ' + str(request.user.useraccount.willowsfordWaiverSignedDate) + ' One year ago: ' + str(
+    #     renewal_check_date))
+    # if renewal_check_date > request.user.useraccount.willowsfordWaiverSignedDate:
+    #     willowsford_renewal_check = True
+    # elif renewal_check_date > request.user.useraccount.archeryClubWaiverSignedDate:
+    #     archery_renewal_check = True
+    # elif renewal_check_date > request.user.useraccount.rulesOfConductWaiverSignedDate:
+    #     rules_of_conduct_renewal_check = True
 
     # Balance calculations
     try:
@@ -83,10 +83,7 @@ def dashboard(request):
     else:
         checkin_form = CheckInForm()
 
-    return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance, 'checkin_form': checkin_form,
-                                                                       'willowsford_renewal_check': willowsford_renewal_check,
-                                                                       'archery_renewal_check': archery_renewal_check,
-                                                                       'rules_of_conduct_renewal_check': rules_of_conduct_renewal_check,})
+    return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance, 'checkin_form': checkin_form,})
 
 @login_required(login_url='signIn')
 def statements(request):

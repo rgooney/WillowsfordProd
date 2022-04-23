@@ -25,9 +25,9 @@ class RegistrationAdmin(admin.ModelAdmin):
         }),
         ('Waivers', {
             'classes': ('collapse',),
-            'fields': ('willowsfordWaiverSigned', 'willowsfordWaiverSignedInitials', 'willowsfordWaiverSignedDate',
-                       'archeryClubWaiverSigned', 'archeryClubWaiverSignedInitials', 'archeryClubWaiverSignedDate',
-                       'rulesOfConductWaiverSigned', 'rulesOfConductWaiverSignedInitials', 'rulesOfConductWaiverSignedDate')
+            'fields': ('willowsfordWaiverSigned', 'willowsfordWaiver',
+                       'archeryClubWaiverSigned', 'archeryClubWaiver',
+                       'rulesOfConductWaiverSigned', 'rulesOfConductWaiver')
         }),
     )
     # Add columns for “Most Recent Payment Date” and “Most Recent Payment Amount”

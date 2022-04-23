@@ -48,22 +48,22 @@
           <p class="price">Active</p>
           <h3>Membership Waivers</h3>
             <a href="{% static 'ArcheryClubWaiver.pdf' %}">Archery Club Waiver</a>
-            {% if request.user.useraccount.archeryClubWaiverSigned == False or archery_renewal_check == True %}
+            {% if request.user.useraccount.archeryClubWaiverSigned == False %}
                 <a href="{% url 'archeryWaiver' %}">Please review and sign</a><br>
             {% else %}
                 Signed {{ request.user.useraccount.archeryClubWaiverSignedDate }}<br>
             {% endif %}
             <a href="{% static 'RulesOfConduct.pdf' %}">Rules of Conduct</a> <br>
-            {% if request.user.useraccount.rulesOfConductWaiverSigned == False or rules_of_conduct_renewal_check == True %}
+            {% if request.user.useraccount.rulesOfConductWaiverSigned == False %}
                 <a href="{% url 'rulesOfConductWaiver' %}">Please review and sign</a><br>
             {% else %}
                 Signed {{ request.user.useraccount.rulesOfConductWaiverSignedDate }}<br>
             {% endif %}
             <a href="{% static 'WillowsfordWaiver.pdf' %}">Willowsford Conservancy Waiver</a> <br>
-            {% if request.user.useraccount.willowsfordWaiverSigned == False or willowsford_renewal_check == True %}
+            {% if request.user.useraccount.willowsfordWaiverSigned == False %}
                 <a href="{% url 'willowsfordWaiver' %}">Please review and sign</a><br>
             {% else %}
-                Signed {{ request.user.useraccount.willowsfordWaiverSignedDate }}<br>
+                Signed <br>
             {% endif %}
         
         </div>
