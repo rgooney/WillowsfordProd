@@ -27,8 +27,6 @@ class GuestCheckIn(models.Model):
     checkin_id = models.AutoField(primary_key=True)
     date = models.DateField(default=datetime.date.today)
     time_in = models.TimeField()
-    time_out = models.TimeField(blank=True, null=True)
-    checkin_type = models.CharField(max_length=20, choices=MEMBER_CHOICES)
     guest_id = models.ForeignKey(Guests, blank=True, null=True, on_delete=models.CASCADE)
     member_id = models.ForeignKey(UserAccount, blank=True, null=True, on_delete=models.CASCADE)
 
