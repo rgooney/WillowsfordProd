@@ -43,9 +43,11 @@ def services(request):
                 send_mail(subject, message, from_email, ['rachel.gooney@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('HomeSite/services/questionResponse.html/')
+            return redirect('response')
     return render(request, 'HomeSite/services.html', {'form': form})
 
+def responseView(request):
+    return render(request, 'HomeSite/questionResponse.html')
 
 class SignOut(RedirectView):
     permanent = False
