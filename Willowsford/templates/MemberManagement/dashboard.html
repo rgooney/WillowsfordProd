@@ -77,23 +77,23 @@
   <h4>Membership Status</h4>
   <p class="price">Active</p>
   <h3>Membership Waivers</h3>
-    <a href="{% static 'ArcheryClubWaiver.pdf' %}">Archery Club Waiver (PDF)</a>
-    {% if request.user.useraccount.archeryClubWaiverSigned == False or archery_renewal_check == True %}
-        <a href="{% url 'archeryWaiver' %}">Upload Signed Archery Club Waiver</a><br>
+    <a href="{% static 'ArcheryClubWaiver.pdf' %}">Archery Club Waiver</a>
+    {% if request.user.useraccount.archeryClubWaiverSigned == False %}
+        <a href="{% url 'archeryWaiver' %}">Please review and sign</a><br>
     {% else %}
         Signed {{ request.user.useraccount.archeryClubWaiverSignedDate }}<br>
     {% endif %}
-    <a href="{% static 'RulesOfConduct.pdf' %}">Rules of Conduct (PDF Download)</a> <br>
-    {% if request.user.useraccount.rulesOfConductWaiverSigned == False or rules_of_conduct_renewal_check == True %}
-        <a href="{% url 'rulesOfConductWaiver' %}">Upload Signed Rules of Conduct</a><br>
+    <a href="{% static 'RulesOfConduct.pdf' %}">Rules of Conduct</a> <br>
+    {% if request.user.useraccount.rulesOfConductWaiverSigned == False %}
+        <a href="{% url 'rulesOfConductWaiver' %}">Please review and sign</a><br>
     {% else %}
         Signed {{ request.user.useraccount.rulesOfConductWaiverSignedDate }}<br>
     {% endif %}
-    <a href="{% static 'WillowsfordWaiver.pdf' %}">Conservancy Waiver (PDF Download)</a> <br>
-    {% if request.user.useraccount.willowsfordWaiverSigned == False or willowsford_renewal_check == True %}
-        <a href="{% url 'willowsfordWaiver' %}">Upload Signed Conservancy Waiver</a><br>
+    <a href="{% static 'WillowsfordWaiver.pdf' %}">Willowsford Conservancy Waiver</a> <br>
+    {% if request.user.useraccount.willowsfordWaiverSigned == False %}
+        <a href="{% url 'willowsfordWaiver' %}">Please review and sign</a><br>
     {% else %}
-        Signed {{ request.user.useraccount.willowsfordWaiverSignedDate }}<br>
+        Signed <br>
     {% endif %}
 
 
@@ -124,6 +124,7 @@
             <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
             <div><a href="{% url 'statements' %}">All statements</a></div>
           <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+
 
         </div>
         <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
@@ -262,7 +263,68 @@
      <!--  </section> -->
   
       <!-- Boxes Section -->
-     
+      <section class="boxes">
+        <div class="box">
+            {% if messages %}
+            <ul class="messages" style="list-style: none;">
+                {% for message in messages %}
+                <p {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="" class="form" method="post">
+              <h2>Range Check-In</h2>
+              <div class="input-group">
+                <label for="{{ checkin_form.date.id_for_label }}">Date</label>
+                {{ checkin_form.date }}
+              </div>
+              <div class="input-group">
+                <label for="{{ checkin_form.time_in.id_for_label }}">Time In</label>
+                {{ checkin_form.time_in }}
+              </div>
+              <div class="input-group">
+                <label for="{{ form.time_out.id_for_label }}">Time Out</label>
+                {{ checkin_form.time_out }}
+              </div>
+              <div class="input-group">
+                <label for="{{ checkin_form.checkin_type.id_for_label }}">Checkin Type</label>
+                {{ checkin_form.checkin_type }}
+              </div>
+              {% csrf_token %}
+              <input type="submit" name="check_in" value="Check In" class="submit-btn">
+            </form>
+        </div>
+        <div class="box">
+          <i class="fas fa-globe fa-4x"></i>
+          <h3>Guest Check-in</h3>
+
+            {% if messages %}
+            <ul class="messages" style="list-style: none;">
+                {% for message in messages %}
+                <p {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="" class="form" method="post">
+              <div class="input-group">
+                <label for="{{ guest_checkin_form.guest_id.id_for_label }}">Guest ID</label>
+                {{ guest_checkin_form.guest_id }}
+              </div>
+              <div class="input-group">
+                <label for="{{ guest_checkin_form.date.id_for_label }}">Date</label>
+                {{ guest_checkin_form.date }}
+              </div>
+              <div class="input-group">
+                <label for="{{ guest_checkin_form.time_in.id_for_label }}">Time In</label>
+                {{ guest_checkin_form.time_in }}
+              </div>
+              {% csrf_token %}
+              <input type="submit" name="guest_check_in" value="Guest Check In" class="submit-btn">
+                <br>
+            <p><a href="{% url 'guestRegistration' %}">Register Guest</a></p>
+            </form>
+        </div>
+      </section>
     {% endblock content %}
     {% block footer %}
       <footer>

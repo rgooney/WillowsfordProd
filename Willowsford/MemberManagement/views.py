@@ -42,31 +42,23 @@ def signIn(request):
 @login_required(login_url='signIn')
 def dashboard(request):
     user = User.objects.get(username=request.user)
+    guest_checkin_form = GuestCheckInForm()
+    checkin_form = CheckInForm()
 
-    # Waiver Checks
-    willowsford_renewal_check = False
-    archery_renewal_check = False
-    rules_of_conduct_renewal_check = False
-    renewal_check_date = datetime.datetime.now() - datetime.timedelta(days=1*365)
-    renewal_check_date = renewal_check_date.date()
-    print('Waiver date: ' + str(request.user.useraccount.willowsfordWaiverSignedDate) + ' One year ago: ' + str(
-        renewal_check_date))
-    if renewal_check_date > request.user.useraccount.willowsfordWaiverSignedDate:
-        willowsford_renewal_check = True
-    elif renewal_check_date > request.user.useraccount.archeryClubWaiverSignedDate:
-        archery_renewal_check = True
-    elif renewal_check_date > request.user.useraccount.rulesOfConductWaiverSignedDate:
-        rules_of_conduct_renewal_check = True
-
+    ######################################
     # Balance calculations
+    ######################################
     try:
         statement = Statement.objects.filter(account_id=user.useraccount).filter(paid=False).aggregate(tot_balance=Sum('amount_due'))
         total_balance = statement['tot_balance']
     except Statement.DoesNotExist:
         statement = None
 
+    ######################################
     # Form field data for check-in
-    if request.method == "POST":
+    ######################################
+    if request.method == "POST" and "check_in" in request.POST:
+        print("regular check in")
         checkin_form = CheckInForm(request.POST)
         if checkin_form.is_valid():
             checkin = checkin_form.save(commit=False)
@@ -77,16 +69,33 @@ def dashboard(request):
         else:
             print(checkin_form.errors)
             return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance, 'checkin_form': checkin_form,
-                                                                       'willowsford_renewal_check': willowsford_renewal_check,
-                                                                       'archery_renewal_check': archery_renewal_check,
-                                                                       'rules_of_conduct_renewal_check': rules_of_conduct_renewal_check,})
+                                                                       'guest_checkin_form': guest_checkin_form})
     else:
         checkin_form = CheckInForm()
 
+    #####################################
+    # Form field data for guest check-in
+    #####################################
+    if request.method == "POST" and "guest_check_in" in request.POST:
+        print("guest check in")
+        guest_checkin_form = GuestCheckInForm(request.POST)
+        if guest_checkin_form.is_valid():
+            guest_checkin = guest_checkin_form.save(commit=False)
+            guest_checkin.member_id = user.useraccount
+            print("submitting")
+            guest_checkin.save()
+            messages.success(request, "Guest Successfully Checked In.")
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print("Not submitting")
+            print(guest_checkin_form.errors)
+            return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance, 'checkin_form': checkin_form,
+                                                                       'guest_checkin_form': guest_checkin_form})
+    else:
+        guest_checkin_form = GuestCheckInForm()
+
     return render(request, 'MemberManagement/dashboard.html', {'total_balance': total_balance, 'checkin_form': checkin_form,
-                                                                       'willowsford_renewal_check': willowsford_renewal_check,
-                                                                       'archery_renewal_check': archery_renewal_check,
-                                                                       'rules_of_conduct_renewal_check': rules_of_conduct_renewal_check,})
+                                                               'guest_checkin_form': guest_checkin_form})
 
 @login_required(login_url='signIn')
 def statements(request):

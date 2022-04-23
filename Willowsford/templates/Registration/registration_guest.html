@@ -1,0 +1,114 @@
+{% extends 'HomeSite/index.html' %}
+{% load static %}
+
+  {% block content %}
+<div style="text-align:center;">
+
+    <div class="flexbox-container">
+    <div class="flexbox-item flexbox-item-1">
+
+      <form action="{% url 'guestRegistration' %}" class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if user_form.errors  %}
+          {% for field in user_form %}
+              {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endfor %}
+          {% for error in user_form.non_field_errors %}
+              <div class="alert alert-danger">
+                  <strong>{{ error|escape }}</strong>
+              </div>
+          {% endfor %}
+        {% elif extended_user_form.errors %}
+          {% for field in extended_user_form %}
+              {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endfor %}
+          {% for error in extended_user_form.non_field_errors %}
+              <div class="alert alert-danger">
+                  <strong>{{ error|escape }}</strong>
+              </div>
+          {% endfor %}
+        {% endif %}
+
+        <h2>Registration</h2>
+        <!-- User Form        -->
+        <div class="input-group">
+          {% if form.errors %}
+            <p>{{ form.username.errors.as_text }}</p>
+          {% endif %}
+
+        <label for="{{ user_form.fname.id_for_label }}" class="">First Name</label>
+          {{ user_form.fname }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.mid_initial.id_for_label }}">Middle Initial</label>
+          {{ user_form.mid_initial }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.lname.id_for_label }}">Last Name</label>
+          {{ user_form.lname }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.gender.id_for_label }}">Gender</label>
+          {{ user_form.gender }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.bday.id_for_label }}">Birthday</label>
+          {{ user_form.bday }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.willowsfordWaiver.id_for_label }}"><a href="{% static 'WillowsfordWaiver.pdf' %}" target="_blank">Willowsford Waiver</a></label>
+          {{ user_form.willowsfordWaiver }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.archeryClubWaiver.id_for_label }}"><a href="{% static 'ArcheryClubWaiver.pdf' %}" target="_blank">Archery Club Waiver</a></label>
+          {{ user_form.archeryClubWaiver }}
+        </div>
+        <div class="input-group">
+          <label for="{{ user_form.rulesOfConductWaiver.id_for_label }}"><a href="{% static 'RulesOfConduct.pdf' %}" taget="_blank">Rules of Conduct</a></label>
+          {{ user_form.rulesOfConductWaiver }}
+        </div>
+
+          </br>
+
+        <input type="submit" value="Submit" class="submit-btn">
+        <p>Please note that your application will have to be approved by an officer.</p>
+
+
+        <script>
+        function formatPhoneNumber(value) {
+          if (!value) return value;
+          const phoneNumber = value.replace(/[^\d]/g, '');
+          const phoneNumberLength = phoneNumber.length;
+          if (phoneNumberLength < 4) return phoneNumber;
+          if (phoneNumberLength < 7) {
+            return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+          }
+          return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+            3,
+            6
+          )}-${phoneNumber.slice(6, 9)}`;
+        }
+
+        function phoneNumberFormatter() {
+          const inputField = document.getElementById('id_phonenumber');
+          const formattedInputValue = formatPhoneNumber(inputField.value);
+          inputField.value = formattedInputValue;
+        }
+        </script>
+      </form>
+    </div>
+  </div>
+
+
+
+
+  {% endblock content %}

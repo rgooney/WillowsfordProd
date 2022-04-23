@@ -58,7 +58,6 @@
                          <table class="table">
                           <tr>
                               <td><h3> Round 1 </h3></td>
-                              findR1Total();
                             <td>
                                {{ form.subtotalRoundOne }} <p> Round Score </p>
                             </td>
@@ -68,6 +67,7 @@
                                 <td> {{ form.r1n2 }} <p> End 2 </p> </td>
                                 <td> {{ form.r1n3 }} <p> End 3 </p> </td>
                                 <td> {{ form.commentRoundOne }} <p> Notes </p> </td>
+                                <button onClick="window.location.reload();">Update Subtotals</button>
                           </tr>
 
 
@@ -185,7 +185,7 @@
 
                         </tr>
                         <tr>
-                            <td colspan="3"><h4> Ready to Calculate your Score?</h4> <input type="submit" class="btn btn-primary" value="Submit"></td>
+                            <td colspan="3"><h4> Ready to Calculate your Score?</h4> <input type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you are ready to submit your score?');" value="Submit"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
@@ -196,10 +196,11 @@
                         </fieldset>
                     </form>
                     <script type="text/javascript">
-                        var r1n1 = document.getElementById('id_r1n1');
-                        var r1n2 = document.getElementById('id_r1n2');
-                        var r1n3 = document.getElementById('id_r1n3');
-                        var r1tot = parseInt(r1n1.value)+parseInt(r1n2.value)+parseInt(r1n3.value);
+                        var r1n1 = document.getElementById('id_r1n1').value;
+                        var r1n2 = document.getElementById('id_r1n2').value;
+                        var r1n3 = document.getElementById('id_r1n3').value;
+                        // If statement for entering X's to equal 5
+                        var r1tot = parseInt(r1n1)+parseInt(r1n2)+parseInt(r1n3);
                         var r1cum = r1tot;
 
                         var r2n1 = document.getElementById('id_r2n1');
@@ -278,6 +279,15 @@
                         document.getElementById('id_cumulativeRoundTen').value = r10cum;
                         document.getElementById('id_score').value = r10cum;
 
+                    </script>
+                    <script>
+                        function confirmSubmission() {
+                          var txt;
+                          if (confirm("Are you sure you'd like to submit!")) {
+                            txt = "Submitted!";
+                          }
+                          document.getElementById("demo").innerHTML = txt;
+                        }
                     </script>
               </div>
             </div>

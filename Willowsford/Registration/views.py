@@ -40,14 +40,36 @@ def register(request):
     return render(request, 'Registration/registration.html', {'user_form': user_form, 'extended_user_form': extended_user_form})
 
 @login_required(login_url='signIn')
+def guestRegister(request):
+    if request.POST:
+        user_form = GuestRegistrationForm(request.POST, request.FILES)
+        if user_form.is_valid():
+            form = user_form.save(commit=False)
+            form.willowsfordWaiverSigned = True
+            form.archeryClubWaiverSigned = True
+            form.rulesOfConductWaiverSigned = True
+            form.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            print(user_form.errors)
+            return render(request, 'Registration/registration_guest.html', {'user_form': user_form,})
+    else:
+        user_form = GuestRegistrationForm()
+
+    return render(request, 'Registration/registration_guest.html', {'user_form': user_form,})
+
+
+@login_required(login_url='signIn')
 def willowsfordWaiver(request):
     if request.method == "POST":
-        user = User.objects.get(username=request.user, instance=user.useraccount)
-        waiver_form = WillowsfordWaiverForm(request.POST)
+        user = User.objects.get(username=request.user)
+        waiver_form = WillowsfordWaiverForm(request.POST, request.FILES, instance=user.useraccount)
+
         if waiver_form.is_valid():
-            user = User.objects.get(username=request.user)
             waiver = waiver_form.save(commit=False)
-            waiver.bday = user.useraccount.bday
+            waiver.bday = user.useraccount.bday #Form breaks for some reason if bday isnt there.
+            waiver.willowsfordWaiverSigned = True
+            waiver.willowsfordWaiver = request.FILES['willowsfordWaiver']
             waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
@@ -62,10 +84,13 @@ def willowsfordWaiver(request):
 def archeryWaiver(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)
-        waiver_form = ArcheryWaiverForm(request.POST, instance=user.useraccount)
+        waiver_form = ArcheryWaiverForm(request.POST, request.FILES, instance=user.useraccount)
+
         if waiver_form.is_valid():
             waiver = waiver_form.save(commit=False)
             waiver.bday = user.useraccount.bday #Form breaks for some reason if bday isnt there.
+            waiver.archeryClubWaiverSigned = True
+            waiver.archeryClubWaiver = request.FILES['archeryClubWaiver']
             waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
@@ -80,12 +105,13 @@ def archeryWaiver(request):
 def rulesOfConductWaiver(request):
     if request.method == "POST":
         user = User.objects.get(username=request.user)
-        waiver_form = RulesOfConductWaiverForm(request.POST, instance=user.useraccount)
-        if waiver_form.is_valid():
-            user = User.objects.get(username=request.user)
-            waiver = waiver_form.save(commit=False)
-            waiver.bday = user.useraccount.bday
+        waiver_form = RulesOfConductWaiverForm(request.POST, request.FILES, instance=user.useraccount)
 
+        if waiver_form.is_valid():
+            waiver = waiver_form.save(commit=False)
+            waiver.bday = user.useraccount.bday  # Form breaks for some reason if bday isnt there.
+            waiver.rulesOfConductWaiverSigned = True
+            waiver.rulesOfConductWaiver = request.FILES['rulesOfConductWaiver']
             waiver.save()
             return HttpResponseRedirect(reverse('dashboard'))
         else:
@@ -120,7 +146,7 @@ def password_reset_request(request):
                     email = render_to_string(email_template_name, c)
                     try:
                         #The following needs to be registered to a real email
-                        send_mail(subject, email, 'admin@example.com' , [user.email], fail_silently=False)
+                        send_mail(subject, email, 'rachel.gooney@gmail.com' , [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
                     return redirect ('/password_reset/done/')

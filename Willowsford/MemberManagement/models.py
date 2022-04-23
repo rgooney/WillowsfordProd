@@ -1,6 +1,7 @@
 from django.db import models
 from Registration.models import UserAccount
 from decimal import Decimal
+from Registration.models import Guests
 import datetime
 
 # Create your models here.
@@ -18,6 +19,16 @@ class CheckIn(models.Model):
     time_out = models.TimeField()
     checkin_type = models.CharField(max_length=20, choices=MEMBER_CHOICES)
     account_id = models.ForeignKey(UserAccount, blank=True, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.checkin_id) + ": " + self.account_id.lname + " || " + str(self.date)
+
+class GuestCheckIn(models.Model):
+    checkin_id = models.AutoField(primary_key=True)
+    date = models.DateField(default=datetime.date.today)
+    time_in = models.TimeField()
+    guest_id = models.ForeignKey(Guests, blank=True, null=True, on_delete=models.CASCADE)
+    member_id = models.ForeignKey(UserAccount, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.checkin_id) + ": " + self.account_id.lname + " || " + str(self.date)

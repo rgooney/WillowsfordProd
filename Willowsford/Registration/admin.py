@@ -6,8 +6,6 @@ import csv
 from django.http import HttpResponse
 
 # Register your models here.
-
-
 class RegistrationAdmin(admin.ModelAdmin):
     actions = ["export_as_csv"]
     list_display = ('account_id', 'fname', 'lname', 'approved', 'membershipType', 'officer', 'most_recent_payment_date',
@@ -25,9 +23,9 @@ class RegistrationAdmin(admin.ModelAdmin):
         }),
         ('Waivers', {
             'classes': ('collapse',),
-            'fields': ('willowsfordWaiverSigned', 'willowsfordWaiverSignedInitials', 'willowsfordWaiverSignedDate',
-                       'archeryClubWaiverSigned', 'archeryClubWaiverSignedInitials', 'archeryClubWaiverSignedDate',
-                       'rulesOfConductWaiverSigned', 'rulesOfConductWaiverSignedInitials', 'rulesOfConductWaiverSignedDate')
+            'fields': ('willowsfordWaiverSigned', 'willowsfordWaiver',
+                       'archeryClubWaiverSigned', 'archeryClubWaiver',
+                       'rulesOfConductWaiverSigned', 'rulesOfConductWaiver')
         }),
     )
     # Add columns for “Most Recent Payment Date” and “Most Recent Payment Amount”
@@ -65,5 +63,39 @@ class RegistrationAdmin(admin.ModelAdmin):
 
     export_as_csv.short_description = "Export Selected as CSV"
 
+class GuestsAdmin(admin.ModelAdmin):
+    actions = ["export_as_csv"]
+    list_display = ('guest_id', 'fname', 'lname', 'willowsfordWaiverSigned', 'archeryClubWaiverSigned', 'rulesOfConductWaiverSigned')
+    search_fields = ['account_id', 'fname', 'lname']
+
+    fieldsets = (
+        (None, {
+            'fields': (
+            'fname', 'mid_initial', 'lname', 'gender', 'bday',)
+        }),
+        ('Waivers', {
+            'classes': ('collapse',),
+            'fields': ('willowsfordWaiverSigned', 'willowsfordWaiver',
+                       'archeryClubWaiverSigned', 'archeryClubWaiver',
+                       'rulesOfConductWaiverSigned', 'rulesOfConductWaiver')
+        }),
+    )
+
+    def export_as_csv(self, request, queryset):
+        meta = self.model._meta
+        field_names = [field.name for field in meta.fields]
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+        writer = csv.writer(response)
+
+        writer.writerow(field_names)
+        for obj in queryset:
+            row = writer.writerow([getattr(obj, field) for field in field_names])
+
+        return response
+
+    export_as_csv.short_description = "Export Selected as CSV"
+
 admin.site.register(UserAccount, RegistrationAdmin)
+admin.site.register(Guests, GuestsAdmin)
 
