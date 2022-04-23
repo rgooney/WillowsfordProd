@@ -133,3 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PHONENUMBER_DEFAULT_REGION="US"
 PHONENUMBER_DB_FORMAT="NATIONAL"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
