@@ -221,17 +221,38 @@
                 {{ checkin_form.checkin_type }}
               </div>
               {% csrf_token %}
-              <input type="submit" value="Check In" class="submit-btn">
+              <input type="submit" name="check_in" value="Check In" class="submit-btn">
             </form>
         </div>
         <div class="box">
           <i class="fas fa-globe fa-4x"></i>
-          <h3>Account Information</h3>
-            <ul style="list-style: none;">
-                <li>Contact Number: {{ request.user.useraccount.phonenumber }}</li>
-                <li>Birthday: {{ request.user.useraccount.bday }}</li>
-                <li>Email: {{ request.user.email }}</li>
+          <h3>Guest Check-in</h3>
+
+            {% if messages %}
+            <ul class="messages" style="list-style: none;">
+                {% for message in messages %}
+                <p {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </p>
+                {% endfor %}
             </ul>
+            {% endif %}
+            <form action="" class="form" method="post">
+              <div class="input-group">
+                <label for="{{ guest_checkin_form.guest_id.id_for_label }}">Guest ID</label>
+                {{ guest_checkin_form.guest_id }}
+              </div>
+              <div class="input-group">
+                <label for="{{ guest_checkin_form.date.id_for_label }}">Date</label>
+                {{ guest_checkin_form.date }}
+              </div>
+              <div class="input-group">
+                <label for="{{ guest_checkin_form.time_in.id_for_label }}">Time In</label>
+                {{ guest_checkin_form.time_in }}
+              </div>
+              {% csrf_token %}
+              <input type="submit" name="guest_check_in" value="Guest Check In" class="submit-btn">
+                <br>
+            <p><a href="{% url 'guestRegistration' %}">Register Guest</a></p>
+            </form>
         </div>
       </section>
     {% endblock content %}

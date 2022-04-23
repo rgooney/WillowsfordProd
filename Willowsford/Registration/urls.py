@@ -7,4 +7,5 @@ urlpatterns = [
     path('willowsfordWaiver', views.willowsfordWaiver, name='willowsfordWaiver'),
     path('archeryWaiver', views.archeryWaiver, name='archeryWaiver'),
     path('rulesOfConductWaiver', views.rulesOfConductWaiver, name='rulesOfConductWaiver'),
+    path('guestRegistration', views.guestRegister, name='guestRegistration'),
 ]
