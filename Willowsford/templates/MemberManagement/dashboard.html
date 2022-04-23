@@ -8,31 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'dashboard.css' %}">
     <title>Dashboard</title>
-    <div class="container">
-        <div id="branding">
-            <h1><span class="highlight">Willowsford</span> Archery Club</h1>
-        </div>
-        <nav>
-            <ul>
-                <li class="current"><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'services' %}">Membership</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'dashboard' %}">{{ request.user.useraccount.fname }}'s Dashboard</a></li>
-                {% if user.is_staff %}
-                <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
-                {% endif %}
-                <li><a href="{% url 'signout' %}">Signout</a></li>
-                {% else %}
-                <li><a href="{% url 'signIn' %}">Sign In</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </div>
+     
 </head>
 {% endblock head %}
 
 <body>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <h1><span class="highlight">Willowsford</span> Archery Club</h1>
+      </div>
+      <nav>
+        <ul>
+          <li class="current"><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'services' %}">Membership</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'dashboard' %}">{{ request.user.useraccount.fname }}'s Dashboard</a></li>
+            {% if user.is_staff %}
+               <li><a href="{% url 'admin:index' %}">Admin panel</a></li>
+           {% endif %}
+            <li><a href="{% url 'signout' %}">Signout</a></li>
+          {% else %}
+            <li><a href="{% url 'signIn' %}">Sign In</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
     <div class= "wrapper"> 
         <!-- Top Container -->
     {% block content %}
@@ -244,13 +247,14 @@
 
 
     <section class="top-container">
+      <div class="box">
         <header class="showcase">
           <h1>Scoring App</h1>
           <p>Information regarding Scoring and how to use the application are provided under the scoring app information section.</p>
           <a href="{% url 'manualScoring' %}" class="btn">Open Scoring App</a>
           <a href="{% url 'scores' %}" class="btn">View Past Scores</a>
         </header>
-        
+      </div>
         </section>
         
         </div>
