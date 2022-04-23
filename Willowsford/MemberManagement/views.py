@@ -9,6 +9,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 import datetime
+from django.utils import timezone
 
 from .models import *
 from .forms import *
@@ -102,10 +103,10 @@ def statements(request):
     user = User.objects.get(username=request.user)
     try:
         check_ins = CheckIn.objects.filter(account_id=user.useraccount).filter(checkin_type='V')
-        waiver_date = user.useraccount.willowsfordWaiverSignedDate
+        current_year = timezone.now().year
         volunteer_sum = 0
         for i in check_ins:
-            if i.date > waiver_date:
+            if i.date > current_year:
                 time = i.time_out.hour - i.time_in.hour
             volunteer_sum = volunteer_sum + time
 
@@ -116,7 +117,7 @@ def statements(request):
         statement = None
 
     return render(request, 'MemberManagement/statements.html', {'statements': statements, 'total_balance': total_balance,
-                                                                'waiver_date': waiver_date, 'volunteer_sum': volunteer_sum})
+                                                                'current_year': current_year, 'volunteer_sum': volunteer_sum})
 
 @login_required(login_url='signIn')
 def scores(request):
@@ -124,6 +125,8 @@ def scores(request):
     try:
         scores = Scores.objects.filter(account_id=user.useraccount).all()
         maxValue = 0
+        max = None
+
         for i in scores:
             if i.score >= maxValue:
                 print('Current ID: ' + str(i.score_id))
@@ -134,7 +137,7 @@ def scores(request):
     except Statement.DoesNotExist:
         scores = None
 
-    return render(request, 'Scoring/viewScores.html', {'scores': scores, 'max' : max}) #passing object 
+    return render(request, 'Scoring/viewScores.html', {'scores': scores, 'max': max}) #passing object
 
 class PaypalReturnView(TemplateView):
     template_name = 'paypal_success.html'
