@@ -12,7 +12,7 @@ import datetime
 
 from .models import *
 from .forms import *
-from Scoring.models import *
+from Scoring.models import Scores
 from Registration.forms import *
 from Registration.models import *
 
@@ -110,44 +110,86 @@ def statements(request):
                                                                 'waiver_date': waiver_date, 'volunteer_sum': volunteer_sum})
 
 @login_required(login_url='signIn')
-def scores(request):
+def Scores (request):
     user = User.objects.get(username=request.user)
+    listOf10 = []
+    listOf20 = []
+    listOf30 = []
+    listOf40 = []
+    listOf60 = []
+    listOfWillowsford = []
     try:
         scores = Scores.objects.filter(account_id=user.useraccount).all()
-        listof10 = []
-        listof20 = []
-        listof30 = []
-        listof40 = []
-        listof60 = []
-        listofWillow = []
-        maxValue = 0
-        max10 = 0 
-        max20 = 0
-        max30 = 0
-        max40 = 0
-        max60 = 0
-        maxWillow = 0
+        # Get list of objects
         for i in scores:
-            if i.distance == "10 yards" and i.score >= max10:
-                max10 = i.score
-            if i.distance == "20 yards": #and i.score >= max20:
-                listof20.append(i)
-            if i.distance == "30 yards": #and i.score >= max30:
-                listof30.append(i) 
-            if i.distance == "40 yards": #and i.score >= max40:
-                listof40.append(i)
-            if i.distance == "60 yards": #and i.score >= max60:
-                listof60.append(i)
-            if i.distance == "The Willowsford": #and i.score >= max20:
-                listofWillow.append(i)
+            if i.distance == "10 yards":
+                listOf10.append(i)
+            elif i.distance == "20 yards":
+                listOf20.append(i)
+            elif i.distance == "30 yards":
+                listOf30.append(i)
+            elif i.distance == "40 yards":
+                listOf40.append(i)
+            elif i.distance == "60 yards":
+                listOf60.append(i)
+            elif i.distance == "Willowsford yards":
+                listOfWillowsford.append(i)
+        # Set initial value
+        if listOf10[0] != None:
+            max10 = listOf10[0]
+        else:
+            max10 = None
+        if listOf20[0] != None:
+            max20 = listOf20[0]
+        else:
+            max20 = None
+        if listOf30[0] != None:
+            max30 = listOf30[0]
+        else:
+            max30 = None
+        if listOf40[0] != None:
+            max40 = listOf40[0]
+        else:
+            max40 = None
+        if listOf60[0] != None:
+            max60 = listOf60[0]
+        else:
+            max60 = None
+        if listOfWillowsford[0] != None:
+            maxWillowsford = listOfWillowsford[0]
+        else:
+            maxWillowsford = None
 
-    except Statement.DoesNotExist:
+        if max10 != None:
+            for i in listOf10:
+                if i >= max10:
+                    max10 = i
+        if max20 != None:
+            for i in listOf20:
+                if i >= max20:
+                    max20 = i
+        if max30 != None:
+            for i in listOf30:
+                if i >= max30:
+                    max30 = i
+        if max40 != None:
+            for i in listOf40:
+                if i >= max40:
+                    max40 = i
+        if max60 != None:
+            for i in listOf60:
+                if i >= max60:
+                    max60 = i
+        if maxWillowsford != None:
+            for i in listOfWillowsford:
+                if i >= maxWillowsford:
+                    maxWillowsford = i
+
+    except scores.DoesNotExist:
         scores = None
 
-    return render(request, 'Scoring/viewScores.html', {'scores': scores, 'max' : max, 'listof10': listof10, 'listof20': listof20,
-    'listof30': listof30, 'listof40': listof40, 'listof60': listof60, 'listofWillow': listofWillow}) #passing object 
-
-
+    return render(request, 'Scoring/viewScores.html', {'max10': max10, 'max10': max20, 'max10': max30, 'max10': max40, 
+    'max10': max60, 'max10': maxWillowsford,})
 
 class PaypalReturnView(TemplateView):
     template_name = 'paypal_success.html'
