@@ -7,4 +7,5 @@ urlpatterns = [
     path('about', views.about, name='about'),
     path('services', views.services, name='services'),
     path(r'^signout/$', views.SignOut.as_view(), name='signout'),
+    path('response/', views.responseView, name='response'),
 ]
