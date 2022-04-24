@@ -126,18 +126,101 @@ def scores(request):
         scores = Scores.objects.filter(account_id=user.useraccount).all()
         maxValue = 0
         max = None
+        listOf10 = []
+        listOf20 = []
+        listOf30 = []
+        listOf40 = []
+        listOf60 = []
+        listOfWillowsford = []
 
         for i in scores:
-            if i.score >= maxValue:
-                print('Current ID: ' + str(i.score_id))
-                print('Current Score:' + str(i.score))
-                print('Current Max:' + str(maxValue))
-                maxValue = i.score
-                max = i
+            if i.distance == "10 yards":
+                listOf10.append(i)
+            elif i.distance == "20 yards":
+                listOf20.append(i)
+            elif i.distance == "30 yards":
+                listOf30.append(i)
+            elif i.distance == "40 yards":
+                listOf40.append(i)
+            elif i.distance == "60 yards":
+                listOf60.append(i)
+            elif i.distance == "The Willowsford":
+                listOfWillowsford.append(i)
+
+        if listOf10[0] != None:
+            max10 = listOf10[0]
+        else:
+            max10 = None
+        if listOf20[0] != None:
+            max20 = listOf20[0]
+        else:
+            max20 = None
+        if listOf30[0] != None:
+            max30 = listOf30[0]
+        else:
+            max30 = None
+        if listOf40[0] != None:
+            max40 = listOf40[0]
+        else:
+            max40 = None
+        if listOf60[0] != None:
+            max60 = listOf60[0]
+        else:
+            max60 = None
+        if listOfWillowsford[0] != None:
+            maxWillowsford = listOfWillowsford[0]
+        else:
+            maxWillowsford = None
+
+        if max10 != None:
+            for i in listOf10:
+                if i.score >= max10.score:
+                    max10 = i
+        if max20 != None:
+            for i in listOf20:
+                if i.score >= max20.score:
+                    max20 = i
+        if max30 != None:
+            for i in listOf30:
+                if i.score >= max30.score:
+                    max30 = i
+        if max40 != None:
+            for i in listOf40:
+                if i.score >= max40.score:
+                    max40 = i
+        if max60 != None:
+            for i in listOf60:
+                if i.score >= max60.score:
+                    max60 = i
+        if maxWillowsford != None:
+            for i in listOfWillowsford:
+                if i.score >= maxWillowsford.score:
+                    maxWillowsford = i
+
+        print('The Max 10 init')
+        print('Current ID: ' + str(max10.score_id))
+        print('Current Score:' + str(max10.score))
+        print('The Max 20 init')
+        print('Current ID: ' + str(max20.score_id))
+        print('Current Score:' + str(max20.score))
+        print('The Max 30 init')
+        print('Current ID: ' + str(max30.score_id))
+        print('Current Score:' + str(max30.score))
+        print('The Max 40 init')
+        print('Current ID: ' + str(max40.score_id))
+        print('Current Score:' + str(max40.score))
+        print('The Max 60 init')
+        print('Current ID: ' + str(max60.score_id))
+        print('Current Score:' + str(max60.score))
+        print('The Max Willowsford init')
+        print('Current ID: ' + str(maxWillowsford.score_id))
+        print('Current Score:' + str(maxWillowsford.score))
+
     except Statement.DoesNotExist:
         scores = None
 
-    return render(request, 'Scoring/viewScores.html', {'scores': scores, 'max': max}) #passing object
+    return render(request, 'Scoring/viewScores.html', {'scores': scores, 'max': max, 'max10': max10, 'max20': max20, 'max30': max30, 'max40': max40,
+                                                       'max60': max60, 'maxWillowsford': maxWillowsford,}) #passing object
 
 class PaypalReturnView(TemplateView):
     template_name = 'paypal_success.html'
