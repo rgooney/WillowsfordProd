@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
-from .models import Scores
+from . import models
 from .forms import ManualScoringModelForm
 
 # Create your views here.
@@ -70,7 +70,3 @@ def manualScoring(request):
 
     return render(request, 'Scoring/manualScoring.html', {'form': form})
 
-
-
-
-    
